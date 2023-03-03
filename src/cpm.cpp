@@ -1,6 +1,43 @@
 #include <iostream>
+#include <fstream>
 #include <unistd.h>
+#include <vector>
+#include <bits/stdc++.h>
+
 using namespace std;
+
+
+
+
+void get_alphabet(string filename) {
+    unordered_set<char> alphabet;
+
+    char byte = 0;
+
+
+    ifstream input_file(filename);
+    if (!input_file.is_open()) {
+        cerr << "Could not open the file - '"
+             << filename << "'" << endl;
+        return;
+    }
+
+    while (input_file.get(byte)) {
+        alphabet.insert(byte);
+    }
+
+    unordered_set<char> :: iterator itr;
+    for (itr = alphabet.begin(); itr != alphabet.end(); itr++){
+        cout << (*itr) << endl;
+    }
+
+}
+
+
+
+
+
+
 
 int main(int argc, char** argv) {
 
@@ -34,5 +71,7 @@ int main(int argc, char** argv) {
             }
         }
     }
+
+    get_alphabet(argv[optind]);
 
 }
