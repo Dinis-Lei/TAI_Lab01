@@ -9,9 +9,7 @@ using namespace std;
 
 
 
-void get_alphabet(string filename) {
-    unordered_set<char> alphabet;
-
+void get_alphabet(string filename, unordered_set<char>& alphabet) {
     char byte = 0;
 
 
@@ -25,12 +23,6 @@ void get_alphabet(string filename) {
     while (input_file.get(byte)) {
         alphabet.insert(byte);
     }
-
-    unordered_set<char> :: iterator itr;
-    for (itr = alphabet.begin(); itr != alphabet.end(); itr++){
-        cout << (*itr) << endl;
-    }
-
 }
 
 
@@ -71,7 +63,13 @@ int main(int argc, char** argv) {
             }
         }
     }
+    unordered_set<char> alphabet;
 
-    get_alphabet(argv[optind]);
+    get_alphabet(argv[optind], alphabet);
+
+    unordered_set<char> :: iterator itr;
+    for (itr = alphabet.begin(); itr != alphabet.end(); itr++){
+        cout << (*itr) << endl;
+    }
 
 }
