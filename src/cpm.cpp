@@ -87,6 +87,7 @@ int main(int argc, char** argv) {
     char byte = 0;
 
     string sequence = "";
+    string full_seq = "";
 
 
     // Create and open a text file
@@ -100,6 +101,8 @@ int main(int argc, char** argv) {
     next_symbol = alpha[r];
 
     int i =0;
+    int rand_pred = 0;
+    int acc_pred = 0;
     // Use a while loop together with the getline() function to read the file line by line
     while (input_file.get(byte)) {
 
@@ -107,21 +110,61 @@ int main(int argc, char** argv) {
         if (next_symbol == byte) {
             hit_miss[next_symbol][0] += 1;
         }
-        else {
+        else if(next_symbol != '\0') {
             hit_miss[next_symbol][1] += 1;
         }
 
         // Output the text from the file
-        sequence+=byte;
+        sequence += byte;
+        full_seq += byte;
 
 
         if (sequence.length()==k){
+            // cout << i+k << "\n";
+            // cout << sequence << "\n";
+            //cout << "Full Seq: " << full_seq << endl;
+            if (dict.count(sequence)) {
+                map<char, int> counts;
+                //cout << "SEQ: " << sequence << endl;
+                for (int i: dict.find(sequence)->second) {
+                    char test = full_seq[i];
+                    //cout << i << " " << full_seq.substr(i-k, k) << test << endl;
+                    if (!counts.count(test)) {
+                        counts[test] = 0;
+                    }
+                    counts[test]++;
+                    break;
+                }
+                // Predict next Symbol
+                int max_int = 0;
+                char max_char;
+                
+                for (const auto& pair : counts) {
+                    //cout <<"Pair: " << pair.first << " " << pair.second << endl;
+                    if (pair.second > max_int) {
+                        max_int = pair.second;
+                        max_char = pair.first;
+                    }
+                }
+                //cout << "MAX: " << max_char << endl;
+                next_symbol = max_char;
+                acc_pred++;
+
+
+            }
+            else {
+                //cout << sequence << " not found\n";
+                // Predict next Symbol
+                //r = rand() % alphabet.size();
+                //next_symbol = alpha[r];
+                //rand_pred++;
+                next_symbol = '\0';
+            }
+
             if (dict.count(sequence) == 0){
                 dict.insert( make_pair(sequence, vector<int>()) );
             }
             dict[sequence].push_back(i+1);
-            // cout << i+k << "\n";
-            // cout << sequence << "\n";
             sequence.erase(0, 1);
 
         }
@@ -141,9 +184,6 @@ int main(int argc, char** argv) {
 
         // }
 
-        // Predict next Symbol
-        r = rand() % alphabet.size();
-        next_symbol = alpha[r];
 
 
 
@@ -163,7 +203,7 @@ int main(int argc, char** argv) {
     //     std::cout << endl;
     // }
 
-
+    cout << "R: " << rand_pred << " A: " << acc_pred << endl;
     map<char, vector<int>>::iterator it;
     for(it = hit_miss.begin(); it != hit_miss.end(); it++) {
         int hits = it->second[0];
