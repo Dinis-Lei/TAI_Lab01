@@ -10,34 +10,12 @@
 using namespace std;
 
 
-
-
-void get_alphabet(string filename, unordered_set<char>& alphabet) {
-    char byte = 0;
-
-
-    ifstream input_file(filename);
-    if (!input_file.is_open()) {
-        cerr << "Could not open the file - '"
-             << filename << "'" << endl;
-        return;
-    }
-
-    while (input_file.get(byte)) {
-        alphabet.insert(byte);
-    }
-}
-
-
-
-
-
-
+static void get_alphabet(string filename, unordered_set<char>& alphabet);
 
 int main(int argc, char** argv) {
 
     int c;
-    int k = 3;
+    int k = 4;
 
     while ((c = getopt(argc, argv, "k:")) != -1)
     {
@@ -80,9 +58,6 @@ int main(int argc, char** argv) {
         hit_miss[*itr].push_back(0);
     }
 
-
-    map<string, vector<int> > dict;
-
     // Create a text string, which is used to output the text file
     char byte = 0;
 
@@ -103,30 +78,46 @@ int main(int argc, char** argv) {
     int i =0;
     int rand_pred = 0;
     int acc_pred = 0;
+
+    struct seq {
+        int hits = 0;
+        int misses = 0;
+        string seq = "";
+        vector<int> positions;
+    };
+
+    map<string, seq> dict;
+
     // Use a while loop together with the getline() function to read the file line by line
     while (input_file.get(byte)) {
 
         // Check if predicted is correct
         if (next_symbol == byte) {
-            hit_miss[next_symbol][0] += 1;
+            dict[sequence].hits++;
         }
         else if(next_symbol != '\0') {
-            hit_miss[next_symbol][1] += 1;
+            dict[sequence].misses++;
         }
 
         // Output the text from the file
+        if (sequence.length() == k) {
+            sequence.erase(0, 1);
+        }
+
+
         sequence += byte;
         full_seq += byte;
 
 
         if (sequence.length()==k){
-            // cout << i+k << "\n";
-            // cout << sequence << "\n";
-            //cout << "Full Seq: " << full_seq << endl;
+
+            // Check if sequence has been seen
             if (dict.count(sequence)) {
                 map<char, int> counts;
-                //cout << "SEQ: " << sequence << endl;
-                for (int i: dict.find(sequence)->second) {
+                
+                // Count the different occurences of each char
+                
+                for (int i: dict.find(sequence)->second.positions) {
                     char test = full_seq[i];
                     //cout << i << " " << full_seq.substr(i-k, k) << test << endl;
                     if (!counts.count(test)) {
@@ -135,6 +126,8 @@ int main(int argc, char** argv) {
                     counts[test]++;
                     break;
                 }
+
+
                 // Predict next Symbol
                 int max_int = 0;
                 char max_char;
@@ -149,8 +142,6 @@ int main(int argc, char** argv) {
                 //cout << "MAX: " << max_char << endl;
                 next_symbol = max_char;
                 acc_pred++;
-
-
             }
             else {
                 //cout << sequence << " not found\n";
@@ -162,10 +153,11 @@ int main(int argc, char** argv) {
             }
 
             if (dict.count(sequence) == 0){
-                dict.insert( make_pair(sequence, vector<int>()) );
+                seq new_seq;
+                new_seq.seq = sequence;
+                dict.insert( make_pair(sequence, new_seq) );
             }
-            dict[sequence].push_back(i+1);
-            sequence.erase(0, 1);
+            dict[sequence].positions.push_back(i+1);
 
         }
 
@@ -204,10 +196,10 @@ int main(int argc, char** argv) {
     // }
 
     cout << "R: " << rand_pred << " A: " << acc_pred << endl;
-    map<char, vector<int>>::iterator it;
-    for(it = hit_miss.begin(); it != hit_miss.end(); it++) {
-        int hits = it->second[0];
-        int misses = it->second[1];
+    map<string, seq>::iterator it;
+    for(it = dict.begin(); it != dict.end(); it++) {
+        int hits = it->second.hits;
+        int misses = it->second.misses;
         float ps = (float) hits/ (float) (hits+misses);
         cout << it->first << " : " << hits << " " << misses << " " << ps << " " << -log2(ps) << endl;
     }
@@ -217,4 +209,21 @@ int main(int argc, char** argv) {
     // Close the file
     input_file.close(); 
 
+}
+
+void get_alphabet(string filename, unordered_set<char> &alphabet) {
+    char byte = 0;
+
+    ifstream input_file(filename);
+    if (!input_file.is_open())
+    {
+        cerr << "Could not open the file - '"
+             << filename << "'" << endl;
+        return;
+    }
+
+    while (input_file.get(byte))
+    {
+        alphabet.insert(byte);
+    }
 }
