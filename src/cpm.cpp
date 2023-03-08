@@ -12,10 +12,13 @@ using namespace std;
 
 static void get_alphabet(string filename, unordered_set<char>& alphabet);
 
+static double estimate_probability(int hits, int misses, double alpha);
+
 int main(int argc, char** argv) {
 
     int c;
     int k = 4;
+    double alpha = 0.1;
 
     while ((c = getopt(argc, argv, "k:")) != -1)
     {
@@ -48,14 +51,10 @@ int main(int argc, char** argv) {
     string filename = argv[optind];
 
     get_alphabet(filename, alphabet);
-    map<char, vector<int>> hit_miss;
     unordered_set<char> :: iterator itr;
     int j = 0;
     for (itr = alphabet.begin(); itr != alphabet.end(); itr++){
         cout << j++ << " " << (*itr) << endl;
-        // TODO: Revise this
-        hit_miss[*itr].push_back(0);
-        hit_miss[*itr].push_back(0);
     }
 
     // Create a text string, which is used to output the text file
@@ -69,24 +68,15 @@ int main(int argc, char** argv) {
     // cout << k << "\n";
     ifstream input_file(filename);
 
-    char next_symbol;
-    int r = rand() % alphabet.size();
-    vector<char> alpha;
-    alpha.insert(alpha.end(), alphabet.begin(), alphabet.end());
-    next_symbol = alpha[r];
-
+    char next_symbol = '\0';
     int i =0;
-    int rand_pred = 0;
-    int acc_pred = 0;
-
-    struct seq {
+    struct Pattern {
         int hits = 0;
         int misses = 0;
         string seq = "";
         vector<int> positions;
     };
-
-    map<string, seq> dict;
+    map<string, Pattern> dict;
 
     // Use a while loop together with the getline() function to read the file line by line
     while (input_file.get(byte)) {
@@ -103,7 +93,6 @@ int main(int argc, char** argv) {
         if (sequence.length() == k) {
             sequence.erase(0, 1);
         }
-
 
         sequence += byte;
         full_seq += byte;
@@ -127,7 +116,6 @@ int main(int argc, char** argv) {
                     break;
                 }
 
-
                 // Predict next Symbol
                 int max_int = 0;
                 char max_char;
@@ -141,24 +129,18 @@ int main(int argc, char** argv) {
                 }
                 //cout << "MAX: " << max_char << endl;
                 next_symbol = max_char;
-                acc_pred++;
             }
             else {
-                //cout << sequence << " not found\n";
-                // Predict next Symbol
-                //r = rand() % alphabet.size();
-                //next_symbol = alpha[r];
-                //rand_pred++;
+                // No Prediction made
                 next_symbol = '\0';
             }
 
             if (dict.count(sequence) == 0){
-                seq new_seq;
+                Pattern new_seq;
                 new_seq.seq = sequence;
                 dict.insert( make_pair(sequence, new_seq) );
             }
             dict[sequence].positions.push_back(i+1);
-
         }
 
         i++;
@@ -180,38 +162,25 @@ int main(int argc, char** argv) {
 
 
     }
-    // cout << "Begin File: " << endl;
-    // for(map<string, vector<int> >::const_iterator it = dict.begin();
-    // it != dict.end(); ++it)
-    // {
-    //     std::cout << it->first << " : " ;
 
-    //     for (int index: it->second){
-    //         if (index != 0)
-    //             std::cout  << index << " " ;
-
-    //      }
-
-    //     std::cout << endl;
-    // }
-
-    cout << "R: " << rand_pred << " A: " << acc_pred << endl;
-    map<string, seq>::iterator it;
+    map<string, Pattern>::iterator it;
     for(it = dict.begin(); it != dict.end(); it++) {
         int hits = it->second.hits;
         int misses = it->second.misses;
-        float ps = (float) hits/ (float) (hits+misses);
+        double ps = estimate_probability(hits, misses, alpha);
         cout << it->first << " : " << hits << " " << misses << " " << ps << " " << -log2(ps) << endl;
     }
-
-
 
     // Close the file
     input_file.close(); 
 
 }
 
-void get_alphabet(string filename, unordered_set<char> &alphabet) {
+static double estimate_probability(int hits, int misses, double alpha) {
+    return (hits + alpha)/(hits+misses+2*alpha);
+}
+
+static void get_alphabet(string filename, unordered_set<char> &alphabet) {
     char byte = 0;
 
     ifstream input_file(filename);
@@ -226,4 +195,5 @@ void get_alphabet(string filename, unordered_set<char> &alphabet) {
     {
         alphabet.insert(byte);
     }
+    input_file.close();
 }
