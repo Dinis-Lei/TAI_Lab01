@@ -6,30 +6,37 @@
 #include <vector>
 #include <map>
 #include <bits/stdc++.h>
+#include <chrono>
 
 using namespace std;
 
 
-struct Sequence 
-{
-    bool is_active = false;
-    int position;
-    int hits = 0;
-    int misses = 0;
+struct Anchor {
+    bool is_active = false;         // Check if anchor is being used or not
+    int position;                   // Where the anchor is situated in the full sequence
+    int hits = 0;                   // Counter of hits
+    int misses = 0;                 // Counter of misses
+    int length = 0;                 // How many symbols has the anchor tested
+    map<char, float> info;          // Accumulative information for each symbol thoughout the anchor test
 };
+
+map<char, float> global_info;       // table of symbol - amount of information 
+map<char, float>::iterator itr;     // table iterator
 
 static int get_alphabet(string filename, unordered_set<char> &alphabet);
 
-static double estimate_probability(int hits, int misses, double alpha);
+static double estimate_probability(int hits, int misses, double alpha, int asize);
 
 int main(int argc, char** argv) {
 
-    int c;
-    int k = 4;
-    int min_size = 3;
-    float alpha = 1;
-    float threshold = 0.5;
-    bool reset = true;
+    int c;                          // Opt process
+    int k = 4;                      // Anchor size
+    int min_size = 3;               // Minimum number of symbols to start evaluating the anchor
+    float alpha = 1;                // Smoothing
+    float threshold = 0.5;          // Cut off threshold
+    bool reset = true;              // Reset the anchor
+
+    auto tic = chrono::high_resolution_clock::now();
 
     while ((c = getopt(argc, argv, "k:r:t:a:m:")) != -1)
     {
@@ -50,7 +57,7 @@ int main(int argc, char** argv) {
             case 'a':
                 try
                 {
-                    alpha = stoi(optarg);
+                    alpha = stof(optarg);
                 }
                 catch (exception &err)
                 {
@@ -62,7 +69,7 @@ int main(int argc, char** argv) {
             case 't':
                 try
                 {
-                    threshold = stoi(optarg);
+                    threshold = stof(optarg);
                 }
                 catch (exception &err)
                 {
@@ -111,13 +118,14 @@ int main(int argc, char** argv) {
     unordered_set<char> alphabet;
     string filename = argv[optind];
 
-    int size = get_alphabet(filename, alphabet);
-    unordered_set<char> :: iterator itr;
-    int j = 0;
-    for (itr = alphabet.begin(); itr != alphabet.end(); itr++){
-        cout << j++ << " " << (*itr) << endl;
+    int fsize = get_alphabet(filename, alphabet);
+    int asize = 0;
+    for (char c: alphabet){
+        cout << asize << " " << (c) << endl;
+        global_info.insert(make_pair(c, 0));
+        asize++;
     }
-
+    cout << "Alphabet size: " << asize << endl;
     // Create a text string, which is used to output the text file
     char byte = 0;
 
@@ -128,8 +136,8 @@ int main(int argc, char** argv) {
     // Create and open a text file
     ifstream input_file(filename);
     int i = 0;
-    int h = 0;
-    map<string, vector<Sequence>> dict;
+    int n_symbols = 0;
+    map<string, vector<Anchor>> dict;
     int offset = 1;
     string testing_seq;
 
@@ -138,70 +146,117 @@ int main(int argc, char** argv) {
 
     // Use a while loop together with the getline() function to read the file line by line
     cout << endl;
+    int not_copy = 0;
     while (input_file.get(byte)) {
-        if (h%1000 == 0) {
-           cout << h << " out of " << size-1 << ", " << ((float)h) / ((float)size-1) * 100 << "%" << '\r'; 
+        if (n_symbols%1000 == 0) {
+           cout << n_symbols << " out of " << fsize-1 << ", " << ((float)n_symbols) / ((float)fsize-1) * 100 << "%" << '\r'; 
         } 
-        h++;
+        n_symbols++;
         // Test sequence accuracy 
         if (testing_seq.length() > 0) {
             bool has_active = false;
-            int active_count = 0;
-            for (Sequence& s : dict.find(testing_seq)->second)
-            {
-                if (!s.is_active)
-                {
+            int active_count = 0;                                                           // Count the number of anchor active
+            for (Anchor& s : dict.find(testing_seq)->second) {
+                if (!s.is_active) {
                     continue;
                 }
-                //cout << "T1: " <<  full_seq[s.position + offset] << " " << s.position << " " << s.hits << " " << s.misses << endl;
+
                 active_count++;
-                char predicted_byte = full_seq[s.position + offset];
-                if (predicted_byte == byte)
-                {
+                s.length++;
+                char predicted_symb = full_seq[s.position + offset];                        // Next symbol in the anchor sequence
+                double p_curr_symb = estimate_probability(s.hits, s.misses, alpha, asize);  // Probability of the predicted symbol
+                double p_rest_symb = (1- p_curr_symb)/(asize-1);                            // Probability of the not prediceted symbols
+
+                // Update the information of each symbol according to the probabilities of the anchor
+                for(auto it = s.info.begin(); it != s.info.end(); ++it) {
+                    if(it->first == predicted_symb) {
+                        it->second += -log2(p_curr_symb)*p_curr_symb;
+                    }
+                    else {
+                        it->second += -log2(p_rest_symb)*p_rest_symb;
+                    }
+                }
+
+                // Update the hit/miss ratio
+                if (predicted_symb == byte) {
                     s.hits++;
                 }
-                else
-                {
+                else {
                     s.misses++;
                 }
 
-                if (offset > min_size)
-                {
-                    float acc = s.hits / (s.hits + s.misses);
-                    if (acc < threshold)
-                    {
+                // Check if the anchor has a hit/miss ratio that passes the threshold
+                if (offset > min_size) {
+                    float acc = (float) s.hits / (float) (s.hits + s.misses);
+                    if (acc < threshold) {
                         s.is_active = false;
                         active_count--;
                     }
                 }
             }
             offset++;
-            if (active_count < 1)
-            {
+            if (active_count < 1) {
                 float max_acc = 0;
                 int max_id = 0;
-                int i = 0;
+                int max_len = 0;
+                map<char, float> best_info;
                 //cout << testing_seq << ":" << endl;
-                for(Sequence& s: dict.find(testing_seq)->second) {
-                    int hits = s.hits;
-                    int misses = s.misses;
-                    double ps = estimate_probability(hits, misses, alpha);
-                    //cout << "\t" << s.position - k << " " << hits << " " << misses << " " << ps << " " << -log2(ps) << endl;
+                for(Anchor& s: dict.find(testing_seq)->second) {
+                    if (s.length > 0){
+                        int hits = s.hits;
+                        int misses = s.misses;
+                        double ps = estimate_probability(hits, misses, alpha, asize);
+                        //cout << "\t" << s.position - k << " " << hits << " " << misses << " " << ps << " " << -log2(ps) << endl;
 
-                    if(ps > max_acc) {
-                        max_acc = ps;
-                        max_id = i;
+                        if(ps > max_acc && s.length >= max_len) {
+                            max_acc = ps;
+                            max_id = i;
+                            best_info = s.info;
+                            max_len = s.length;
+                        }
+                        // Reset Anchor
+                        s.hits = 0;
+                        s.misses = 0;
+                        s.length = 0;
+                        for(auto it = s.info.begin(); it != s.info.end(); ++it) {
+                        //it->second = 0;
+                        }
                     }
-                    s.hits = 0;
-                    s.misses = 0;
-                    i++;
                 }
-
-                sum_acc += max_acc;
-                count_copies += 1;
-
+                // cout << testing_seq << ":" << endl;
+                // cout << "\t" << "Acc: " << max_acc << endl;
+                // cout << "\t" << "length:" << max_len << endl; 
+                if (max_acc > threshold-0.1) {
+                    sum_acc += max_acc;
+                    count_copies++;
+                    // cout << "\t" << "Info:" << endl; 
+                    for (auto it = global_info.begin(); it != global_info.end(); ++it) {
+                        auto it2 = best_info.find(it->first);
+                        if (it2 != best_info.end()) {
+                            // Update the value of the pair
+                            it->second += it2->second;
+                            // cout << "\t\t" << it->first << ": " << it->second/max_len << endl; 
+                        }
+                    }
+                }
+                else {
+                    not_copy += max_len;
+                    for (auto it = global_info.begin(); it != global_info.end(); ++it) {
+                        it->second += max_len*-log2((float)1/asize)*(float)1/asize;
+                    }
+                }
+                
                 offset = 1;
                 testing_seq = "";
+            }
+        }
+        else {
+            not_copy++;
+            //cout << "A: " <<  asize << endl;
+            for (auto it = global_info.begin(); it != global_info.end(); ++it) {
+                //cout << "1 " << it->second << " " << 1/asize << " " << -log2(1/asize) << endl;
+                it->second += -log2((float)1/asize)*(float)1/asize;
+                //cout << "2 " << it->second << endl;
             }
         }
 
@@ -212,22 +267,22 @@ int main(int argc, char** argv) {
         sequence += byte;
         full_seq += byte;
 
-        // cout << "FSeq:" << full_seq << endl;
-        // cout << "Test: " << testing_seq << endl;
-
         if (sequence.length()==k){
             if (testing_seq.length() == 0 && full_seq.length() > k && dict.count(sequence) > 0) {
                 testing_seq = sequence;
-                for(Sequence& s: dict.find(testing_seq)->second) {
+                for(Anchor& s: dict.find(testing_seq)->second) {
                     s.is_active = true;
                 }
             }
 
-            // Save the new Sequence
-            Sequence new_seq;
+            // Save the new Anchor
+            Anchor new_seq;
             new_seq.position = i;
+            for (char c: alphabet){
+                new_seq.info.insert(make_pair(c, 0));
+            }
             if (dict.count(sequence) == 0){
-                vector<Sequence> v;
+                vector<Anchor> v;
                 dict.insert( make_pair(sequence, v) );
             }
             dict[sequence].push_back(new_seq);
@@ -236,27 +291,35 @@ int main(int argc, char** argv) {
         i++;
     }
 
-    // map<string, vector<Sequence>>::iterator it;
-    // for(it = dict.begin(); it != dict.end(); it++) {
-    //     cout << it-> first << ":" << endl;
-    //     for (Sequence s: it->second) {
-    //         int hits = s.hits;
-    //         int misses = s.misses;
-    //         double ps = estimate_probability(hits, misses, alpha);
-    //         cout << "\t" << s.position-k << " " << hits << " " << misses << " " << ps << " " << -log2(ps) << endl;
-    //     }
-    // }
     cout << endl;
+    map<char, float>::iterator itr;
+    double sum_info = 0;
+    cout << "Size of the file: " << fsize << endl;
+    cout << "Number of symbols codified in copy: " << fsize - not_copy << endl;
+    cout << "Number of symbols codified outside copy: " << not_copy << endl;
+    for (itr = global_info.begin(); itr != global_info.end(); itr++) {
+        cout << itr->first << ": " << itr->second/fsize << endl;
+        sum_info += itr->second;
+    }
+    cout << "Average amount of information per symbol: " << sum_info/(fsize*asize) << endl;
+
     cout << "Average Copy Model Accuracy: " << sum_acc / count_copies << endl;
 
     // Close the file
     input_file.close(); 
 
+    auto toc = chrono::high_resolution_clock::now();
+
+    auto duration = chrono::duration_cast<chrono::seconds>(toc - tic);
+
+    // Displaying the elapsed time
+    cout << "Elapsed Time: " << duration.count() << endl;
+
     return EXIT_SUCCESS;
 }
 
-static double estimate_probability(int hits, int misses, double alpha) {
-    return (hits + alpha)/(hits+misses+2*alpha);
+static double estimate_probability(int hits, int misses, double alpha, int asize) {
+    return (hits + alpha)/(hits+misses+asize*alpha);
 }
 
 static int get_alphabet(string filename, unordered_set<char> &alphabet) {
