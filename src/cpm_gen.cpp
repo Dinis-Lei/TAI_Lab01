@@ -11,10 +11,10 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
-    map<string,  map<string,  float > > dict;
-    int c;
+    map<string,  map<string,  float > > dict;   // sequence -> <symbol, probability>
+    int c;                                // for getopt
     int n = 100;                          // number of generated symbols
-    int k = 4;
+    int k = 4;                            // length of the sequence
 
     while ((c = getopt(argc, argv, "n:k:")) != -1)
     {
