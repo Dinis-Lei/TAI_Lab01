@@ -146,7 +146,7 @@ int main(int argc, char** argv) {
     int not_copy = 0;
 
     vector<Anchor> testing_anchors;
-
+    // Main loop
     while (input_file.get(byte)) {
         if (n_symbols%1000 == 0) {
            cout << n_symbols << " out of " << fsize-1 << ", " << ((float)n_symbols) / ((float)fsize-1) * 100 << "%" << '\r'; 
@@ -269,6 +269,7 @@ int main(int argc, char** argv) {
         full_seq += byte;
 
         if (sequence.length()==k){
+            // Check if there is no candidate sequence and it has appeared more than once
             if (testing_seq.length() == 0 && full_seq.length() > k && dict.count(sequence) > 0) {
                 testing_seq = sequence;
                 int i = 0;
@@ -276,6 +277,7 @@ int main(int argc, char** argv) {
                 if (it != dict.end()) {
                     // Iterate through the vector in reverse order
                     std::vector<Anchor>& myVec = it->second;
+                    // Save the n-th most recent anchors
                     for (auto rit = myVec.rbegin(); rit != myVec.rend(); ++rit) {
                         // Update the value of each element in the struct
                         if (i == n_anchors) {
