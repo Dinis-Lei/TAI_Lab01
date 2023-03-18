@@ -1,171 +1,213 @@
 #include <iostream>
-#include <unistd.h>
 #include <fstream>
+#include <map>
+#include <stdexcept>
 #include <string>
 #include <vector>
-#include <map>
-#include <cstring>
+#include <algorithm>
 #include <time.h>
+#include <bits/stdc++.h>
+#include <cmath>
 
 using namespace std;
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
 
-    map<string,  map<string,  float > > dict;   // sequence -> <symbol, probability>
-    int c;                                // for getopt
-    int n = 100;                          // number of generated symbols
-    int k = 4;                            // length of the sequence
+    unordered_map<string, unordered_map<string, float>> dict; // sequence -> <symbol, probability>
+    int n = 100;                                              // number of generated symbols
+    int k = 4;                                                // length of the sequence
+    string filename;
+    string sample = "";
 
-    while ((c = getopt(argc, argv, "n:k:")) != -1)
+    unordered_map<char, float> alphabet;
+
+    // Process command line arguments
+    for (int i = 1; i < argc; i++)
     {
-        switch (c)
+        string arg = argv[i];
+        if (arg == "-k")
         {
-            case 'k':
+            i++;
+            if (i >= argc)
             {
-                try
-                {
-                    k = stoi(optarg);
-                }
-                catch (exception &err)
-                {
-                    std::cout << "Invalid k argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "K: " << k << std::endl;
-                break;
+                cerr << "Invalid k argument" << endl;
+                return EXIT_FAILURE;
             }
-            case 'n':
-                try
-                {
-                    n = stoi(optarg);
-                }
-                catch (exception &err)
-                {
-                    std::cout << "Invalid n argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "Number of generated symbols: " << n << std::endl;
-                break;
-            case '?':
+            try
             {
-                std::cout << "Got unknown option." << std::endl; 
-                break;
+                k = stoi(argv[i]);
             }
-            default:
+            catch (exception &e)
             {
-                std::cout << "Got unknown parse returns: " << c << std::endl; 
+                cerr << "Invalid k argument: " << argv[i] << endl;
+                return EXIT_FAILURE;
             }
         }
+        else if (arg == "-n")
+        {
+            i++;
+            if (i >= argc)
+            {
+                cerr << "Invalid n argument" << endl;
+                return EXIT_FAILURE;
+            }
+            try
+            {
+                n = stoi(argv[i]);
+            }
+            catch (exception &e)
+            {
+                cerr << "Invalid n argument: " << argv[i] << endl;
+                return EXIT_FAILURE;
+            }
+        }
+        else if (arg == "-s")
+        {
+            i++;
+            if (i >= argc)
+            {
+                cerr << "Invalid s argument" << endl;
+                return EXIT_FAILURE;
+            }
+            try
+            {
+                sample = argv[i];
+            }
+            catch (exception &e)
+            {
+                cerr << "Invalid s argument: " << argv[i] << endl;
+                return EXIT_FAILURE;
+            }
+        }
+        else if (filename.empty())
+        {
+            filename = arg;
+        }
+        else
+        {
+            cerr << "Unknown argument: " << arg << endl;
+            return EXIT_FAILURE;
+        }
     }
-    string filename =  argv[optind];
-    if (filename==""){
-        std::cout << "Invalid output file path argument" << std::endl;
-        return 1;
-    }
-    ifstream example(filename);
-    char byte = 0;
 
+    if (filename.empty())
+    {
+        cerr << "No input file specified" << endl;
+        return EXIT_FAILURE;
+    }
+
+    // Open the input file
+    ifstream infile(filename);
+    if (!infile.is_open())
+    {
+        cerr << "Failed to open input file: " << filename << endl;
+        return EXIT_FAILURE;
+    }
+
+    // Read the input file
     string sequence = "";
-    
-    int i =0;
-    while (example.get(byte)) {
-        // Output the text from the file
-        string nextChar = "";
-        nextChar+= byte;
+    char c;
+    int numTotalChar = 0;
+    while (infile.get(c))
+    {
+        alphabet[c]++;
+        numTotalChar++;
 
-        if (sequence.length()==k){
-            if (dict.count(sequence) == 0){
-                dict.insert( make_pair(sequence, map<string,  float >()) );
-                dict[sequence].insert( make_pair("total", 0 ));
-            }
-            if (dict[sequence].count(nextChar) == 0){
-                dict[sequence].insert(make_pair(nextChar, 0));
-            }
-            dict[sequence][nextChar]++;
+        if (sequence.length() == k + 1)
+        {
             dict[sequence]["total"]++;
-
+            dict[sequence][string(1, c)]++;
             sequence.erase(0, 1);
-
         }
-
-        sequence+=nextChar;
-        i++;
+        sequence += c;
     }
-    std::cout << "Probs" << std::endl;
 
-    for(std::map<string,map<string,float>>::iterator it = dict.begin(); it != dict.end(); ++it) {
-        map<string,float> map2 = it->second;
-        string key = it->first; 
-        for(std::map<string,float>::iterator it2 =map2.begin(); it2 != map2.end(); ++it) {
-            dict[key][it2->first] = (it2->second) / dict[key]["total"];
+    for (auto &[symbol, count] : alphabet)
+    {
+        count /= numTotalChar;
+    }
+
+    // Compute probabilities
+    for (auto &[prefix, counts] : dict)
+    {
+        float total = counts["total"];
+        for (auto &[next_char, count] : counts)
+        {
+            if (next_char != "total")
+            {
+                count /= total;
+            }
         }
-        dict[key].erase("total");
+        counts.erase("total");
     }
-    std::cout << "Print" << std::endl;
 
-    for(std::map<string,map<string,float>>::iterator it = dict.begin(); it != dict.end(); ++it) {
-        map<string,float> map2 = it->second;
-        string key = it->first; 
-        std::cout << key <<  ":"  << std::endl; 
-        for(std::map<string,float>::iterator it2 =map2.begin(); it2 != map2.end(); ++it) {
-            std::cout << "  -> "<< it2->second << std::endl; 
-
+    // Generate output
+    string output;
+    if (sample.empty())
+    {
+        sample = sequence.substr(0, k);
+    }
+    else
+    {
+        for (const char &c : sample)
+        {
+            auto it = alphabet.find(c);
+            if (it == alphabet.end())
+            {
+                cerr << "Wrong sample provided: " << sample << endl;
+                return EXIT_FAILURE;
+            }
         }
     }
-    std::cout << "End" << std::endl;
 
+    std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
+    output.reserve(n);
 
-    // Read data cpm output file and get dictionary with the sequence -> most likely symbol
-    // string line;
-    // while (getline(example  , line)) { 
-    //     // Print the data of the string.
-    //     size_t pos = 0;
-    //     string sequence;
-    //     string simbol;
-    //     string delimiter = ":";
-    //     while ((pos = line.find(":")) != std::string::npos) {
-    //         sequence = line.substr(0, pos);
-    //         line.erase(0, pos + delimiter.length()+1);
-    //         pos = 0;
-    //         k = sequence.length();
-    //         break;
-    //     }
-    //     std::cout << sequence << ":"<< line << "|" << std::endl;
+    // Precompute cumulative probabilities
+    std::vector<std::pair<char, float>> cum_prob;
+    cum_prob.reserve(alphabet.size());
+    float total_prob = 0.0f;
+    for (auto &[symbol, prob] : alphabet)
+    {
+        total_prob += prob;
+        cum_prob.emplace_back(symbol, total_prob);
+    }
 
-    //     dict.insert( make_pair(sequence, stof(line)));  
+    for (int i = 0; i < n; i++)
+    {
+        float rand_val = std::uniform_real_distribution<float>(0.0f, 1.0f)(rng);
+        if (dict.count(sample) == 0)
+        {
+            // Use binary search to find the next symbol
+            auto it = std::lower_bound(cum_prob.begin(), cum_prob.end(), rand_val,
+                                       [](const std::pair<char, float> &lhs, const float &rhs)
+                                       {
+                                           return lhs.second < rhs;
+                                       });
 
-    // }
-    
-    // Close the file object.
-    example.close(); 
-
-    
-
-
-
-    // fclose(example);
-    
-    // srand( (unsigned)time( NULL ) );
-    // for(int i=0; i<n;i++){
-    //     float total = 0.0;
-    //     float rand_val = (float) rand()/RAND_MAX;
-    //     std::cout << rand_val << std::endl;
-    //     for(std::map<string,float>::iterator it = dict.begin(); it != dict.end(); ++it) {
-    //         total += it-> second;
-    //         if(rand_val < total ){
-    //             example += it-> first;
-    //             break;
-    //         }
-    //     }
-
-    // }
-
-
-    // std::cout << "outp  ut: " << example << std::endl;
-
-
-
-    // Close the file
-    // fclose(example);
-
+            output += it->first;
+            sample.push_back(it->first);
+            sample.erase(0, 1);
+        }
+        else
+        {
+            // Use const reference to avoid copying
+            const auto &next_chars = dict.at(sample);
+            float total_prob = 0.0f;
+            for (auto &[next_char, prob] : next_chars)
+            {
+                total_prob += prob;
+                if (rand_val < total_prob)
+                {
+                    output += next_char;
+                    sample += next_char;
+                    sample.erase(0, 1);
+                    break;
+                }
+            }
+        }
+    }
+    cout << output << endl;
+    return 0;
 }

@@ -11,7 +11,6 @@
 
 
 using namespace std;
-static int get_alphabet(string filename, unordered_set<char> &alphabet);
 
 int main(int argc, char** argv) {
 
@@ -21,7 +20,7 @@ int main(int argc, char** argv) {
     string filename;
     string sample = "";
 
-    unordered_set<char> alphabet;
+    map<char, float> alphabet;
 
 
     // Process command line arguments
@@ -88,9 +87,16 @@ int main(int argc, char** argv) {
     // Read the input file
     string sequence = "";
     char c;
+    int numTotalChar = 0;
     while (infile.get(c)) {
         sequence += c;
-        alphabet.insert(c);
+        if (!alphabet.count(c)){
+            alphabet[c]=1;
+        }
+        else{
+            alphabet[c]++;
+        }
+        numTotalChar++;
 
         if (sequence.length() == k + 1) {
             string prefix = sequence.substr(0, k);
@@ -107,7 +113,9 @@ int main(int argc, char** argv) {
             sequence = sequence.substr(1);
         }
     }
-
+    for (auto& [simbol, counts] : alphabet) {
+        counts/=numTotalChar;
+    }
     // Compute probabilities
     for (auto& [prefix, counts] : dict) {
         for (auto& [next_char, count] : counts) {
@@ -118,13 +126,13 @@ int main(int argc, char** argv) {
         counts.erase("total");
     }
 
-    // Generate output
-    for (auto& [prefix, counts] : dict) {
-        cout << prefix << ":" << endl;
-        for (auto& [next_char, prob] : counts) {
-            cout << "  -> " << next_char << ": " << prob << endl;
-        }
-    }
+    // // Generate output
+    // for (auto& [prefix, counts] : dict) {
+    //     cout << prefix << ":" << endl;
+    //     for (auto& [next_char, prob] : counts) {
+    //         cout << "  -> " << next_char << ": " << prob << endl;
+    //     }
+    // }
     string output="";
     if (sample == "")
     {
@@ -139,18 +147,27 @@ int main(int argc, char** argv) {
     for(int i=0; i<n;i++){
         float total = 0.0;
         float rand_val = (float) rand()/RAND_MAX;
-        std::cout << rand_val << std::endl;
+        // std::cout << rand_val << std::endl;
         if(dict.count(sample)==0){
             //how to view lenght of alphabet
 
-            float prob = 1/(float)alphabet.size();
-            int index=floor(rand_val*(alphabet.size()-1));
-            std::unordered_set<char>::iterator it = alphabet.begin();
-            std::advance(it, index);
-            char x = *it;
-            output+=x;
-            sample+=x;
-            sample = sample.substr(1);
+            // float prob = 1/(float)alphabet.size();
+            // int index=floor(rand_val*(alphabet.size()-1));
+            // std::unordered_set<char>::iterator it = alphabet.begin();
+            // std::advance(it, index);
+            // char x = *it;
+            // output+=x;
+            // sample+=x;
+            // sample = sample.substr(1);
+            for(std::map<char,float>::iterator it = alphabet.begin(); it != alphabet.end(); ++it) {
+                total += it-> second;
+                if(rand_val < total ){
+                    output += it-> first;
+                    sample+=it->first;
+                    sample = sample.substr(1);
+                    break;
+                }
+            }
             
         }
         else{
