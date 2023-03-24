@@ -7,6 +7,7 @@
 #include <map>
 #include <bits/stdc++.h>
 #include <chrono>
+#include <math.h>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ struct Anchor {
     int misses = 0;                 // Counter of misses
     int length = 0;                 // How many symbols has the anchor tested
     map<char, float> info;          // Accumulative information for each symbol thoughout the anchor test
+    float acc_info = 0;
 };
 
 map<char, float> global_info;       // table of symbol - amount of information 
@@ -31,7 +33,8 @@ int main(int argc, char** argv) {
 
     int c;                          // Opt process
     int k = 4;                      // Anchor size
-    int min_size = 3;               // Minimum number of symbols to start evaluating the anchor
+    float max_size = INFINITY;        // Maximum number of symbols for the anchor to evaluate
+    int min_size = 0;               // Minimum number of symbols for the anchor to evaluate
     float alpha = 1;                // Smoothing
     float threshold = 0.5;          // Cut off threshold
     bool reset = true;              // Reset the anchor
@@ -39,7 +42,7 @@ int main(int argc, char** argv) {
 
     auto tic = chrono::high_resolution_clock::now();
 
-    while ((c = getopt(argc, argv, "k:r:t:a:m:n:")) != -1)
+    while ((c = getopt(argc, argv, "k:r:t:a:m:M:n:")) != -1)
     {
         switch (c)
         {
@@ -51,7 +54,17 @@ int main(int argc, char** argv) {
                     std::cout << "Invalid n argument" << std::endl;
                     return EXIT_FAILURE;
                 }
-                std::cout << "Nº of Anchors = " << reset << std::endl;
+                std::cout << "Nº of Anchors = " << n_anchors << std::endl;
+                break;
+            case 'M':
+                try {
+                    max_size = stoi(optarg);
+                }
+                catch (exception &err) {
+                    std::cout << "Invalid m argument" << std::endl;
+                    return EXIT_FAILURE;
+                }
+                std::cout << "Max Size = " << max_size << std::endl;
                 break;
             case 'm':
                 try {
@@ -115,8 +128,8 @@ int main(int argc, char** argv) {
     unordered_set<char> alphabet;
     string filename = argv[optind];
 
-    int fsize = get_alphabet(filename, alphabet);
-    int asize = 0;
+    int fsize = get_alphabet(filename, alphabet);           // Size of the file (number of symbols)
+    int asize = 0;                                          // Size of the alphabet
     for (char c: alphabet){
         cout << asize << " " << (c) << endl;
         global_info.insert(make_pair(c, 0));
@@ -140,12 +153,14 @@ int main(int argc, char** argv) {
 
     double sum_acc = 0;
     int count_copies = 0;
+    int sum_len_copies = 0;
 
     // Use a while loop together with the getline() function to read the file line by line
     cout << endl;
     int not_copy = 0;
 
     vector<Anchor> testing_anchors;
+    double acc_information = 0;
     // Main loop
     while (input_file.get(byte)) {
         if (n_symbols%1000 == 0) {
@@ -165,17 +180,23 @@ int main(int argc, char** argv) {
                 s.length++;
                 char predicted_symb = full_seq[s.position + offset];                        // Next symbol in the anchor sequence
                 double p_curr_symb = estimate_probability(s.hits, s.misses, alpha, asize);  // Probability of the predicted symbol
-                double p_rest_symb = (1- p_curr_symb)/(asize-1);                            // Probability of the not prediceted symbols
+                if (predicted_symb == byte) {
+                    s.acc_info += -log2(p_curr_symb);
+                }
+                else {
+                    s.acc_info += -log2(1 - p_curr_symb);
+                }
+                // double p_rest_symb = (1- p_curr_symb)/(asize-1);                            // Probability of the not prediceted symbols
 
                 // Update the information of each symbol according to the probabilities of the anchor
-                for(auto it = s.info.begin(); it != s.info.end(); ++it) {
-                    if(it->first == predicted_symb) {
-                        it->second += -log2(p_curr_symb)*p_curr_symb;
-                    }
-                    else {
-                        it->second += -log2(p_rest_symb)*p_rest_symb;
-                    }
-                }
+                // for(auto it = s.info.begin(); it != s.info.end(); ++it) {
+                //     if(it->first == predicted_symb) {
+                //         it->second += -log2(p_curr_symb);
+                //     }
+                //     else {
+                //         it->second += -log2(p_rest_symb);
+                //     }
+                // }
 
                 // Update the hit/miss ratio
                 if (predicted_symb == byte) {
@@ -186,64 +207,75 @@ int main(int argc, char** argv) {
                 }
 
                 // Check if the anchor has a hit/miss ratio that passes the threshold
-                if (offset > min_size) {
-                    float acc = (float) s.hits / (float) (s.hits + s.misses);
+                if (s.length > min_size) {
+                    double acc = estimate_probability(s.hits, s.misses, alpha, asize);
                     if (acc < threshold) {
                         s.is_active = false;
                         active_count--;
+                        // Don't encode the last failure
+                        //s.misses--;
                     }
+                }
+                if (s.length >= max_size) {
+                    s.is_active = false;
+                    active_count--;
                 }
             }
             offset++;
+            // No anchor available to test
             if (active_count < 1) {
-                float max_acc = 0;
+                double max_acc = 0;
                 int max_id = 0;
                 int max_len = 0;
+                double best_acc_info = 0;
                 map<char, float> best_info;
-                //cout << testing_seq << ":" << endl;
                 for(Anchor& s: testing_anchors) {
                     if (s.length > 0){
                         int hits = s.hits;
                         int misses = s.misses;
                         double ps = estimate_probability(hits, misses, alpha, asize);
-                        //cout << "\t" << s.position - k << " " << hits << " " << misses << " " << ps << " " << -log2(ps) << endl;
-
+                        // Select the sequence who encode the most and with better accuracy
                         if(ps > max_acc && s.length >= max_len) {
                             max_acc = ps;
                             max_id = i;
                             best_info = s.info;
                             max_len = s.length;
+                            best_acc_info = s.acc_info;
                         }
                         // Reset Anchor
                         s.hits = 0;
                         s.misses = 0;
                         s.length = 0;
                         for(auto it = s.info.begin(); it != s.info.end(); ++it) {
-                        //it->second = 0;
+                            it->second = 0;
                         }
                     }
                 }
+
                 testing_anchors.clear();
-                // cout << testing_seq << ":" << endl;
-                // cout << "\t" << "Acc: " << max_acc << endl;
-                // cout << "\t" << "length:" << max_len << endl; 
-                if (max_acc > threshold-0.1) {
+
+                if (max_len > 1) {
                     sum_acc += max_acc;
+                    sum_len_copies += max_len;
                     count_copies++;
                     // cout << "\t" << "Info:" << endl; 
+                    acc_information += best_acc_info;
                     for (auto it = global_info.begin(); it != global_info.end(); ++it) {
                         auto it2 = best_info.find(it->first);
                         if (it2 != best_info.end()) {
                             // Update the value of the pair
-                            it->second += it2->second;
+                            // Sum the cumulative information of the sequence and the information of the last symbol that wasn't encoded
+                            it->second += it2->second + (-log2((float)1/asize));
                             // cout << "\t\t" << it->first << ": " << it->second/max_len << endl; 
                         }
                     }
+                    not_copy++;
                 }
                 else {
                     not_copy += max_len;
+                    acc_information += 2*max_len;
                     for (auto it = global_info.begin(); it != global_info.end(); ++it) {
-                        it->second += max_len*-log2((float)1/asize)*(float)1/asize;
+                        it->second += max_len*-log2((float)1/asize);
                     }
                 }
                 
@@ -253,12 +285,7 @@ int main(int argc, char** argv) {
         }
         else {
             not_copy++;
-            //cout << "A: " <<  asize << endl;
-            for (auto it = global_info.begin(); it != global_info.end(); ++it) {
-                //cout << "1 " << it->second << " " << 1/asize << " " << -log2(1/asize) << endl;
-                it->second += -log2((float)1/asize)*(float)1/asize;
-                //cout << "2 " << it->second << endl;
-            }
+            acc_information += 2;
         }
 
         if (sequence.length() == k) {
@@ -316,9 +343,14 @@ int main(int argc, char** argv) {
         cout << itr->first << ": " << itr->second/fsize << endl;
         sum_info += itr->second;
     }
-    cout << "Average amount of information per symbol: " << sum_info/(fsize*asize) << endl;
+
+    cout << "Accumulation of information: " << acc_information << endl;
+
+    cout << "Average amount of information per symbol: " << acc_information/(fsize) << endl;
 
     cout << "Nº copies: " << count_copies << endl;
+
+    cout << "Average length of copies: " << (float) sum_len_copies / (float) count_copies << endl;
 
     cout << "Average Copy Model Accuracy: " << sum_acc / count_copies << endl;
 
@@ -336,7 +368,7 @@ int main(int argc, char** argv) {
 }
 
 static double estimate_probability(int hits, int misses, double alpha, int asize) {
-    return (hits + alpha)/(hits+misses+asize*alpha);
+    return (hits + alpha)/(hits+misses+2*alpha);
 }
 
 static int get_alphabet(string filename, unordered_set<char> &alphabet) {
