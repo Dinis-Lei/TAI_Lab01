@@ -35,84 +35,81 @@ int main(int argc, char** argv) {
     float alpha = 1;                // Smoothing
     float threshold = 0.5;          // Cut off threshold
     bool reset = true;              // Reset the anchor
+    int n_anchors = -1;             // Set number of anchors
 
     auto tic = chrono::high_resolution_clock::now();
 
-    while ((c = getopt(argc, argv, "k:r:t:a:m:")) != -1)
+    while ((c = getopt(argc, argv, "k:r:t:a:m:n:")) != -1)
     {
         switch (c)
         {
+            case 'n':
+                try {
+                    n_anchors = stoi(optarg);
+                }
+                catch (exception &err) {
+                    std::cout << "Invalid n argument" << std::endl;
+                    return EXIT_FAILURE;
+                }
+                std::cout << "Nº of Anchors = " << reset << std::endl;
+                break;
             case 'm':
-                try
-                {
+                try {
                     min_size = stoi(optarg);
                 }
-                catch (exception &err)
-                {
+                catch (exception &err) {
                     std::cout << "Invalid m argument" << std::endl;
                     return EXIT_FAILURE;
                 }
                 std::cout << "Min Size = " << min_size << std::endl;
                 break;
             case 'a':
-                try
-                {
+                try {
                     alpha = stof(optarg);
                 }
-                catch (exception &err)
-                {
+                catch (exception &err) {
                     std::cout << "Invalid a argument" << std::endl;
                     return EXIT_FAILURE;
                 }
                 std::cout << "Alpha = " << alpha << std::endl;
                 break;
             case 't':
-                try
-                {
+                try {
                     threshold = stof(optarg);
                 }
-                catch (exception &err)
-                {
+                catch (exception &err) {
                     std::cout << "Invalid t argument" << std::endl;
                     return EXIT_FAILURE;
                 }
                 std::cout << "Threshold = " << threshold << std::endl;
                 break;
             case 'r':
-                try
-                {
+                try {
                     reset = stoi(optarg);
                 }
-                catch (exception &err)
-                {
+                catch (exception &err) {
                     std::cout << "Invalid r argument" << std::endl;
                     return EXIT_FAILURE;
                 }
                 std::cout << "Reset = " << reset << std::endl;
                 break;
             case 'k':
-            {
-                try
-                {
+                try {
                     k = stoi(optarg);
                 }
-                catch (exception &err)
-                {
+                catch (exception &err) {
                     std::cout << "Invalid K argument" << std::endl;
                     return EXIT_FAILURE;
                 }
                 std::cout << "K = " << k << std::endl;
                 break;
-            }
+            
             case '?':
-            {
                 std::cout << "Got unknown option." << std::endl; 
                 break;
-            }
             default:
-            {
-                std::cout << "Got unknown parse returns: " << c << std::endl; 
-            }
+                std::cout << "Got unknown parse returns: " << c << std::endl;
+                return EXIT_FAILURE;
         }
     }
     unordered_set<char> alphabet;
@@ -147,6 +144,9 @@ int main(int argc, char** argv) {
     // Use a while loop together with the getline() function to read the file line by line
     cout << endl;
     int not_copy = 0;
+
+    vector<Anchor> testing_anchors;
+    // Main loop
     while (input_file.get(byte)) {
         if (n_symbols%1000 == 0) {
            cout << n_symbols << " out of " << fsize-1 << ", " << ((float)n_symbols) / ((float)fsize-1) * 100 << "%" << '\r'; 
@@ -156,7 +156,7 @@ int main(int argc, char** argv) {
         if (testing_seq.length() > 0) {
             bool has_active = false;
             int active_count = 0;                                                           // Count the number of anchor active
-            for (Anchor& s : dict.find(testing_seq)->second) {
+            for (Anchor& s : testing_anchors) {
                 if (!s.is_active) {
                     continue;
                 }
@@ -201,7 +201,7 @@ int main(int argc, char** argv) {
                 int max_len = 0;
                 map<char, float> best_info;
                 //cout << testing_seq << ":" << endl;
-                for(Anchor& s: dict.find(testing_seq)->second) {
+                for(Anchor& s: testing_anchors) {
                     if (s.length > 0){
                         int hits = s.hits;
                         int misses = s.misses;
@@ -223,6 +223,7 @@ int main(int argc, char** argv) {
                         }
                     }
                 }
+                testing_anchors.clear();
                 // cout << testing_seq << ":" << endl;
                 // cout << "\t" << "Acc: " << max_acc << endl;
                 // cout << "\t" << "length:" << max_len << endl; 
@@ -268,20 +269,34 @@ int main(int argc, char** argv) {
         full_seq += byte;
 
         if (sequence.length()==k){
+            // Check if there is no candidate sequence and it has appeared more than once
             if (testing_seq.length() == 0 && full_seq.length() > k && dict.count(sequence) > 0) {
                 testing_seq = sequence;
-                for(Anchor& s: dict.find(testing_seq)->second) {
-                    s.is_active = true;
+                int i = 0;
+                auto it = dict.find(testing_seq);
+                if (it != dict.end()) {
+                    // Iterate through the vector in reverse order
+                    std::vector<Anchor>& myVec = it->second;
+                    // Save the n-th most recent anchors
+                    for (auto rit = myVec.rbegin(); rit != myVec.rend(); ++rit) {
+                        // Update the value of each element in the struct
+                        if (i == n_anchors) {
+                            break;
+                        }
+                        rit->is_active = true;
+                        testing_anchors.push_back(*rit);
+                        i++;
+                    }
                 }
             }
 
             // Save the new Anchor
             Anchor new_seq;
             new_seq.position = i;
-            for (char c: alphabet){
+            for (char c: alphabet) {
                 new_seq.info.insert(make_pair(c, 0));
             }
-            if (dict.count(sequence) == 0){
+            if (dict.count(sequence) == 0) {
                 vector<Anchor> v;
                 dict.insert( make_pair(sequence, v) );
             }
@@ -302,6 +317,8 @@ int main(int argc, char** argv) {
         sum_info += itr->second;
     }
     cout << "Average amount of information per symbol: " << sum_info/(fsize*asize) << endl;
+
+    cout << "Nº copies: " << count_copies << endl;
 
     cout << "Average Copy Model Accuracy: " << sum_acc / count_copies << endl;
 
@@ -326,15 +343,13 @@ static int get_alphabet(string filename, unordered_set<char> &alphabet) {
     char byte = 0;
 
     ifstream input_file(filename);
-    if (!input_file.is_open())
-    {
+    if (!input_file.is_open()) {
         cerr << "Could not open the file - '"
              << filename << "'" << endl;
         return - 1;
     }
     int count = 0;
-    while (input_file.get(byte))
-    {
+    while (input_file.get(byte)) {
         alphabet.insert(byte);
         count++;
     }
