@@ -113,56 +113,27 @@ int main(int argc, char **argv)
     // Read the input file
     string sequence = "";
     char c;
-    int numTotalChar = 0;
+    int Index = 0;
     while (infile.get(c))
     {
         alphabet[c]++;
-        numTotalChar++;
+        Index++;
 
         if (sequence.length() == k + 1)
         {
             //append to the vector of the [sequence] the index of the next char
-            dict[sequence].push_back(numTotalChar);
+            dict[sequence].push_back(Index);
             sequence.erase(0, 1);
         }
         sequence += c;
     }
 
+    //Compute probabilities for each symbol of the alphabet
     for (auto &[symbol, count] : alphabet)
     {
-        count /= numTotalChar;
+        count /= Index;
     }
 
-    // Compute probabilities
-    for (auto &[prefix, occurences] : dict)
-    {
-        // Get the letter in the file with the index in the vector
-        for (int i = 0; i < occurences.size(); i++)
-        {
-            //convert seekg to string
-            string nextChar = "";
-            infile.seekg(occurences[i]);
-            infile.get(c);
-            nextChar = c;
-
-            dictFinal[prefix][nextChar]++; // add 1 to the count of the next char
-            dictFinal[prefix]["total"]++;  // add 1 to the total count
-
-        }
-    }
-
-    // Run through the map and compute the probabilities
-    for (auto &[prefix, nextChars] : dictFinal)
-    {
-        for (auto &[nextChar, count] : nextChars)
-        {
-            if (nextChar != "total")
-            {
-                nextChars[nextChar] /= nextChars["total"];
-            }
-        }
-        nextChars.erase("total");
-    }
 
     // Generate output
     string output;
@@ -215,9 +186,37 @@ int main(int argc, char **argv)
         else
         {
             // Use const reference to avoid copying
-            const auto &next_chars = dictFinal.at(sample);
+            const auto &next_chars = dict.at(sample);
+
+            //Checks if the next char is in the map
+            if (dictFinal.count(sample) == 0){
+                for (int i = 0; i < next_chars.size(); i++){
+                    //convert seekg to string
+                    string nextChar = "";
+                    infile.seekg(next_chars[i]);
+                    infile.get(c);
+                    nextChar = c;
+
+                    dictFinal[sample][nextChar]++; // add 1 to the count of the next char
+                    dictFinal[sample]["total"]++;  // add 1 to the total count
+
+                }
+                
+                for (auto &[nextChar, count] : dictFinal[sample])
+                {
+                    if (nextChar != "total")
+                    {
+                        dictFinal[sample][nextChar] /= dictFinal[sample]["total"];
+                    }
+                }
+                dictFinal[sample].erase("total");
+            }
+
+            
+
+            // Calculates the next character
             float total_prob = 0.0f;
-            for (auto &[next_char, prob] : next_chars)
+            for (auto &[next_char, prob] : dictFinal[sample])
             {
                 total_prob += prob;
                 if (rand_val < total_prob)
