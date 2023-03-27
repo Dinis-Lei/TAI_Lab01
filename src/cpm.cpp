@@ -4,356 +4,231 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <bits/stdc++.h>
 #include <chrono>
-#include <math.h>
 
 using namespace std;
 
 
 struct Anchor {
-    bool is_active = false;         // Check if anchor is being used or not
-    int position;                   // Where the anchor is situated in the full sequence
-    int hits = 0;                   // Counter of hits
-    int misses = 0;                 // Counter of misses
-    int length = 0;                 // How many symbols has the anchor tested
-    map<char, float> info;          // Accumulative information for each symbol thoughout the anchor test
-    float acc_info = 0;
+    bool is_active = false;                         // Check if anchor is being used or not
+    int position;                                   // Where the anchor is situated in the full sequence
+    int hits = 0;                                   // Counter of hits
+    int misses = 0;                                 // Counter of misses
+    int length = 0;                                 // How many symbols has the anchor tested
+    unordered_map<char, double> sum_info_per_symbol;          // Sum of all information gained for each symbol
+    double sum_info = 0;                            // Sum of all information gained by all the symbols  
+    vector<double> info_per_byte;                   // Stores the history of information gained by each symbol encoded
 };
 
-map<char, float> global_info;       // table of symbol - amount of information 
-map<char, float>::iterator itr;     // table iterator
+/**
+ * @brief Extracts the alphabet from the file and counts the size of the file
+ * @param filename      Name of the file to extract the file
+ * @param alphabet      Set where alphabet will be saved
+ * @param symbol_count  Saves the frequency of each symbol
+ * @return              Size of the file
+ */
+static int get_alphabet(string filename, unordered_set<char> &alphabet, unordered_map<char, int> &symbol_count);
 
-static int get_alphabet(string filename, unordered_set<char> &alphabet);
+/**
+ * @brief Calculates the probability of a given copy model guess the next symbol correctly based
+ *        on the number of times it has hit or failed.
+ * @param hits      Number of hits
+ * @param misses    Number of misses
+ * @param alpha     Smoothing paramether
+ * @return          Probability of the next symbol  
+ */
+static double estimate_probability(int hits, int misses, double alpha);
 
-static double estimate_probability(int hits, int misses, double alpha, int asize);
+/**
+ * @brief Reads the command line for arguments and sets the correct hyper parameters.
+ * @param argc Number of arguments passed
+ * @param argv Arguments passed
+ */
+static void parse_command_line(int argc, char** argv);
+
+/**
+ * @brief Selects the anchor which encoded more symbols
+ * @param anchors       Array of anchors to be evaluated
+ * @param symbol        Current symbol being encoded
+ * @param ignored_last  Tells if the last symbol was encoded by the copy model or not
+ */
+static void select_best_anchor(vector<Anchor> &anchors, char symbol, bool ignored_last);
+
+/**
+ * @brief Tests and updates the accuracy of each active anchor and disables when accuracy drops below a thresshold
+ * @param symbol        Current symbol being encoded
+ * @param offset        Offset of symbols to skip
+ * @param full_seq      Reference data for the anchors
+ * @param ignored_last  Tells if the last symbol was encoded by the copy model or not
+ * @param anchors       Array of anchors to be evaluated
+ * @return              True if no anchor is active
+ */
+static bool update_anchors(char symbol, int offset, bool &ignored_last, vector<Anchor> &anchors);
+
+unordered_map<char, float> global_info;       // table with symbol - amount of information 
+
+/**
+ * Hyper Parameters
+*/
+
+int k = 4;                      // Size of the window and anchors
+float max_size = INFINITY;      // Maximum number of symbols for the anchor to evaluate
+int min_size = 0;               // Minimum number of symbols for the anchor to evaluate
+float alpha = 1;                // Smoothing
+float threshold = 0.5;          // Cut off threshold
+bool save = false;              // Save the information gain in an file
+int n_anchors = -1;             // Set number of anchors, -1 means all anchors will be used
+
+
+double sum_acc = 0;             // Sum of accuracies of each chosen anchor of the copy model
+int count_copies = 0;
+int sum_len_copies = 0;
+
+int not_copy = 0;
+double accumulative_info = 0;
+
+int asize;
+int default_symb_size;
+vector<double> info_per_byte;
+
+vector<char> full_seq;                                                    // Full sequence of symbols to be encoded
 
 int main(int argc, char** argv) {
 
-    int c;                          // Opt process
-    int k = 4;                      // Anchor size
-    float max_size = INFINITY;        // Maximum number of symbols for the anchor to evaluate
-    int min_size = 0;               // Minimum number of symbols for the anchor to evaluate
-    float alpha = 1;                // Smoothing
-    float threshold = 0.5;          // Cut off threshold
-    bool reset = true;              // Reset the anchor
-    int n_anchors = -1;             // Set number of anchors
-
     auto tic = chrono::high_resolution_clock::now();
 
-    while ((c = getopt(argc, argv, "k:r:t:a:m:M:n:")) != -1)
-    {
-        switch (c)
-        {
-            case 'n':
-                try {
-                    n_anchors = stoi(optarg);
-                }
-                catch (exception &err) {
-                    std::cout << "Invalid n argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "Nº of Anchors = " << n_anchors << std::endl;
-                break;
-            case 'M':
-                try {
-                    max_size = stoi(optarg);
-                }
-                catch (exception &err) {
-                    std::cout << "Invalid m argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "Max Size = " << max_size << std::endl;
-                break;
-            case 'm':
-                try {
-                    min_size = stoi(optarg);
-                }
-                catch (exception &err) {
-                    std::cout << "Invalid m argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "Min Size = " << min_size << std::endl;
-                break;
-            case 'a':
-                try {
-                    alpha = stof(optarg);
-                }
-                catch (exception &err) {
-                    std::cout << "Invalid a argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "Alpha = " << alpha << std::endl;
-                break;
-            case 't':
-                try {
-                    threshold = stof(optarg);
-                }
-                catch (exception &err) {
-                    std::cout << "Invalid t argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "Threshold = " << threshold << std::endl;
-                break;
-            case 'r':
-                try {
-                    reset = stoi(optarg);
-                }
-                catch (exception &err) {
-                    std::cout << "Invalid r argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "Reset = " << reset << std::endl;
-                break;
-            case 'k':
-                try {
-                    k = stoi(optarg);
-                }
-                catch (exception &err) {
-                    std::cout << "Invalid K argument" << std::endl;
-                    return EXIT_FAILURE;
-                }
-                std::cout << "K = " << k << std::endl;
-                break;
-            
-            case '?':
-                std::cout << "Got unknown option." << std::endl; 
-                break;
-            default:
-                std::cout << "Got unknown parse returns: " << c << std::endl;
-                return EXIT_FAILURE;
-        }
-    }
+    parse_command_line(argc, argv);
+
     unordered_set<char> alphabet;
     string filename = argv[optind];
+    unordered_map<char, int> symbol_count;                                        // Frequency of each symbol
 
-    int fsize = get_alphabet(filename, alphabet);           // Size of the file (number of symbols)
-    int asize = 0;                                          // Size of the alphabet
+    int fsize = get_alphabet(filename, alphabet, symbol_count);         // Size of the file (number of symbols)
+    asize = alphabet.size();                                            // Size of the alphabet
     for (char c: alphabet){
         cout << asize << " " << (c) << endl;
         global_info.insert(make_pair(c, 0));
-        asize++;
     }
+    default_symb_size = ceil(log2(asize));                              // Nº bits needed to represent a symbol if it is not encoded by the copy model
     cout << "Alphabet size: " << asize << endl;
-    // Create a text string, which is used to output the text file
-    char byte = 0;
 
-    string sequence = "";
-    string full_seq = "";
+    string window;                                                      // Window of symbolsto match with an anchor
+    string testing_seq;                                                 // Sequence of symbols of the anchors being tested
+    unordered_map<string, vector<int>> positions;                                 // Table with sequence - array of occurences in the full sequence
+    vector<Anchor> anchors;                                             // Anchors to be tested
 
+    char symbol = 0;                                                        
+    int n_symbols = 0;                                                      
+    int offset = 1;                                                         
 
-    // Create and open a text file
-    ifstream input_file(filename);
-    int i = 0;
-    int n_symbols = 0;
-    map<string, vector<Anchor>> dict;
-    int offset = 1;
-    string testing_seq;
-
-    double sum_acc = 0;
-    int count_copies = 0;
-    int sum_len_copies = 0;
-
-    // Use a while loop together with the getline() function to read the file line by line
     cout << endl;
-    int not_copy = 0;
-
-    vector<Anchor> testing_anchors;
-    double acc_information = 0;
+    ifstream input_file(filename);
     // Main loop
-    while (input_file.get(byte)) {
+    while (input_file.get(symbol)) {
         if (n_symbols%1000 == 0) {
            cout << n_symbols << " out of " << fsize-1 << ", " << ((float)n_symbols) / ((float)fsize-1) * 100 << "%" << '\r'; 
         } 
-        n_symbols++;
-        // Test sequence accuracy 
+
         if (testing_seq.length() > 0) {
-            bool has_active = false;
-            int active_count = 0;                                                           // Count the number of anchor active
-            for (Anchor& s : testing_anchors) {
-                if (!s.is_active) {
-                    continue;
-                }
+            bool ignored_last = false;              // If current symbol should be ignored by the copy model and be encoded normally
+        
+        
+            //update_anchors(symbol, offset, full_seq, ignored_last, anchors)
 
-                active_count++;
-                s.length++;
-                char predicted_symb = full_seq[s.position + offset];                        // Next symbol in the anchor sequence
-                double p_curr_symb = estimate_probability(s.hits, s.misses, alpha, asize);  // Probability of the predicted symbol
-                if (predicted_symb == byte) {
-                    s.acc_info += -log2(p_curr_symb);
-                }
-                else {
-                    s.acc_info += -log2(1 - p_curr_symb);
-                }
-                // double p_rest_symb = (1- p_curr_symb)/(asize-1);                            // Probability of the not prediceted symbols
-
-                // Update the information of each symbol according to the probabilities of the anchor
-                // for(auto it = s.info.begin(); it != s.info.end(); ++it) {
-                //     if(it->first == predicted_symb) {
-                //         it->second += -log2(p_curr_symb);
-                //     }
-                //     else {
-                //         it->second += -log2(p_rest_symb);
-                //     }
-                // }
-
-                // Update the hit/miss ratio
-                if (predicted_symb == byte) {
-                    s.hits++;
-                }
-                else {
-                    s.misses++;
-                }
-
-                // Check if the anchor has a hit/miss ratio that passes the threshold
-                if (s.length > min_size) {
-                    double acc = estimate_probability(s.hits, s.misses, alpha, asize);
-                    if (acc < threshold) {
-                        s.is_active = false;
-                        active_count--;
-                        // Don't encode the last failure
-                        //s.misses--;
-                    }
-                }
-                if (s.length >= max_size) {
-                    s.is_active = false;
-                    active_count--;
-                }
-            }
-            offset++;
-            // No anchor available to test
-            if (active_count < 1) {
-                double max_acc = 0;
-                int max_id = 0;
-                int max_len = 0;
-                double best_acc_info = 0;
-                map<char, float> best_info;
-                for(Anchor& s: testing_anchors) {
-                    if (s.length > 0){
-                        int hits = s.hits;
-                        int misses = s.misses;
-                        double ps = estimate_probability(hits, misses, alpha, asize);
-                        // Select the sequence who encode the most and with better accuracy
-                        if(ps > max_acc && s.length >= max_len) {
-                            max_acc = ps;
-                            max_id = i;
-                            best_info = s.info;
-                            max_len = s.length;
-                            best_acc_info = s.acc_info;
-                        }
-                        // Reset Anchor
-                        s.hits = 0;
-                        s.misses = 0;
-                        s.length = 0;
-                        for(auto it = s.info.begin(); it != s.info.end(); ++it) {
-                            it->second = 0;
-                        }
-                    }
-                }
-
-                testing_anchors.clear();
-
-                if (max_len > 1) {
-                    sum_acc += max_acc;
-                    sum_len_copies += max_len;
-                    count_copies++;
-                    // cout << "\t" << "Info:" << endl; 
-                    acc_information += best_acc_info;
-                    for (auto it = global_info.begin(); it != global_info.end(); ++it) {
-                        auto it2 = best_info.find(it->first);
-                        if (it2 != best_info.end()) {
-                            // Update the value of the pair
-                            // Sum the cumulative information of the sequence and the information of the last symbol that wasn't encoded
-                            it->second += it2->second + (-log2((float)1/asize));
-                            // cout << "\t\t" << it->first << ": " << it->second/max_len << endl; 
-                        }
-                    }
-                    not_copy++;
-                }
-                else {
-                    not_copy += max_len;
-                    acc_information += 2*max_len;
-                    for (auto it = global_info.begin(); it != global_info.end(); ++it) {
-                        it->second += max_len*-log2((float)1/asize);
-                    }
-                }
-                
-                offset = 1;
+            if (update_anchors(symbol, offset, ignored_last, anchors)) {
+                select_best_anchor(anchors, symbol, ignored_last);
+                offset = 0;
                 testing_seq = "";
             }
+            offset++;
         }
         else {
             not_copy++;
-            acc_information += 2;
+            accumulative_info += default_symb_size;
+            global_info[symbol] += default_symb_size;
+            info_per_byte.push_back(default_symb_size);
         }
 
-        if (sequence.length() == k) {
-            sequence.erase(0, 1);
+        if (window.length() == k) {
+            window.erase(0, 1);
         }
 
-        sequence += byte;
-        full_seq += byte;
+        window += symbol;
+        full_seq.push_back(symbol);
 
-        if (sequence.length()==k){
+        if (window.length()==k){
             // Check if there is no candidate sequence and it has appeared more than once
-            if (testing_seq.length() == 0 && full_seq.length() > k && dict.count(sequence) > 0) {
-                testing_seq = sequence;
-                int i = 0;
-                auto it = dict.find(testing_seq);
-                if (it != dict.end()) {
+            if (testing_seq.length() == 0 && full_seq.size() > k && positions.count(window) > 0) {
+                testing_seq = window;
+                auto it = positions.find(testing_seq);
+                if (positions.find(testing_seq) != positions.end()) {
                     // Iterate through the vector in reverse order
-                    std::vector<Anchor>& myVec = it->second;
+                    vector<int> position = it->second;
                     // Save the n-th most recent anchors
-                    for (auto rit = myVec.rbegin(); rit != myVec.rend(); ++rit) {
+                    int i = 0;
+                    for (auto rit = position.rbegin(); rit != position.rend(); ++rit) {
                         // Update the value of each element in the struct
                         if (i == n_anchors) {
                             break;
                         }
-                        rit->is_active = true;
-                        testing_anchors.push_back(*rit);
+                        // Initialize a new anchor
+                        Anchor new_anchor;
+                        new_anchor.position = *rit;
+                        new_anchor.is_active = true;
+                        for (char c: alphabet) {
+                            new_anchor.sum_info_per_symbol.insert(make_pair(c, 0));
+                        }
+                        anchors.push_back(new_anchor);
                         i++;
                     }
                 }
             }
 
-            // Save the new Anchor
-            Anchor new_seq;
-            new_seq.position = i;
-            for (char c: alphabet) {
-                new_seq.info.insert(make_pair(c, 0));
+            if (positions.count(window) == 0) {
+                vector<int> v;
+                positions.insert( make_pair(window, v) );
             }
-            if (dict.count(sequence) == 0) {
-                vector<Anchor> v;
-                dict.insert( make_pair(sequence, v) );
-            }
-            dict[sequence].push_back(new_seq);
+            positions[window].push_back(n_symbols);
         }
 
-        i++;
+        n_symbols++;
+    }
+
+    if (testing_seq.length() > 0) {
+        select_best_anchor(anchors, symbol, false);
     }
 
     cout << endl;
-    map<char, float>::iterator itr;
-    double sum_info = 0;
     cout << "Size of the file: " << fsize << endl;
     cout << "Number of symbols codified in copy: " << fsize - not_copy << endl;
     cout << "Number of symbols codified outside copy: " << not_copy << endl;
+
+    double sum_info = 0;
+    unordered_map<char, float>::iterator itr;
     for (itr = global_info.begin(); itr != global_info.end(); itr++) {
-        cout << itr->first << ": " << itr->second/fsize << endl;
+        cout << itr->first << ": " << itr->second/symbol_count[itr->first] << endl;
         sum_info += itr->second;
     }
 
-    cout << "Accumulation of information: " << acc_information << endl;
-
-    cout << "Average amount of information per symbol: " << acc_information/(fsize) << endl;
-
+    cout << "Accumulation of information: " << accumulative_info << endl;
+    cout << "Average amount of information per symbol: " << accumulative_info/(fsize) << endl;
     cout << "Nº copies: " << count_copies << endl;
-
     cout << "Average length of copies: " << (float) sum_len_copies / (float) count_copies << endl;
-
     cout << "Average Copy Model Accuracy: " << sum_acc / count_copies << endl;
 
+    // cout << info_per_byte.size() << " " << fsize << endl;
+
+    if (save) {
+        fstream file;
+        file.open("vector_file.txt",ios_base::out);
+        for(int i=0; i < info_per_byte.size(); i++) {
+            file<<info_per_byte[i]<<endl;
+        }
+        file.close();
+    }
+    
     // Close the file
     input_file.close(); 
 
@@ -367,24 +242,224 @@ int main(int argc, char** argv) {
     return EXIT_SUCCESS;
 }
 
-static double estimate_probability(int hits, int misses, double alpha, int asize) {
+static double estimate_probability(int hits, int misses, double alpha) {
     return (hits + alpha)/(hits+misses+2*alpha);
 }
 
-static int get_alphabet(string filename, unordered_set<char> &alphabet) {
+static int get_alphabet(string filename, unordered_set<char> &alphabet, unordered_map<char, int> &symbol_count) {
     char byte = 0;
 
     ifstream input_file(filename);
     if (!input_file.is_open()) {
         cerr << "Could not open the file - '"
              << filename << "'" << endl;
-        return - 1;
+        exit(EXIT_FAILURE);
     }
     int count = 0;
     while (input_file.get(byte)) {
-        alphabet.insert(byte);
-        count++;
+        alphabet.insert(byte);                                      
+        if (symbol_count.find(byte) == symbol_count.end()) {        
+            symbol_count.insert(pair<char, int>(byte, 0));
+        }
+        symbol_count[byte]++;
+        count++;                                                                    
     }
     input_file.close();
     return count;
+}
+
+static bool update_anchors(char symbol, int offset, bool &ignored_last, vector<Anchor> &anchors) {
+
+    int active_count = 0;                                          // Count the number of anchor active
+
+    for (Anchor& anchor : anchors) {
+        if (!anchor.is_active) {
+            continue;
+        }
+
+        active_count++;
+        anchor.length++;
+        char predicted_symb = full_seq[anchor.position + offset];                      // Next symbol in the anchor sequence
+        double p_curr_symb;
+
+        p_curr_symb = estimate_probability(anchor.hits, anchor.misses, alpha);  // Probability of the predicted symbol
+
+        double info;
+        if (predicted_symb == symbol) {
+            info = -log2(p_curr_symb);
+            anchor.hits++;
+        }
+        else {
+            double prob = (double)(1 - p_curr_symb)/ (double)(asize - 1);
+            info =  -log2(prob);
+            anchor.misses++;
+        }
+
+        anchor.sum_info += info;
+        anchor.sum_info_per_symbol[predicted_symb] += info;
+        anchor.info_per_byte.emplace_back(info);
+
+        if (anchor.length > min_size) {
+            // Check if the anchor has a hit/miss ratio that passes the threshold
+            double acc = estimate_probability(anchor.hits, anchor.misses, alpha);
+            if (acc < threshold) {
+                anchor.is_active = false;
+                active_count--;
+                // Remove the last guess
+                anchor.misses--;
+                anchor.length--;
+                anchor.info_per_byte.pop_back();
+                double prob = (double)(1 - p_curr_symb)/ (double)(asize - 1);
+                anchor.sum_info_per_symbol[predicted_symb] += log2(prob);
+                anchor.sum_info += log2(prob);
+                ignored_last = true;
+            }
+        }
+
+        // Deactivate anchor because of max_size
+        if (anchor.length >= max_size) {
+            anchor.is_active = false;
+            active_count--;
+        }
+    }
+
+    return active_count == 0;
+}
+
+static void select_best_anchor(vector<Anchor> &anchors, char byte, bool ignored_last) {
+    double max_acc = 0;                     // best accuracy
+    int max_len = 0;                        // longest sequence of symbols encoded
+    double best_accumulative_info = 0;      // accumulative information gain for the best sequence
+    unordered_map<char, double> best_info;            // information gain of each symbol for the best sequence
+    vector<double> best_info_per_byte;
+    for(Anchor& anchor: anchors) {
+        if (anchor.length < 1) {
+            continue;
+        }
+        int hits = anchor.hits;
+        int misses = anchor.misses;
+        double ps = estimate_probability(hits, misses, alpha);
+        // Select the sequence who encode the most and with better accuracy
+        if(anchor.length > max_len) {
+            max_acc = ps;
+            best_info = anchor.sum_info_per_symbol;
+            max_len = anchor.length;
+            best_accumulative_info = anchor.sum_info;
+            best_info_per_byte = anchor.info_per_byte;
+        }
+    }
+
+    // Anchor encoded some bytes
+    if (max_len > 0) {
+        //cout << "AAAAA" << endl;
+        sum_acc += max_acc;
+        sum_len_copies += max_len;
+        count_copies++;
+        accumulative_info += best_accumulative_info;
+        for (const auto &it : best_info) {
+            auto it2 = global_info.find(it.first);
+            if (it2 != global_info.end()) {
+                it2->second += it.second;
+            } else {
+                global_info.emplace_hint(it2, it.first, it.second);
+            }
+        }
+        info_per_byte.insert(info_per_byte.end(), best_info_per_byte.begin(), best_info_per_byte.end());
+
+        // Update 
+        if (ignored_last) {
+            info_per_byte.push_back(default_symb_size);
+            global_info[byte] += default_symb_size;
+            accumulative_info += default_symb_size;
+            not_copy++;         
+        }
+    }
+    else {
+        not_copy++;
+        accumulative_info += default_symb_size;
+        global_info[byte] += default_symb_size;
+        info_per_byte.push_back(default_symb_size);
+    }
+
+    anchors.clear();
+}
+
+static void parse_command_line(int argc, char** argv) {
+    int c;                          // Opt process
+    while ((c = getopt(argc, argv, "k:st:a:m:M:n:")) != -1) {
+        switch (c)
+        {
+            case 'n':
+                try {
+                    n_anchors = stoi(optarg);
+                }
+                catch (exception &err) {
+                    cout << "Invalid n argument" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                break;
+            case 'M':
+                try {
+                    max_size = stoi(optarg);
+                }
+                catch (exception &err) {
+                    cout << "Invalid m argument" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                break;
+            case 'm':
+                try {
+                    min_size = stoi(optarg);
+                }
+                catch (exception &err) {
+                    cout << "Invalid m argument" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                break;
+            case 'a':
+                try {
+                    alpha = stof(optarg);
+                }
+                catch (exception &err) {
+                    cout << "Invalid a argument" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                break;
+            case 't':
+                try {
+                    threshold = stof(optarg);
+                }
+                catch (exception &err) {
+                    cout << "Invalid t argument" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                break;
+            case 's':
+                save = true;
+                break;
+            case 'k':
+                try {
+                    k = stoi(optarg);
+                }
+                catch (exception &err) {
+                    cout << "Invalid K argument" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                break;
+            
+            case '?':
+                cout << "Got unknown option." << std::endl; 
+                break;
+            default:
+                cout << "Got unknown parse returns: " << c << std::endl;
+                exit(EXIT_FAILURE);
+        }
+    }
+    cout << "Nº of Anchors = " << n_anchors << std::endl;
+    cout << "Max Size = " << max_size << std::endl;
+    cout << "Min Size = " << min_size << std::endl;
+    cout << "Alpha = " << alpha << std::endl;
+    cout << "Threshold = " << threshold << std::endl;
+    cout << "Save = " << save << std::endl;
+    cout << "K = " << k << std::endl;
 }
