@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 
     unordered_map<char, float> alphabet;
 
-    unordered_map<string, unordered_map<string, int>> dictFinal; // sequence -> <symbol, probability>
+    unordered_map<string, unordered_map<string, float>> dictFinal; // sequence -> <symbol, probability>
 
 
 
@@ -117,14 +117,14 @@ int main(int argc, char **argv)
     while (infile.get(c))
     {
         alphabet[c]++;
-        Index++;
 
-        if (sequence.length() == k + 1)
+        if (sequence.length() == k)
         {
             //append to the vector of the [sequence] the index of the next char
             dict[sequence].push_back(Index);
             sequence.erase(0, 1);
         }
+        Index++;
         sequence += c;
     }
 
@@ -157,15 +157,29 @@ int main(int argc, char **argv)
     std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
     output.reserve(n);
 
-    // Precompute cumulative probabilities
+    // Precompute cumulative probabilities for the alphabet
     std::vector<std::pair<char, float>> cum_prob;
     cum_prob.reserve(alphabet.size());
     float total_prob = 0.0f;
+    output+=sample;
     for (auto &[symbol, prob] : alphabet)
     {
         total_prob += prob;
         cum_prob.emplace_back(symbol, total_prob);
     }
+
+
+    //opening the file again to reset the pointer
+    infile.close(); // Close file
+
+    infile.open(filename); // Open file
+
+
+    if (!infile.is_open()) {
+        std::cerr << "Failed to open file\n";
+        return 1;
+    }
+
 
     for (int i = 0; i < n; i++)
     {
@@ -185,23 +199,21 @@ int main(int argc, char **argv)
         }
         else
         {
+            const auto &next_chars = dict[sample];
             // Use const reference to avoid copying
-            const auto &next_chars = dict.at(sample);
-
+            
+            //Calculates the probability of each symbol appearing after the sequence
             //Checks if the next char is in the map
             if (dictFinal.count(sample) == 0){
-                for (int i = 0; i < next_chars.size(); i++){
+                for (int e = 0; e < next_chars.size(); e++){
                     //convert seekg to string
-                    string nextChar = "";
-                    infile.seekg(next_chars[i]);
-                    infile.get(c);
-                    nextChar = c;
-
-                    dictFinal[sample][nextChar]++; // add 1 to the count of the next char
+                    char nchar;
+                    infile.seekg(next_chars[e]);
+                    infile.get(nchar);
+                    dictFinal[sample][string(1, nchar)]++;
                     dictFinal[sample]["total"]++;  // add 1 to the total count
 
                 }
-                
                 for (auto &[nextChar, count] : dictFinal[sample])
                 {
                     if (nextChar != "total")
@@ -211,8 +223,6 @@ int main(int argc, char **argv)
                 }
                 dictFinal[sample].erase("total");
             }
-
-            
 
             // Calculates the next character
             float total_prob = 0.0f;

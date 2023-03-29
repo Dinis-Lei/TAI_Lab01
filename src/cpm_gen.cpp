@@ -20,6 +20,7 @@ int main(int argc, char **argv)
     string filename;
     string sample = "";
 
+    // All symbols that appeared and amount of times they appeared
     unordered_map<char, float> alphabet;
 
     // Process command line arguments
@@ -111,24 +112,27 @@ int main(int argc, char **argv)
     int numTotalChar = 0;
     while (infile.get(c))
     {
+        // Add 1 to the symbol appearences count, and to the total count
         alphabet[c]++;
         numTotalChar++;
 
-        if (sequence.length() == k + 1)
+        // Add the sequence to the appearance count
+        if (sequence.length() == k)
         {
-            dict[sequence]["total"]++;
+            dict[sequence]["total"]++;      //total count of the sequence appearences
             dict[sequence][string(1, c)]++;
-            sequence.erase(0, 1);
+            sequence.erase(0, 1);        //remove the first symbol from the sequence
         }
-        sequence += c;
+        sequence += c; //add the new symbol to the sequence
     }
-
+    
+    // Compute probabilities of each of the symbols, this for when a sample is not provided
     for (auto &[symbol, count] : alphabet)
     {
         count /= numTotalChar;
     }
-    
-    // Compute probabilities
+
+    // Compute probabilities of each of the next characters for each sequence
     for (auto &[prefix, counts] : dict)
     {
         float total = counts["total"];
@@ -142,14 +146,14 @@ int main(int argc, char **argv)
         counts.erase("total");
     }
 
-    // Generate output
+    // Check if sample is valid
     string output;
     if (sample.empty())
     {
-        sample = sequence.substr(0, k);
+        sample = sequence.substr(0, k); //if no sample is provided, use the last k symbols of the sequence
     }
     else
-    {
+    {   
         for (const char &c : sample)
         {
             auto it = alphabet.find(c);
@@ -161,6 +165,7 @@ int main(int argc, char **argv)
         }
     }
 
+    // Generates random number
     std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
     output.reserve(n);
 
@@ -174,12 +179,16 @@ int main(int argc, char **argv)
         cum_prob.emplace_back(symbol, total_prob);
     }
 
+
+    output+=sample;
+    // Generate Output Sequence
     for (int i = 0; i < n; i++)
     {
         float rand_val = std::uniform_real_distribution<float>(0.0f, 1.0f)(rng);
+        //Check if sample is in the dictionary
         if (dict.count(sample) == 0)
         {
-            // Use binary search to find the next symbol
+            // Use binary search to find the next symbol, gets the lower bound symbol
             auto it = std::lower_bound(cum_prob.begin(), cum_prob.end(), rand_val,
                                        [](const std::pair<char, float> &lhs, const float &rhs)
                                        {
@@ -195,6 +204,7 @@ int main(int argc, char **argv)
             // Use const reference to avoid copying
             const auto &next_chars = dict.at(sample);
             float total_prob = 0.0f;
+            // Get the next symbol with the probabilities calculated with this sequence
             for (auto &[next_char, prob] : next_chars)
             {
                 total_prob += prob;
@@ -208,6 +218,6 @@ int main(int argc, char **argv)
             }
         }
     }
-    cout << output << endl;
+    std::cout << output << endl;
     return 0;
 }
