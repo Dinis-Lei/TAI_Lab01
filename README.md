@@ -43,6 +43,7 @@ g++ -O3 -o bin/cpm_gen src/cpm_gen.cpp
 
 Below are the parameters to run the program.
 All parameters are optional except the path to the file.
+Take note that the sample given as an argument should be an excerpt of the training file with K or bigger size.
 
 ```bash
 ./bin/cpm_gen -n 100 -k 4 -s <sample text> <path to file>  
@@ -71,6 +72,7 @@ g++ -O3 -o bin/cpm_gen2 src/cpm_gen2.cpp
 
 Below are the parameters to run the program.
 All parameters are optional except the path to the file.
+Take note that the sample given as an argument should be an excerpt of the training file with K or bigger size.
 
 ```bash
 ./bin/cpm_gen -n 100 -k 4 -s <sample text> <path to file>  
