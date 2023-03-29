@@ -1,0 +1,3024 @@
+8 0 1 0.5 1
+Number of symbols codified in copy: 22630493
+Number of symbols codified outside copy: 37732
+Number of symbols codified inside  copy: 22630493
+G: 2.18169
+T: 1.98316
+A: 1.98341
+C: 2.19448
+Accumulation of information: 4.6571e+07
+Average amount of information per symbol: 2.05446
+Nº copies: 5615942
+Average length of copies: 4.02969
+Average Copy Model Accuracy: 0.359202
+Elapsed Time: 12
+8 0 1 0.5 4
+Number of symbols codified in copy: 22635515
+Number of symbols codified outside copy: 32710
+Number of symbols codified inside  copy: 22635515
+G: 2.07566
+T: 1.88077
+A: 1.88449
+C: 2.06756
+Accumulation of information: 4.43166e+07
+Average amount of information per symbol: 1.95501
+Nº copies: 2467534
+Average length of copies: 9.17334
+Average Copy Model Accuracy: 0.400046
+Elapsed Time: 13
+8 0 1 0.5 8
+Number of symbols codified in copy: 22636403
+Number of symbols codified outside copy: 31822
+Number of symbols codified inside  copy: 22636403
+G: 2.04165
+T: 1.85103
+A: 1.84908
+C: 2.03514
+Accumulation of information: 4.35948e+07
+Average amount of information per symbol: 1.92317
+Nº copies: 1682160
+Average length of copies: 13.4567
+Average Copy Model Accuracy: 0.42274
+Elapsed Time: 14
+8 0 1 0.7 1
+Number of symbols codified in copy: 22602773
+Number of symbols codified outside copy: 65452
+Number of symbols codified inside  copy: 22602773
+G: 2.08534
+T: 2.05705
+A: 2.05124
+C: 2.13645
+Accumulation of information: 4.61865e+07
+Average amount of information per symbol: 2.0375
+Nº copies: 22602773
+Average length of copies: 1
+Average Copy Model Accuracy: 0.448447
+Elapsed Time: 30
+8 0 1 0.7 4
+Number of symbols codified in copy: 22602773
+Number of symbols codified outside copy: 65452
+Number of symbols codified inside  copy: 22602773
+G: 1.37759
+T: 1.46488
+A: 1.46511
+C: 1.30262
+Accumulation of information: 3.21694e+07
+Average amount of information per symbol: 1.41914
+Nº copies: 22602773
+Average length of copies: 1
+Average Copy Model Accuracy: 0.578871
+Elapsed Time: 63
+8 0 1 0.7 8
+Number of symbols codified in copy: 22602773
+Number of symbols codified outside copy: 65452
+Number of symbols codified inside  copy: 22602773
+G: 1.13387
+T: 1.20739
+A: 1.20469
+C: 1.0722
+Accumulation of information: 2.65516e+07
+Average amount of information per symbol: 1.17131
+Nº copies: 22602773
+Average length of copies: 1
+Average Copy Model Accuracy: 0.631143
+Elapsed Time: 106
+8 0 1 0.8 1
+Number of symbols codified in copy: 22602773
+Number of symbols codified outside copy: 65452
+Number of symbols codified inside  copy: 22602773
+G: 2.08534
+T: 2.05705
+A: 2.05124
+C: 2.13645
+Accumulation of information: 4.61865e+07
+Average amount of information per symbol: 2.0375
+Nº copies: 22602773
+Average length of copies: 1
+Average Copy Model Accuracy: 0.448447
+Elapsed Time: 29
+8 0 1 0.8 4
+Number of symbols codified in copy: 22602773
+Number of symbols codified outside copy: 65452
+Number of symbols codified inside  copy: 22602773
+G: 1.37759
+T: 1.46488
+A: 1.46511
+C: 1.30262
+Accumulation of information: 3.21694e+07
+Average amount of information per symbol: 1.41914
+Nº copies: 22602773
+Average length of copies: 1
+Average Copy Model Accuracy: 0.578871
+Elapsed Time: 62
+8 0 1 0.8 8
+Number of symbols codified in copy: 22602773
+Number of symbols codified outside copy: 65452
+Number of symbols codified inside  copy: 22602773
+G: 1.13387
+T: 1.20739
+A: 1.20469
+C: 1.0722
+Accumulation of information: 2.65516e+07
+Average amount of information per symbol: 1.17131
+Nº copies: 22602773
+Average length of copies: 1
+Average Copy Model Accuracy: 0.631143
+Elapsed Time: 106
+8 0 0.1 0.5 1
+Number of symbols codified in copy: 22630493
+Number of symbols codified outside copy: 37732
+Number of symbols codified inside  copy: 22630493
+G: 2.3614
+T: 2.12979
+A: 2.12813
+C: 2.37331
+Accumulation of information: 5.00633e+07
+Average amount of information per symbol: 2.20852
+Nº copies: 5615942
+Average length of copies: 4.02969
+Average Copy Model Accuracy: 0.171097
+Elapsed Time: 12
+8 0 0.1 0.5 4
+Number of symbols codified in copy: 22635515
+Number of symbols codified outside copy: 32710
+Number of symbols codified inside  copy: 22635515
+G: 2.26294
+T: 2.03512
+A: 2.03765
+C: 2.25666
+Accumulation of information: 4.80827e+07
+Average amount of information per symbol: 2.12115
+Nº copies: 2467534
+Average length of copies: 9.17334
+Average Copy Model Accuracy: 0.302896
+Elapsed Time: 13
+8 0 0.1 0.5 8
+Number of symbols codified in copy: 22636403
+Number of symbols codified outside copy: 31822
+Number of symbols codified inside  copy: 22636403
+G: 2.20147
+T: 1.98433
+A: 1.98152
+C: 2.1985
+Accumulation of information: 4.68585e+07
+Average amount of information per symbol: 2.06714
+Nº copies: 1682160
+Average length of copies: 13.4567
+Average Copy Model Accuracy: 0.368205
+Elapsed Time: 14
+8 0 0.1 0.7 1
+Number of symbols codified in copy: 22612355
+Number of symbols codified outside copy: 55870
+Number of symbols codified inside  copy: 22612355
+G: 2.40666
+T: 2.1829
+A: 2.17889
+C: 2.43707
+Accumulation of information: 5.11979e+07
+Average amount of information per symbol: 2.25858
+Nº copies: 10772506
+Average length of copies: 2.09908
+Average Copy Model Accuracy: 0.218827
+Elapsed Time: 16
+8 0 0.1 0.7 4
+Number of symbols codified in copy: 22614008
+Number of symbols codified outside copy: 54217
+Number of symbols codified inside  copy: 22614008
+G: 2.27991
+T: 2.05627
+A: 2.05598
+C: 2.2591
+Accumulation of information: 4.87417e+07
+Average amount of information per symbol: 2.15022
+Nº copies: 6353207
+Average length of copies: 3.55946
+Average Copy Model Accuracy: 0.416694
+Elapsed Time: 23
+8 0 0.1 0.7 8
+Number of symbols codified in copy: 22614569
+Number of symbols codified outside copy: 53656
+Number of symbols codified inside  copy: 22614569
+G: 2.17619
+T: 1.95464
+A: 1.95183
+C: 2.17155
+Accumulation of information: 4.65345e+07
+Average amount of information per symbol: 2.05285
+Nº copies: 4848779
+Average length of copies: 4.66397
+Average Copy Model Accuracy: 0.513679
+Elapsed Time: 28
+8 0 0.1 0.8 1
+Number of symbols codified in copy: 22607449
+Number of symbols codified outside copy: 60776
+Number of symbols codified inside  copy: 22607449
+G: 2.40223
+T: 2.19961
+A: 2.19389
+C: 2.44354
+Accumulation of information: 5.1367e+07
+Average amount of information per symbol: 2.26603
+Nº copies: 12113541
+Average length of copies: 1.8663
+Average Copy Model Accuracy: 0.22471
+Elapsed Time: 18
+8 0 0.1 0.8 4
+Number of symbols codified in copy: 22608623
+Number of symbols codified outside copy: 59602
+Number of symbols codified inside  copy: 22608623
+G: 2.25039
+T: 2.05188
+A: 2.04903
+C: 2.23078
+Accumulation of information: 4.84831e+07
+Average amount of information per symbol: 2.13881
+Nº copies: 7544467
+Average length of copies: 2.99672
+Average Copy Model Accuracy: 0.430489
+Elapsed Time: 25
+8 0 0.1 0.8 8
+Number of symbols codified in copy: 22609014
+Number of symbols codified outside copy: 59211
+Number of symbols codified inside  copy: 22609014
+G: 2.11973
+T: 1.92469
+A: 1.92101
+C: 2.1183
+Accumulation of information: 4.57416e+07
+Average amount of information per symbol: 2.01787
+Nº copies: 5973226
+Average length of copies: 3.78506
+Average Copy Model Accuracy: 0.535793
+Elapsed Time: 34
+8 0 0.01 0.5 1
+Number of symbols codified in copy: 22630493
+Number of symbols codified outside copy: 37732
+Number of symbols codified inside  copy: 22630493
+G: 2.62192
+T: 2.34574
+A: 2.34112
+C: 2.62977
+Accumulation of information: 5.51229e+07
+Average amount of information per symbol: 2.43173
+Nº copies: 5615942
+Average length of copies: 4.02969
+Average Copy Model Accuracy: 0.117184
+Elapsed Time: 11
+8 0 0.01 0.5 4
+Number of symbols codified in copy: 22635515
+Number of symbols codified outside copy: 32710
+Number of symbols codified inside  copy: 22635515
+G: 2.52974
+T: 2.26029
+A: 2.26121
+C: 2.52206
+Accumulation of information: 5.34514e+07
+Average amount of information per symbol: 2.35799
+Nº copies: 2467534
+Average length of copies: 9.17334
+Average Copy Model Accuracy: 0.277283
+Elapsed Time: 12
+8 0 0.01 0.5 8
+Number of symbols codified in copy: 22636403
+Number of symbols codified outside copy: 31822
+Number of symbols codified inside  copy: 22636403
+G: 2.42364
+T: 2.17655
+A: 2.17269
+C: 2.42173
+Accumulation of information: 5.14304e+07
+Average amount of information per symbol: 2.26883
+Nº copies: 1682160
+Average length of copies: 13.4567
+Average Copy Model Accuracy: 0.355248
+Elapsed Time: 14
+8 0 0.01 0.7 1
+Number of symbols codified in copy: 22612355
+Number of symbols codified outside copy: 55870
+Number of symbols codified inside  copy: 22612355
+G: 2.91774
+T: 2.5883
+A: 2.58359
+C: 2.9424
+Accumulation of information: 6.09574e+07
+Average amount of information per symbol: 2.68911
+Nº copies: 10772506
+Average length of copies: 2.09908
+Average Copy Model Accuracy: 0.167492
+Elapsed Time: 17
+8 0 0.01 0.7 4
+Number of symbols codified in copy: 22614008
+Number of symbols codified outside copy: 54217
+Number of symbols codified inside  copy: 22614008
+G: 2.96068
+T: 2.63697
+A: 2.63144
+C: 2.93593
+Accumulation of information: 6.25048e+07
+Average amount of information per symbol: 2.75737
+Nº copies: 6353207
+Average length of copies: 3.55946
+Average Copy Model Accuracy: 0.396701
+Elapsed Time: 21
+8 0 0.01 0.7 8
+Number of symbols codified in copy: 22614569
+Number of symbols codified outside copy: 53656
+Number of symbols codified inside  copy: 22614569
+G: 2.80822
+T: 2.51134
+A: 2.50329
+C: 2.80642
+Accumulation of information: 5.96454e+07
+Average amount of information per symbol: 2.63123
+Nº copies: 4848779
+Average length of copies: 4.66397
+Average Copy Model Accuracy: 0.507596
+Elapsed Time: 29
+8 0 0.01 0.8 1
+Number of symbols codified in copy: 22607449
+Number of symbols codified outside copy: 60776
+Number of symbols codified inside  copy: 22607449
+G: 2.98382
+T: 2.6553
+A: 2.64674
+C: 3.0208
+Accumulation of information: 6.24498e+07
+Average amount of information per symbol: 2.75495
+Nº copies: 12113541
+Average length of copies: 1.8663
+Average Copy Model Accuracy: 0.17383
+Elapsed Time: 18
+8 0 0.01 0.8 4
+Number of symbols codified in copy: 22608623
+Number of symbols codified outside copy: 59602
+Number of symbols codified inside  copy: 22608623
+G: 3.05837
+T: 2.74235
+A: 2.73302
+C: 3.03625
+Accumulation of information: 6.48321e+07
+Average amount of information per symbol: 2.86004
+Nº copies: 7544467
+Average length of copies: 2.99672
+Average Copy Model Accuracy: 0.411255
+Elapsed Time: 27
+8 0 0.01 0.8 8
+Number of symbols codified in copy: 22609014
+Number of symbols codified outside copy: 59211
+Number of symbols codified inside  copy: 22609014
+G: 2.89593
+T: 2.61105
+A: 2.60206
+C: 2.89947
+Accumulation of information: 6.18567e+07
+Average amount of information per symbol: 2.72879
+Nº copies: 5973226
+Average length of copies: 3.78506
+Average Copy Model Accuracy: 0.530836
+Elapsed Time: 32
+8 1 1 0.5 1
+Number of symbols codified in copy: 22639987
+Number of symbols codified outside copy: 28238
+Number of symbols codified inside  copy: 22639987
+G: 2.14629
+T: 1.95493
+A: 1.95475
+C: 2.15515
+Accumulation of information: 4.60083e+07
+Average amount of information per symbol: 2.02964
+Nº copies: 3836127
+Average length of copies: 5.90178
+Average Copy Model Accuracy: 0.331281
+Elapsed Time: 10
+8 1 1 0.5 4
+Number of symbols codified in copy: 22644275
+Number of symbols codified outside copy: 23950
+Number of symbols codified inside  copy: 22644275
+G: 2.04678
+T: 1.87602
+A: 1.87937
+C: 2.04747
+Accumulation of information: 4.40591e+07
+Average amount of information per symbol: 1.94365
+Nº copies: 1982792
+Average length of copies: 11.4204
+Average Copy Model Accuracy: 0.410416
+Elapsed Time: 12
+8 1 1 0.5 8
+Number of symbols codified in copy: 22644995
+Number of symbols codified outside copy: 23230
+Number of symbols codified inside  copy: 22644995
+G: 2.02113
+T: 1.84669
+A: 1.84694
+C: 2.01814
+Accumulation of information: 4.33931e+07
+Average amount of information per symbol: 1.91427
+Nº copies: 1428332
+Average length of copies: 15.8542
+Average Copy Model Accuracy: 0.434354
+Elapsed Time: 13
+8 1 1 0.7 1
+Number of symbols codified in copy: 22625370
+Number of symbols codified outside copy: 42855
+Number of symbols codified inside  copy: 22625370
+G: 2.01627
+T: 1.878
+A: 1.87983
+C: 2.03628
+Accumulation of information: 4.39671e+07
+Average amount of information per symbol: 1.93959
+Nº copies: 7644281
+Average length of copies: 2.95978
+Average Copy Model Accuracy: 0.3832
+Elapsed Time: 14
+8 1 1 0.7 4
+Number of symbols codified in copy: 22626138
+Number of symbols codified outside copy: 42087
+Number of symbols codified inside  copy: 22626138
+G: 1.76702
+T: 1.69201
+A: 1.6946
+C: 1.76061
+Accumulation of information: 3.92007e+07
+Average amount of information per symbol: 1.72932
+Nº copies: 5990902
+Average length of copies: 3.77675
+Average Copy Model Accuracy: 0.50898
+Elapsed Time: 22
+8 1 1 0.7 8
+Number of symbols codified in copy: 22626269
+Number of symbols codified outside copy: 41956
+Number of symbols codified inside  copy: 22626269
+G: 1.69723
+T: 1.59947
+A: 1.60061
+C: 1.68985
+Accumulation of information: 3.72699e+07
+Average amount of information per symbol: 1.64415
+Nº copies: 5047986
+Average length of copies: 4.48224
+Average Copy Model Accuracy: 0.549835
+Elapsed Time: 29
+8 1 1 0.8 1
+Number of symbols codified in copy: 22619992
+Number of symbols codified outside copy: 48233
+Number of symbols codified inside  copy: 22619992
+G: 2.06603
+T: 2.00767
+A: 2.005
+C: 2.0967
+Accumulation of information: 4.60025e+07
+Average amount of information per symbol: 2.02938
+Nº copies: 11309996
+Average length of copies: 2
+Average Copy Model Accuracy: 0.41953
+Elapsed Time: 18
+8 1 1 0.8 4
+Number of symbols codified in copy: 22619992
+Number of symbols codified outside copy: 48233
+Number of symbols codified inside  copy: 22619992
+G: 1.56879
+T: 1.66774
+A: 1.66768
+C: 1.56129
+Accumulation of information: 3.70747e+07
+Average amount of information per symbol: 1.63554
+Nº copies: 11309996
+Average length of copies: 2
+Average Copy Model Accuracy: 0.570058
+Elapsed Time: 38
+8 1 1 0.8 8
+Number of symbols codified in copy: 22619992
+Number of symbols codified outside copy: 48233
+Number of symbols codified inside  copy: 22619992
+G: 1.33119
+T: 1.42689
+A: 1.42497
+C: 1.32207
+Accumulation of information: 3.18183e+07
+Average amount of information per symbol: 1.40365
+Nº copies: 11309996
+Average length of copies: 2
+Average Copy Model Accuracy: 0.628343
+Elapsed Time: 62
+8 1 0.1 0.5 1
+Number of symbols codified in copy: 22639987
+Number of symbols codified outside copy: 28238
+Number of symbols codified inside  copy: 22639987
+G: 2.27114
+T: 2.09949
+A: 2.09772
+C: 2.28343
+Accumulation of information: 4.90172e+07
+Average amount of information per symbol: 2.16237
+Nº copies: 3836127
+Average length of copies: 5.90178
+Average Copy Model Accuracy: 0.206195
+Elapsed Time: 10
+8 1 0.1 0.5 4
+Number of symbols codified in copy: 22644275
+Number of symbols codified outside copy: 23950
+Number of symbols codified inside  copy: 22644275
+G: 2.21144
+T: 2.04357
+A: 2.04715
+C: 2.22196
+Accumulation of information: 4.78542e+07
+Average amount of information per symbol: 2.11107
+Nº copies: 1982792
+Average length of copies: 11.4204
+Average Copy Model Accuracy: 0.361578
+Elapsed Time: 12
+8 1 0.1 0.5 8
+Number of symbols codified in copy: 22644995
+Number of symbols codified outside copy: 23230
+Number of symbols codified inside  copy: 22644995
+G: 2.15877
+T: 1.98121
+A: 1.98095
+C: 2.16571
+Accumulation of information: 4.65065e+07
+Average amount of information per symbol: 2.05162
+Nº copies: 1428332
+Average length of copies: 15.8542
+Average Copy Model Accuracy: 0.406958
+Elapsed Time: 14
+8 1 0.1 0.7 1
+Number of symbols codified in copy: 22626033
+Number of symbols codified outside copy: 42192
+Number of symbols codified inside  copy: 22626033
+G: 2.24416
+T: 2.13982
+A: 2.13932
+C: 2.27127
+Accumulation of information: 4.94232e+07
+Average amount of information per symbol: 2.18029
+Nº copies: 7425685
+Average length of copies: 3.047
+Average Copy Model Accuracy: 0.280223
+Elapsed Time: 14
+8 1 0.1 0.7 4
+Number of symbols codified in copy: 22626979
+Number of symbols codified outside copy: 41246
+Number of symbols codified inside  copy: 22626979
+G: 2.22309
+T: 2.14143
+A: 2.14374
+C: 2.23851
+Accumulation of information: 4.94723e+07
+Average amount of information per symbol: 2.18245
+Nº copies: 5655547
+Average length of copies: 4.00085
+Average Copy Model Accuracy: 0.49539
+Elapsed Time: 20
+8 1 0.1 0.7 8
+Number of symbols codified in copy: 22627201
+Number of symbols codified outside copy: 41024
+Number of symbols codified inside  copy: 22627201
+G: 2.14411
+T: 2.00853
+A: 2.00941
+C: 2.16215
+Accumulation of information: 4.70066e+07
+Average amount of information per symbol: 2.07368
+Nº copies: 4654999
+Average length of copies: 4.86084
+Average Copy Model Accuracy: 0.555657
+Elapsed Time: 29
+8 1 0.1 0.8 1
+Number of symbols codified in copy: 22622663
+Number of symbols codified outside copy: 45562
+Number of symbols codified inside  copy: 22622663
+G: 2.22667
+T: 2.15121
+A: 2.14915
+C: 2.26221
+Accumulation of information: 4.94415e+07
+Average amount of information per symbol: 2.18109
+Nº copies: 8263945
+Average length of copies: 2.73751
+Average Copy Model Accuracy: 0.287016
+Elapsed Time: 15
+8 1 0.1 0.8 4
+Number of symbols codified in copy: 22623208
+Number of symbols codified outside copy: 45017
+Number of symbols codified inside  copy: 22623208
+G: 2.18669
+T: 2.14912
+A: 2.15073
+C: 2.2089
+Accumulation of information: 4.93326e+07
+Average amount of information per symbol: 2.17629
+Nº copies: 6657475
+Average length of copies: 3.39817
+Average Copy Model Accuracy: 0.509005
+Elapsed Time: 24
+8 1 0.1 0.8 8
+Number of symbols codified in copy: 22623272
+Number of symbols codified outside copy: 44953
+Number of symbols codified inside  copy: 22623272
+G: 2.0824
+T: 1.98997
+A: 1.99016
+C: 2.10786
+Accumulation of information: 4.63206e+07
+Average amount of information per symbol: 2.04342
+Nº copies: 5709555
+Average length of copies: 3.96235
+Average Copy Model Accuracy: 0.577614
+Elapsed Time: 34
+8 1 0.01 0.5 1
+Number of symbols codified in copy: 22639987
+Number of symbols codified outside copy: 28238
+Number of symbols codified inside  copy: 22639987
+G: 2.50803
+T: 2.36086
+A: 2.35712
+C: 2.52346
+Accumulation of information: 5.45384e+07
+Average amount of information per symbol: 2.40594
+Nº copies: 3836127
+Average length of copies: 5.90178
+Average Copy Model Accuracy: 0.182137
+Elapsed Time: 9
+8 1 0.01 0.5 4
+Number of symbols codified in copy: 22644275
+Number of symbols codified outside copy: 23950
+Number of symbols codified inside  copy: 22644275
+G: 2.45019
+T: 2.29209
+A: 2.29637
+C: 2.47133
+Accumulation of information: 5.3376e+07
+Average amount of information per symbol: 2.35466
+Nº copies: 1982792
+Average length of copies: 11.4204
+Average Copy Model Accuracy: 0.353052
+Elapsed Time: 12
+8 1 0.01 0.5 8
+Number of symbols codified in copy: 22644995
+Number of symbols codified outside copy: 23230
+Number of symbols codified inside  copy: 22644995
+G: 2.34787
+T: 2.17406
+A: 2.17339
+C: 2.36637
+Accumulation of information: 5.08545e+07
+Average amount of information per symbol: 2.24343
+Nº copies: 1428332
+Average length of copies: 15.8542
+Average Copy Model Accuracy: 0.402566
+Elapsed Time: 15
+8 1 0.01 0.7 1
+Number of symbols codified in copy: 22626033
+Number of symbols codified outside copy: 42192
+Number of symbols codified inside  copy: 22626033
+G: 2.7115
+T: 2.64309
+A: 2.64007
+C: 2.7485
+Accumulation of information: 6.01471e+07
+Average amount of information per symbol: 2.65337
+Nº copies: 7425685
+Average length of copies: 3.047
+Average Copy Model Accuracy: 0.260054
+Elapsed Time: 15
+8 1 0.01 0.7 4
+Number of symbols codified in copy: 22626979
+Number of symbols codified outside copy: 41246
+Number of symbols codified inside  copy: 22626979
+G: 2.90553
+T: 2.84512
+A: 2.84601
+C: 2.94469
+Accumulation of information: 6.5111e+07
+Average amount of information per symbol: 2.87235
+Nº copies: 5655547
+Average length of copies: 4.00085
+Average Copy Model Accuracy: 0.493294
+Elapsed Time: 21
+8 1 0.01 0.7 8
+Number of symbols codified in copy: 22627201
+Number of symbols codified outside copy: 41024
+Number of symbols codified inside  copy: 22627201
+G: 2.77219
+T: 2.62916
+A: 2.62759
+C: 2.81386
+Accumulation of information: 6.10543e+07
+Average amount of information per symbol: 2.69339
+Nº copies: 4654999
+Average length of copies: 4.86084
+Average Copy Model Accuracy: 0.557901
+Elapsed Time: 30
+8 1 0.01 0.8 1
+Number of symbols codified in copy: 22622663
+Number of symbols codified outside copy: 45562
+Number of symbols codified inside  copy: 22622663
+G: 2.75639
+T: 2.71075
+A: 2.70707
+C: 2.80552
+Accumulation of information: 6.14676e+07
+Average amount of information per symbol: 2.71162
+Nº copies: 8263945
+Average length of copies: 2.73751
+Average Copy Model Accuracy: 0.26723
+Elapsed Time: 15
+8 1 0.01 0.8 4
+Number of symbols codified in copy: 22623208
+Number of symbols codified outside copy: 45017
+Number of symbols codified inside  copy: 22623208
+G: 2.99404
+T: 2.97391
+A: 2.97407
+C: 3.04605
+Accumulation of information: 6.77209e+07
+Average amount of information per symbol: 2.98748
+Nº copies: 6657475
+Average length of copies: 3.39817
+Average Copy Model Accuracy: 0.507559
+Elapsed Time: 24
+8 1 0.01 0.8 8
+Number of symbols codified in copy: 22623272
+Number of symbols codified outside copy: 44953
+Number of symbols codified inside  copy: 22623272
+G: 2.8544
+T: 2.74926
+A: 2.74757
+C: 2.91061
+Accumulation of information: 6.35017e+07
+Average amount of information per symbol: 2.80135
+Nº copies: 5709555
+Average length of copies: 3.96235
+Average Copy Model Accuracy: 0.580915
+Elapsed Time: 37
+10 0 1 0.5 1
+Number of symbols codified in copy: 22191939
+Number of symbols codified outside copy: 476286
+Number of symbols codified inside  copy: 22191939
+G: 2.13026
+T: 1.92941
+A: 1.9259
+C: 2.13468
+Accumulation of information: 4.54083e+07
+Average amount of information per symbol: 2.00317
+Nº copies: 4370302
+Average length of copies: 5.0779
+Average Copy Model Accuracy: 0.35993
+Elapsed Time: 13
+10 0 1 0.5 4
+Number of symbols codified in copy: 22247227
+Number of symbols codified outside copy: 420998
+Number of symbols codified inside  copy: 22247227
+G: 2.04926
+T: 1.85954
+A: 1.85663
+C: 2.0399
+Accumulation of information: 4.37594e+07
+Average amount of information per symbol: 1.93043
+Nº copies: 2112850
+Average length of copies: 10.5295
+Average Copy Model Accuracy: 0.394051
+Elapsed Time: 13
+10 0 1 0.5 8
+Number of symbols codified in copy: 22258836
+Number of symbols codified outside copy: 409389
+Number of symbols codified inside  copy: 22258836
+G: 2.02452
+T: 1.84127
+A: 1.83424
+C: 2.02064
+Accumulation of information: 4.3296e+07
+Average amount of information per symbol: 1.90998
+Nº copies: 1612093
+Average length of copies: 13.8074
+Average Copy Model Accuracy: 0.407408
+Elapsed Time: 14
+10 0 1 0.7 1
+Number of symbols codified in copy: 21751576
+Number of symbols codified outside copy: 916649
+Number of symbols codified inside  copy: 21751576
+G: 1.98315
+T: 1.97306
+A: 1.96368
+C: 2.02441
+Accumulation of information: 4.43347e+07
+Average amount of information per symbol: 1.95581
+Nº copies: 21751576
+Average length of copies: 1
+Average Copy Model Accuracy: 0.466042
+Elapsed Time: 26
+10 0 1 0.7 4
+Number of symbols codified in copy: 21751576
+Number of symbols codified outside copy: 916649
+Number of symbols codified inside  copy: 21751576
+G: 1.40812
+T: 1.48356
+A: 1.47966
+C: 1.35658
+Accumulation of information: 3.27741e+07
+Average amount of information per symbol: 1.44582
+Nº copies: 21751576
+Average length of copies: 1
+Average Copy Model Accuracy: 0.577819
+Elapsed Time: 49
+10 0 1 0.7 8
+Number of symbols codified in copy: 21751576
+Number of symbols codified outside copy: 916649
+Number of symbols codified inside  copy: 21751576
+G: 1.23386
+T: 1.30209
+A: 1.29535
+C: 1.18978
+Accumulation of information: 2.87772e+07
+Average amount of information per symbol: 1.26949
+Nº copies: 21751576
+Average length of copies: 1
+Average Copy Model Accuracy: 0.616464
+Elapsed Time: 82
+10 0 1 0.8 1
+Number of symbols codified in copy: 21751576
+Number of symbols codified outside copy: 916649
+Number of symbols codified inside  copy: 21751576
+G: 1.98315
+T: 1.97306
+A: 1.96368
+C: 2.02441
+Accumulation of information: 4.43347e+07
+Average amount of information per symbol: 1.95581
+Nº copies: 21751576
+Average length of copies: 1
+Average Copy Model Accuracy: 0.466042
+Elapsed Time: 24
+10 0 1 0.8 4
+Number of symbols codified in copy: 21751576
+Number of symbols codified outside copy: 916649
+Number of symbols codified inside  copy: 21751576
+G: 1.40812
+T: 1.48356
+A: 1.47966
+C: 1.35658
+Accumulation of information: 3.27741e+07
+Average amount of information per symbol: 1.44582
+Nº copies: 21751576
+Average length of copies: 1
+Average Copy Model Accuracy: 0.577819
+Elapsed Time: 50
+10 0 1 0.8 8
+Number of symbols codified in copy: 21751576
+Number of symbols codified outside copy: 916649
+Number of symbols codified inside  copy: 21751576
+G: 1.23386
+T: 1.30209
+A: 1.29535
+C: 1.18978
+Accumulation of information: 2.87772e+07
+Average amount of information per symbol: 1.26949
+Nº copies: 21751576
+Average length of copies: 1
+Average Copy Model Accuracy: 0.616464
+Elapsed Time: 84
+10 0 0.1 0.5 1
+Number of symbols codified in copy: 22191939
+Number of symbols codified outside copy: 476286
+Number of symbols codified inside  copy: 22191939
+G: 2.2712
+T: 2.04521
+A: 2.03968
+C: 2.27511
+Accumulation of information: 4.81733e+07
+Average amount of information per symbol: 2.12515
+Nº copies: 4370302
+Average length of copies: 5.0779
+Average Copy Model Accuracy: 0.172923
+Elapsed Time: 13
+10 0 0.1 0.5 4
+Number of symbols codified in copy: 22247227
+Number of symbols codified outside copy: 420998
+Number of symbols codified inside  copy: 22247227
+G: 2.19395
+T: 1.9797
+A: 1.97544
+C: 2.1858
+Accumulation of information: 4.66841e+07
+Average amount of information per symbol: 2.05945
+Nº copies: 2112850
+Average length of copies: 10.5295
+Average Copy Model Accuracy: 0.282623
+Elapsed Time: 14
+10 0 0.1 0.5 8
+Number of symbols codified in copy: 22258836
+Number of symbols codified outside copy: 409389
+Number of symbols codified inside  copy: 22258836
+G: 2.15288
+T: 1.94873
+A: 1.94061
+C: 2.15071
+Accumulation of information: 4.59157e+07
+Average amount of information per symbol: 2.02555
+Nº copies: 1612093
+Average length of copies: 13.8074
+Average Copy Model Accuracy: 0.320776
+Elapsed Time: 15
+10 0 0.1 0.7 1
+Number of symbols codified in copy: 21931046
+Number of symbols codified outside copy: 737179
+Number of symbols codified inside  copy: 21931046
+G: 2.24555
+T: 2.03491
+A: 2.02751
+C: 2.26798
+Accumulation of information: 4.78926e+07
+Average amount of information per symbol: 2.11276
+Nº copies: 8701385
+Average length of copies: 2.52041
+Average Copy Model Accuracy: 0.222182
+Elapsed Time: 16
+10 0 0.1 0.7 4
+Number of symbols codified in copy: 21961040
+Number of symbols codified outside copy: 707185
+Number of symbols codified inside  copy: 21961040
+G: 2.14911
+T: 1.94369
+A: 1.93663
+C: 2.13485
+Accumulation of information: 4.59863e+07
+Average amount of information per symbol: 2.02867
+Nº copies: 5439756
+Average length of copies: 4.03714
+Average Copy Model Accuracy: 0.391538
+Elapsed Time: 20
+10 0 0.1 0.7 8
+Number of symbols codified in copy: 21970928
+Number of symbols codified outside copy: 697297
+Number of symbols codified inside  copy: 21970928
+G: 2.08193
+T: 1.87686
+A: 1.86746
+C: 2.07466
+Accumulation of information: 4.45171e+07
+Average amount of information per symbol: 1.96385
+Nº copies: 4446031
+Average length of copies: 4.94169
+Average Copy Model Accuracy: 0.454862
+Elapsed Time: 24
+10 0 0.1 0.8 1
+Number of symbols codified in copy: 21845451
+Number of symbols codified outside copy: 822774
+Number of symbols codified inside  copy: 21845451
+G: 2.22381
+T: 2.04014
+A: 2.03121
+C: 2.2575
+Accumulation of information: 4.77801e+07
+Average amount of information per symbol: 2.1078
+Nº copies: 10131626
+Average length of copies: 2.15616
+Average Copy Model Accuracy: 0.229798
+Elapsed Time: 16
+10 0 0.1 0.8 4
+Number of symbols codified in copy: 21864540
+Number of symbols codified outside copy: 803685
+Number of symbols codified inside  copy: 21864540
+G: 2.10313
+T: 1.92795
+A: 1.92017
+C: 2.09276
+Accumulation of information: 4.54465e+07
+Average amount of information per symbol: 2.00485
+Nº copies: 6648662
+Average length of copies: 3.28856
+Average Copy Model Accuracy: 0.406555
+Elapsed Time: 23
+10 0 0.1 0.8 8
+Number of symbols codified in copy: 21872248
+Number of symbols codified outside copy: 795977
+Number of symbols codified inside  copy: 21872248
+G: 2.01516
+T: 1.84142
+A: 1.83008
+C: 2.01141
+Accumulation of information: 4.3542e+07
+Average amount of information per symbol: 1.92084
+Nº copies: 5569970
+Average length of copies: 3.92682
+Average Copy Model Accuracy: 0.477029
+Elapsed Time: 28
+10 0 0.01 0.5 1
+Number of symbols codified in copy: 22191939
+Number of symbols codified outside copy: 476286
+Number of symbols codified inside  copy: 22191939
+G: 2.47521
+T: 2.21669
+A: 2.20879
+C: 2.47461
+Accumulation of information: 5.21693e+07
+Average amount of information per symbol: 2.30143
+Nº copies: 4370302
+Average length of copies: 5.0779
+Average Copy Model Accuracy: 0.119328
+Elapsed Time: 13
+10 0 0.01 0.5 4
+Number of symbols codified in copy: 22247227
+Number of symbols codified outside copy: 420998
+Number of symbols codified inside  copy: 22247227
+G: 2.39972
+T: 2.15609
+A: 2.15008
+C: 2.39005
+Accumulation of information: 5.08521e+07
+Average amount of information per symbol: 2.24332
+Nº copies: 2112850
+Average length of copies: 10.5295
+Average Copy Model Accuracy: 0.252531
+Elapsed Time: 14
+10 0 0.01 0.5 8
+Number of symbols codified in copy: 22258836
+Number of symbols codified outside copy: 409389
+Number of symbols codified inside  copy: 22258836
+G: 2.33095
+T: 2.10523
+A: 2.09575
+C: 2.3292
+Accumulation of information: 4.96024e+07
+Average amount of information per symbol: 2.18819
+Nº copies: 1612093
+Average length of copies: 13.8074
+Average Copy Model Accuracy: 0.298033
+Elapsed Time: 15
+10 0 0.01 0.7 1
+Number of symbols codified in copy: 21931046
+Number of symbols codified outside copy: 737179
+Number of symbols codified inside  copy: 21931046
+G: 2.66406
+T: 2.38674
+A: 2.37358
+C: 2.68215
+Accumulation of information: 5.59306e+07
+Average amount of information per symbol: 2.46736
+Nº copies: 8701385
+Average length of copies: 2.52041
+Average Copy Model Accuracy: 0.171284
+Elapsed Time: 17
+10 0 0.01 0.7 4
+Number of symbols codified in copy: 21961040
+Number of symbols codified outside copy: 707185
+Number of symbols codified inside  copy: 21961040
+G: 2.68634
+T: 2.41039
+A: 2.39723
+C: 2.66884
+Accumulation of information: 5.68729e+07
+Average amount of information per symbol: 2.50893
+Nº copies: 5439756
+Average length of copies: 4.03714
+Average Copy Model Accuracy: 0.367422
+Elapsed Time: 21
+10 0 0.01 0.7 8
+Number of symbols codified in copy: 21970928
+Number of symbols codified outside copy: 697297
+Number of symbols codified inside  copy: 21970928
+G: 2.58711
+T: 2.32576
+A: 2.3104
+C: 2.57894
+Accumulation of information: 5.49736e+07
+Average amount of information per symbol: 2.42514
+Nº copies: 4446031
+Average length of copies: 4.94169
+Average Copy Model Accuracy: 0.439807
+Elapsed Time: 26
+10 0 0.01 0.8 1
+Number of symbols codified in copy: 21845451
+Number of symbols codified outside copy: 822774
+Number of symbols codified inside  copy: 21845451
+G: 2.7216
+T: 2.45229
+A: 2.44059
+C: 2.75319
+Accumulation of information: 5.72857e+07
+Average amount of information per symbol: 2.52714
+Nº copies: 10131626
+Average length of copies: 2.15616
+Average Copy Model Accuracy: 0.179524
+Elapsed Time: 17
+10 0 0.01 0.8 4
+Number of symbols codified in copy: 21864540
+Number of symbols codified outside copy: 803685
+Number of symbols codified inside  copy: 21864540
+G: 2.76285
+T: 2.49993
+A: 2.4852
+C: 2.75069
+Accumulation of information: 5.88141e+07
+Average amount of information per symbol: 2.59456
+Nº copies: 6648662
+Average length of copies: 3.28856
+Average Copy Model Accuracy: 0.383379
+Elapsed Time: 23
+10 0 0.01 0.8 8
+Number of symbols codified in copy: 21872248
+Number of symbols codified outside copy: 795977
+Number of symbols codified inside  copy: 21872248
+G: 2.65076
+T: 2.40744
+A: 2.38863
+C: 2.6485
+Accumulation of information: 5.67171e+07
+Average amount of information per symbol: 2.50205
+Nº copies: 5569970
+Average length of copies: 3.92682
+Average Copy Model Accuracy: 0.463381
+Elapsed Time: 30
+10 1 1 0.5 1
+Number of symbols codified in copy: 22303374
+Number of symbols codified outside copy: 364851
+Number of symbols codified inside  copy: 22303374
+G: 2.10054
+T: 1.90643
+A: 1.90479
+C: 2.10727
+Accumulation of information: 4.49524e+07
+Average amount of information per symbol: 1.98306
+Nº copies: 2995615
+Average length of copies: 7.44534
+Average Copy Model Accuracy: 0.332757
+Elapsed Time: 12
+10 1 1 0.5 4
+Number of symbols codified in copy: 22351143
+Number of symbols codified outside copy: 317082
+Number of symbols codified inside  copy: 22351143
+G: 2.0302
+T: 1.85547
+A: 1.85034
+C: 2.02535
+Accumulation of information: 4.35585e+07
+Average amount of information per symbol: 1.92156
+Nº copies: 1681496
+Average length of copies: 13.2924
+Average Copy Model Accuracy: 0.400294
+Elapsed Time: 14
+10 1 1 0.5 8
+Number of symbols codified in copy: 22359791
+Number of symbols codified outside copy: 308434
+Number of symbols codified inside  copy: 22359791
+G: 2.00847
+T: 1.83889
+A: 1.83072
+C: 2.00467
+Accumulation of information: 4.31184e+07
+Average amount of information per symbol: 1.90215
+Nº copies: 1319805
+Average length of copies: 16.9417
+Average Copy Model Accuracy: 0.415315
+Elapsed Time: 16
+10 1 1 0.7 1
+Number of symbols codified in copy: 22083626
+Number of symbols codified outside copy: 584599
+Number of symbols codified inside  copy: 22083626
+G: 1.9346
+T: 1.78659
+A: 1.78541
+C: 1.9474
+Accumulation of information: 4.19935e+07
+Average amount of information per symbol: 1.85253
+Nº copies: 6304547
+Average length of copies: 3.50281
+Average Copy Model Accuracy: 0.386537
+Elapsed Time: 15
+10 1 1 0.7 4
+Number of symbols codified in copy: 22101067
+Number of symbols codified outside copy: 567158
+Number of symbols codified inside  copy: 22101067
+G: 1.74945
+T: 1.65001
+A: 1.64747
+C: 1.74246
+Accumulation of information: 3.84267e+07
+Average amount of information per symbol: 1.69518
+Nº copies: 5053156
+Average length of copies: 4.37372
+Average Copy Model Accuracy: 0.496532
+Elapsed Time: 21
+10 1 1 0.7 8
+Number of symbols codified in copy: 22107280
+Number of symbols codified outside copy: 560945
+Number of symbols codified inside  copy: 22107280
+G: 1.70076
+T: 1.59014
+A: 1.58554
+C: 1.69436
+Accumulation of information: 3.71368e+07
+Average amount of information per symbol: 1.63828
+Nº copies: 4418296
+Average length of copies: 5.00358
+Average Copy Model Accuracy: 0.525593
+Elapsed Time: 27
+10 1 1 0.8 1
+Number of symbols codified in copy: 21979513
+Number of symbols codified outside copy: 688712
+Number of symbols codified inside  copy: 21979513
+G: 1.96071
+T: 1.92776
+A: 1.92194
+C: 1.98676
+Accumulation of information: 4.3991e+07
+Average amount of information per symbol: 1.94065
+Nº copies: 10989757
+Average length of copies: 2
+Average Copy Model Accuracy: 0.445377
+Elapsed Time: 19
+10 1 1 0.8 4
+Number of symbols codified in copy: 21979513
+Number of symbols codified outside copy: 688712
+Number of symbols codified inside  copy: 21979513
+G: 1.53455
+T: 1.62271
+A: 1.61949
+C: 1.53004
+Accumulation of information: 3.61188e+07
+Average amount of information per symbol: 1.59337
+Nº copies: 10989757
+Average length of copies: 2
+Average Copy Model Accuracy: 0.576723
+Elapsed Time: 35
+10 1 1 0.8 8
+Number of symbols codified in copy: 21979513
+Number of symbols codified outside copy: 688712
+Number of symbols codified inside  copy: 21979513
+G: 1.3605
+T: 1.45062
+A: 1.44531
+C: 1.35525
+Accumulation of information: 3.23247e+07
+Average amount of information per symbol: 1.42599
+Nº copies: 10989757
+Average length of copies: 2
+Average Copy Model Accuracy: 0.620291
+Elapsed Time: 50
+10 1 0.1 0.5 1
+Number of symbols codified in copy: 22303374
+Number of symbols codified outside copy: 364851
+Number of symbols codified inside  copy: 22303374
+G: 2.19823
+T: 2.0214
+A: 2.01758
+C: 2.20807
+Accumulation of information: 4.73535e+07
+Average amount of information per symbol: 2.08898
+Nº copies: 2995615
+Average length of copies: 7.44534
+Average Copy Model Accuracy: 0.208898
+Elapsed Time: 12
+10 1 0.1 0.5 4
+Number of symbols codified in copy: 22351143
+Number of symbols codified outside copy: 317082
+Number of symbols codified inside  copy: 22351143
+G: 2.15791
+T: 1.98759
+A: 1.98187
+C: 2.15931
+Accumulation of information: 4.6526e+07
+Average amount of information per symbol: 2.05248
+Nº copies: 1681496
+Average length of copies: 13.2924
+Average Copy Model Accuracy: 0.341391
+Elapsed Time: 14
+10 1 0.1 0.5 8
+Number of symbols codified in copy: 22359791
+Number of symbols codified outside copy: 308434
+Number of symbols codified inside  copy: 22359791
+G: 2.11931
+T: 1.94998
+A: 1.9415
+C: 2.12264
+Accumulation of information: 4.5665e+07
+Average amount of information per symbol: 2.01449
+Nº copies: 1319805
+Average length of copies: 16.9417
+Average Copy Model Accuracy: 0.369758
+Elapsed Time: 15
+10 1 0.1 0.7 1
+Number of symbols codified in copy: 22095915
+Number of symbols codified outside copy: 572310
+Number of symbols codified inside  copy: 22095915
+G: 2.11975
+T: 2.00525
+A: 2.0005
+C: 2.14155
+Accumulation of information: 4.65493e+07
+Average amount of information per symbol: 2.0535
+Nº copies: 6085145
+Average length of copies: 3.63112
+Average Copy Model Accuracy: 0.284906
+Elapsed Time: 14
+10 1 0.1 0.7 4
+Number of symbols codified in copy: 22116204
+Number of symbols codified outside copy: 552021
+Number of symbols codified inside  copy: 22116204
+G: 2.10061
+T: 2.00645
+A: 2.00211
+C: 2.1114
+Accumulation of information: 4.64808e+07
+Average amount of information per symbol: 2.05048
+Nº copies: 4753983
+Average length of copies: 4.65214
+Average Copy Model Accuracy: 0.472863
+Elapsed Time: 20
+10 1 0.1 0.7 8
+Number of symbols codified in copy: 22122874
+Number of symbols codified outside copy: 545351
+Number of symbols codified inside  copy: 22122874
+G: 2.04946
+T: 1.92077
+A: 1.9141
+C: 2.06019
+Accumulation of information: 4.48604e+07
+Average amount of information per symbol: 1.979
+Nº copies: 4089718
+Average length of copies: 5.40939
+Average Copy Model Accuracy: 0.515154
+Elapsed Time: 26
+10 1 0.1 0.8 1
+Number of symbols codified in copy: 22035196
+Number of symbols codified outside copy: 633029
+Number of symbols codified inside  copy: 22035196
+G: 2.08689
+T: 2.00518
+A: 1.9993
+C: 2.11469
+Accumulation of information: 4.62795e+07
+Average amount of information per symbol: 2.0416
+Nº copies: 7023281
+Average length of copies: 3.13745
+Average Copy Model Accuracy: 0.293917
+Elapsed Time: 15
+10 1 0.1 0.8 4
+Number of symbols codified in copy: 22046159
+Number of symbols codified outside copy: 622066
+Number of symbols codified inside  copy: 22046159
+G: 2.05013
+T: 2.00196
+A: 1.99773
+C: 2.06679
+Accumulation of information: 4.60488e+07
+Average amount of information per symbol: 2.03142
+Nº copies: 5769598
+Average length of copies: 3.82109
+Average Copy Model Accuracy: 0.487685
+Elapsed Time: 22
+10 1 0.1 0.8 8
+Number of symbols codified in copy: 22050837
+Number of symbols codified outside copy: 617388
+Number of symbols codified inside  copy: 22050837
+G: 1.97839
+T: 1.8959
+A: 1.88825
+C: 1.99472
+Accumulation of information: 4.39918e+07
+Average amount of information per symbol: 1.94068
+Nº copies: 5113260
+Average length of copies: 4.31248
+Average Copy Model Accuracy: 0.537055
+Elapsed Time: 29
+10 1 0.01 0.5 1
+Number of symbols codified in copy: 22303374
+Number of symbols codified outside copy: 364851
+Number of symbols codified inside  copy: 22303374
+G: 2.38143
+T: 2.22953
+A: 2.22336
+C: 2.3948
+Accumulation of information: 5.17207e+07
+Average amount of information per symbol: 2.28164
+Nº copies: 2995615
+Average length of copies: 7.44534
+Average Copy Model Accuracy: 0.185081
+Elapsed Time: 12
+10 1 0.01 0.5 4
+Number of symbols codified in copy: 22351143
+Number of symbols codified outside copy: 317082
+Number of symbols codified inside  copy: 22351143
+G: 2.34477
+T: 2.18755
+A: 2.1812
+C: 2.35342
+Accumulation of information: 5.09071e+07
+Average amount of information per symbol: 2.24575
+Nº copies: 1681496
+Average length of copies: 13.2924
+Average Copy Model Accuracy: 0.330806
+Elapsed Time: 13
+10 1 0.01 0.5 8
+Number of symbols codified in copy: 22359791
+Number of symbols codified outside copy: 308434
+Number of symbols codified inside  copy: 22359791
+G: 2.27548
+T: 2.11421
+A: 2.1055
+C: 2.28685
+Accumulation of information: 4.93139e+07
+Average amount of information per symbol: 2.17546
+Nº copies: 1319805
+Average length of copies: 16.9417
+Average Copy Model Accuracy: 0.361739
+Elapsed Time: 16
+10 1 0.01 0.7 1
+Number of symbols codified in copy: 22095915
+Number of symbols codified outside copy: 572310
+Number of symbols codified inside  copy: 22095915
+G: 2.5048
+T: 2.435
+A: 2.42681
+C: 2.53545
+Accumulation of information: 5.54834e+07
+Average amount of information per symbol: 2.44763
+Nº copies: 6085145
+Average length of copies: 3.63112
+Average Copy Model Accuracy: 0.265062
+Elapsed Time: 15
+10 1 0.01 0.7 4
+Number of symbols codified in copy: 22116204
+Number of symbols codified outside copy: 552021
+Number of symbols codified inside  copy: 22116204
+G: 2.63915
+T: 2.57704
+A: 2.56957
+C: 2.66748
+Accumulation of information: 5.89493e+07
+Average amount of information per symbol: 2.60053
+Nº copies: 4753983
+Average length of copies: 4.65214
+Average Copy Model Accuracy: 0.468793
+Elapsed Time: 19
+10 1 0.01 0.7 8
+Number of symbols codified in copy: 22122874
+Number of symbols codified outside copy: 545351
+Number of symbols codified inside  copy: 22122874
+G: 2.55311
+T: 2.43659
+A: 2.42578
+C: 2.57989
+Accumulation of information: 5.63169e+07
+Average amount of information per symbol: 2.4844
+Nº copies: 4089718
+Average length of copies: 5.40939
+Average Copy Model Accuracy: 0.514125
+Elapsed Time: 25
+10 1 0.01 0.8 1
+Number of symbols codified in copy: 22035196
+Number of symbols codified outside copy: 633029
+Number of symbols codified inside  copy: 22035196
+G: 2.54356
+T: 2.50168
+A: 2.49283
+C: 2.58409
+Accumulation of information: 5.6715e+07
+Average amount of information per symbol: 2.50196
+Nº copies: 7023281
+Average length of copies: 3.13745
+Average Copy Model Accuracy: 0.274582
+Elapsed Time: 15
+10 1 0.01 0.8 4
+Number of symbols codified in copy: 22046159
+Number of symbols codified outside copy: 622066
+Number of symbols codified inside  copy: 22046159
+G: 2.70986
+T: 2.69196
+A: 2.68451
+C: 2.74943
+Accumulation of information: 6.11991e+07
+Average amount of information per symbol: 2.69977
+Nº copies: 5769598
+Average length of copies: 3.82109
+Average Copy Model Accuracy: 0.484332
+Elapsed Time: 22
+10 1 0.01 0.8 8
+Number of symbols codified in copy: 22050837
+Number of symbols codified outside copy: 617388
+Number of symbols codified inside  copy: 22050837
+G: 2.61393
+T: 2.54166
+A: 2.52842
+C: 2.65229
+Accumulation of information: 5.83421e+07
+Average amount of information per symbol: 2.57374
+Nº copies: 5113260
+Average length of copies: 4.31248
+Average Copy Model Accuracy: 0.537119
+Elapsed Time: 28
+12 0 1 0.5 1
+Number of symbols codified in copy: 19309387
+Number of symbols codified outside copy: 3358838
+Number of symbols codified inside  copy: 19309387
+G: 2.05263
+T: 1.88458
+A: 1.88319
+C: 2.05134
+Accumulation of information: 4.41471e+07
+Average amount of information per symbol: 1.94753
+Nº copies: 2556876
+Average length of copies: 7.55195
+Average Copy Model Accuracy: 0.361608
+Elapsed Time: 12
+12 0 1 0.5 4
+Number of symbols codified in copy: 19565862
+Number of symbols codified outside copy: 3102363
+Number of symbols codified inside  copy: 19565862
+G: 2.02498
+T: 1.863
+A: 1.85744
+C: 2.01981
+Accumulation of information: 4.35978e+07
+Average amount of information per symbol: 1.9233
+Nº copies: 1877699
+Average length of copies: 10.4201
+Average Copy Model Accuracy: 0.373815
+Elapsed Time: 14
+12 0 1 0.5 8
+Number of symbols codified in copy: 19608213
+Number of symbols codified outside copy: 3060012
+Number of symbols codified inside  copy: 19608213
+G: 2.01979
+T: 1.86231
+A: 1.85269
+C: 2.01553
+Accumulation of information: 4.35208e+07
+Average amount of information per symbol: 1.9199
+Nº copies: 1803825
+Average length of copies: 10.8704
+Average Copy Model Accuracy: 0.374763
+Elapsed Time: 14
+12 0 1 0.7 1
+Number of symbols codified in copy: 15862491
+Number of symbols codified outside copy: 6805734
+Number of symbols codified inside  copy: 15862491
+G: 1.84896
+T: 1.86749
+A: 1.86032
+C: 1.86856
+Accumulation of information: 4.18866e+07
+Average amount of information per symbol: 1.84781
+Nº copies: 15862491
+Average length of copies: 1
+Average Copy Model Accuracy: 0.502096
+Elapsed Time: 23
+12 0 1 0.7 4
+Number of symbols codified in copy: 15862491
+Number of symbols codified outside copy: 6805734
+Number of symbols codified inside  copy: 15862491
+G: 1.63538
+T: 1.68077
+A: 1.67673
+C: 1.63616
+Accumulation of information: 3.76067e+07
+Average amount of information per symbol: 1.659
+Nº copies: 15862491
+Average length of copies: 1
+Average Copy Model Accuracy: 0.558841
+Elapsed Time: 35
+12 0 1 0.7 8
+Number of symbols codified in copy: 15862491
+Number of symbols codified outside copy: 6805734
+Number of symbols codified inside  copy: 15862491
+G: 1.60997
+T: 1.65285
+A: 1.64905
+C: 1.60983
+Accumulation of information: 3.70271e+07
+Average amount of information per symbol: 1.63344
+Nº copies: 15862491
+Average length of copies: 1
+Average Copy Model Accuracy: 0.566525
+Elapsed Time: 44
+12 0 1 0.8 1
+Number of symbols codified in copy: 15862491
+Number of symbols codified outside copy: 6805734
+Number of symbols codified inside  copy: 15862491
+G: 1.84896
+T: 1.86749
+A: 1.86032
+C: 1.86856
+Accumulation of information: 4.18866e+07
+Average amount of information per symbol: 1.84781
+Nº copies: 15862491
+Average length of copies: 1
+Average Copy Model Accuracy: 0.502096
+Elapsed Time: 22
+12 0 1 0.8 4
+Number of symbols codified in copy: 15862491
+Number of symbols codified outside copy: 6805734
+Number of symbols codified inside  copy: 15862491
+G: 1.63538
+T: 1.68077
+A: 1.67673
+C: 1.63616
+Accumulation of information: 3.76067e+07
+Average amount of information per symbol: 1.659
+Nº copies: 15862491
+Average length of copies: 1
+Average Copy Model Accuracy: 0.558841
+Elapsed Time: 34
+12 0 1 0.8 8
+Number of symbols codified in copy: 15862491
+Number of symbols codified outside copy: 6805734
+Number of symbols codified inside  copy: 15862491
+G: 1.60997
+T: 1.65285
+A: 1.64905
+C: 1.60983
+Accumulation of information: 3.70271e+07
+Average amount of information per symbol: 1.63344
+Nº copies: 15862491
+Average length of copies: 1
+Average Copy Model Accuracy: 0.566525
+Elapsed Time: 45
+12 0 0.1 0.5 1
+Number of symbols codified in copy: 19309387
+Number of symbols codified outside copy: 3358838
+Number of symbols codified inside  copy: 19309387
+G: 2.13589
+T: 1.95478
+A: 1.95173
+C: 2.13485
+Accumulation of information: 4.58273e+07
+Average amount of information per symbol: 2.02165
+Nº copies: 2556876
+Average length of copies: 7.55195
+Average Copy Model Accuracy: 0.177087
+Elapsed Time: 13
+12 0 0.1 0.5 4
+Number of symbols codified in copy: 19565862
+Number of symbols codified outside copy: 3102363
+Number of symbols codified inside  copy: 19565862
+G: 2.11006
+T: 1.93553
+A: 1.92855
+C: 2.10536
+Accumulation of information: 4.53353e+07
+Average amount of information per symbol: 1.99995
+Nº copies: 1877699
+Average length of copies: 10.4201
+Average Copy Model Accuracy: 0.216236
+Elapsed Time: 14
+12 0 0.1 0.5 8
+Number of symbols codified in copy: 19608213
+Number of symbols codified outside copy: 3060012
+Number of symbols codified inside  copy: 19608213
+G: 2.1029
+T: 1.93341
+A: 1.92215
+C: 2.09907
+Accumulation of information: 4.52201e+07
+Average amount of information per symbol: 1.99487
+Nº copies: 1803825
+Average length of copies: 10.8704
+Average Copy Model Accuracy: 0.218905
+Elapsed Time: 14
+12 0 0.1 0.7 1
+Number of symbols codified in copy: 17497266
+Number of symbols codified outside copy: 5170959
+Number of symbols codified inside  copy: 17497266
+G: 2.02117
+T: 1.86742
+A: 1.86248
+C: 2.02837
+Accumulation of information: 4.36942e+07
+Average amount of information per symbol: 1.92755
+Nº copies: 4885317
+Average length of copies: 3.5816
+Average Copy Model Accuracy: 0.230766
+Elapsed Time: 15
+12 0 0.1 0.7 4
+Number of symbols codified in copy: 17670379
+Number of symbols codified outside copy: 4997846
+Number of symbols codified inside  copy: 17670379
+G: 1.97882
+T: 1.83185
+A: 1.82611
+C: 1.97823
+Accumulation of information: 4.28945e+07
+Average amount of information per symbol: 1.89227
+Nº copies: 3900229
+Average length of copies: 4.5306
+Average Copy Model Accuracy: 0.297403
+Elapsed Time: 16
+12 0 0.1 0.7 8
+Number of symbols codified in copy: 17709309
+Number of symbols codified outside copy: 4958916
+Number of symbols codified inside  copy: 17709309
+G: 1.96852
+T: 1.82054
+A: 1.81369
+C: 1.96785
+Accumulation of information: 4.26477e+07
+Average amount of information per symbol: 1.88139
+Nº copies: 3762039
+Average length of copies: 4.70737
+Average Copy Model Accuracy: 0.302974
+Elapsed Time: 17
+12 0 0.1 0.8 1
+Number of symbols codified in copy: 16784249
+Number of symbols codified outside copy: 5883976
+Number of symbols codified inside  copy: 16784249
+G: 1.96922
+T: 1.84583
+A: 1.83705
+C: 1.98391
+Accumulation of information: 4.29536e+07
+Average amount of information per symbol: 1.89488
+Nº copies: 5807131
+Average length of copies: 2.89028
+Average Copy Model Accuracy: 0.242513
+Elapsed Time: 15
+12 0 0.1 0.8 4
+Number of symbols codified in copy: 16907568
+Number of symbols codified outside copy: 5760657
+Number of symbols codified inside  copy: 16907568
+G: 1.91247
+T: 1.79573
+A: 1.78855
+C: 1.91642
+Accumulation of information: 4.18716e+07
+Average amount of information per symbol: 1.84715
+Nº copies: 4708400
+Average length of copies: 3.59094
+Average Copy Model Accuracy: 0.31325
+Elapsed Time: 18
+12 0 0.1 0.8 8
+Number of symbols codified in copy: 16942874
+Number of symbols codified outside copy: 5725351
+Number of symbols codified inside  copy: 16942874
+G: 1.897
+T: 1.78033
+A: 1.77272
+C: 1.90069
+Accumulation of information: 4.1532e+07
+Average amount of information per symbol: 1.83217
+Nº copies: 4553036
+Average length of copies: 3.72123
+Average Copy Model Accuracy: 0.319873
+Elapsed Time: 18
+12 0 0.01 0.5 1
+Number of symbols codified in copy: 19309387
+Number of symbols codified outside copy: 3358838
+Number of symbols codified inside  copy: 19309387
+G: 2.25649
+T: 2.05981
+A: 2.0544
+C: 2.25424
+Accumulation of information: 4.82423e+07
+Average amount of information per symbol: 2.12819
+Nº copies: 2556876
+Average length of copies: 7.55195
+Average Copy Model Accuracy: 0.124209
+Elapsed Time: 13
+12 0 0.01 0.5 4
+Number of symbols codified in copy: 19565862
+Number of symbols codified outside copy: 3102363
+Number of symbols codified inside  copy: 19565862
+G: 2.23121
+T: 2.04344
+A: 2.03444
+C: 2.22529
+Accumulation of information: 4.78182e+07
+Average amount of information per symbol: 2.10948
+Nº copies: 1877699
+Average length of copies: 10.4201
+Average Copy Model Accuracy: 0.171741
+Elapsed Time: 14
+12 0 0.01 0.5 8
+Number of symbols codified in copy: 19608213
+Number of symbols codified outside copy: 3060012
+Number of symbols codified inside  copy: 19608213
+G: 2.22056
+T: 2.039
+A: 2.02537
+C: 2.21584
+Accumulation of information: 4.76442e+07
+Average amount of information per symbol: 2.10181
+Nº copies: 1803825
+Average length of copies: 10.8704
+Average Copy Model Accuracy: 0.174917
+Elapsed Time: 14
+12 0 0.01 0.7 1
+Number of symbols codified in copy: 17497266
+Number of symbols codified outside copy: 5170959
+Number of symbols codified inside  copy: 17497266
+G: 2.26304
+T: 2.0774
+A: 2.06745
+C: 2.26842
+Accumulation of information: 4.84272e+07
+Average amount of information per symbol: 2.13635
+Nº copies: 4885317
+Average length of copies: 3.5816
+Average Copy Model Accuracy: 0.180977
+Elapsed Time: 15
+12 0 0.01 0.7 4
+Number of symbols codified in copy: 17670379
+Number of symbols codified outside copy: 4997846
+Number of symbols codified inside  copy: 17670379
+G: 2.24754
+T: 2.07228
+A: 2.06224
+C: 2.24449
+Accumulation of information: 4.83268e+07
+Average amount of information per symbol: 2.13192
+Nº copies: 3900229
+Average length of copies: 4.5306
+Average Copy Model Accuracy: 0.25813
+Elapsed Time: 17
+12 0 0.01 0.7 8
+Number of symbols codified in copy: 17709309
+Number of symbols codified outside copy: 4958916
+Number of symbols codified inside  copy: 17709309
+G: 2.23147
+T: 2.0581
+A: 2.04678
+C: 2.22885
+Accumulation of information: 4.80011e+07
+Average amount of information per symbol: 2.11755
+Nº copies: 3762039
+Average length of copies: 4.70737
+Average Copy Model Accuracy: 0.264483
+Elapsed Time: 17
+12 0 0.01 0.8 1
+Number of symbols codified in copy: 16784249
+Number of symbols codified outside copy: 5883976
+Number of symbols codified inside  copy: 16784249
+G: 2.26699
+T: 2.10198
+A: 2.08664
+C: 2.28187
+Accumulation of information: 4.87372e+07
+Average amount of information per symbol: 2.15002
+Nº copies: 5807131
+Average length of copies: 2.89028
+Average Copy Model Accuracy: 0.193741
+Elapsed Time: 16
+12 0 0.01 0.8 4
+Number of symbols codified in copy: 16907568
+Number of symbols codified outside copy: 5760657
+Number of symbols codified inside  copy: 16907568
+G: 2.24729
+T: 2.09163
+A: 2.07863
+C: 2.25017
+Accumulation of information: 4.85713e+07
+Average amount of information per symbol: 2.14271
+Nº copies: 4708400
+Average length of copies: 3.59094
+Average Copy Model Accuracy: 0.275246
+Elapsed Time: 18
+12 0 0.01 0.8 8
+Number of symbols codified in copy: 16942874
+Number of symbols codified outside copy: 5725351
+Number of symbols codified inside  copy: 16942874
+G: 2.22579
+T: 2.07403
+A: 2.06045
+C: 2.22854
+Accumulation of information: 4.81574e+07
+Average amount of information per symbol: 2.12444
+Nº copies: 4553036
+Average length of copies: 3.72123
+Average Copy Model Accuracy: 0.28274
+Elapsed Time: 19
+12 1 1 0.5 1
+Number of symbols codified in copy: 19921506
+Number of symbols codified outside copy: 2746719
+Number of symbols codified inside  copy: 19921506
+G: 2.04163
+T: 1.87441
+A: 1.87218
+C: 2.04131
+Accumulation of information: 4.39671e+07
+Average amount of information per symbol: 1.93959
+Nº copies: 1904252
+Average length of copies: 10.4616
+Average Copy Model Accuracy: 0.335711
+Elapsed Time: 13
+12 1 1 0.5 4
+Number of symbols codified in copy: 20160111
+Number of symbols codified outside copy: 2508114
+Number of symbols codified inside  copy: 20160111
+G: 2.01533
+T: 1.858
+A: 1.84858
+C: 2.0114
+Accumulation of information: 4.34476e+07
+Average amount of information per symbol: 1.91668
+Nº copies: 1468715
+Average length of copies: 13.7264
+Average Copy Model Accuracy: 0.3619
+Elapsed Time: 14
+12 1 1 0.5 8
+Number of symbols codified in copy: 20192674
+Number of symbols codified outside copy: 2475551
+Number of symbols codified inside  copy: 20192674
+G: 2.01028
+T: 1.85528
+A: 1.84703
+C: 2.00627
+Accumulation of information: 4.3373e+07
+Average amount of information per symbol: 1.91338
+Nº copies: 1414836
+Average length of copies: 14.2721
+Average Copy Model Accuracy: 0.3631
+Elapsed Time: 14
+12 1 1 0.7 1
+Number of symbols codified in copy: 18220769
+Number of symbols codified outside copy: 4447456
+Number of symbols codified inside  copy: 18220769
+G: 1.84986
+T: 1.73006
+A: 1.72747
+C: 1.85474
+Accumulation of information: 4.04041e+07
+Average amount of information per symbol: 1.78241
+Nº copies: 3951107
+Average length of copies: 4.61156
+Average Copy Model Accuracy: 0.393819
+Elapsed Time: 14
+12 1 1 0.7 4
+Number of symbols codified in copy: 18343084
+Number of symbols codified outside copy: 4325141
+Number of symbols codified inside  copy: 18343084
+G: 1.78349
+T: 1.68125
+A: 1.67743
+C: 1.78394
+Accumulation of information: 3.91265e+07
+Average amount of information per symbol: 1.72605
+Nº copies: 3485482
+Average length of copies: 5.26271
+Average Copy Model Accuracy: 0.440887
+Elapsed Time: 16
+12 1 1 0.7 8
+Number of symbols codified in copy: 18375670
+Number of symbols codified outside copy: 4292555
+Number of symbols codified inside  copy: 18375670
+G: 1.77627
+T: 1.67198
+A: 1.66682
+C: 1.77571
+Accumulation of information: 3.89171e+07
+Average amount of information per symbol: 1.71681
+Nº copies: 3385432
+Average length of copies: 5.42787
+Average Copy Model Accuracy: 0.443986
+Elapsed Time: 16
+12 1 1 0.8 1
+Number of symbols codified in copy: 17128841
+Number of symbols codified outside copy: 5539384
+Number of symbols codified inside  copy: 17128841
+G: 1.82324
+T: 1.83699
+A: 1.82897
+C: 1.83652
+Accumulation of information: 4.14234e+07
+Average amount of information per symbol: 1.82738
+Nº copies: 8564421
+Average length of copies: 2
+Average Copy Model Accuracy: 0.493063
+Elapsed Time: 17
+12 1 1 0.8 4
+Number of symbols codified in copy: 17128841
+Number of symbols codified outside copy: 5539384
+Number of symbols codified inside  copy: 17128841
+G: 1.63832
+T: 1.70215
+A: 1.69478
+C: 1.64455
+Accumulation of information: 3.79066e+07
+Average amount of information per symbol: 1.67224
+Nº copies: 8564421
+Average length of copies: 2
+Average Copy Model Accuracy: 0.561338
+Elapsed Time: 25
+12 1 1 0.8 8
+Number of symbols codified in copy: 17128841
+Number of symbols codified outside copy: 5539384
+Number of symbols codified inside  copy: 17128841
+G: 1.60855
+T: 1.67686
+A: 1.66852
+C: 1.61439
+Accumulation of information: 3.72856e+07
+Average amount of information per symbol: 1.64484
+Nº copies: 8564421
+Average length of copies: 2
+Average Copy Model Accuracy: 0.57031
+Elapsed Time: 29
+12 1 0.1 0.5 1
+Number of symbols codified in copy: 19921506
+Number of symbols codified outside copy: 2746719
+Number of symbols codified inside  copy: 19921506
+G: 2.10491
+T: 1.95019
+A: 1.94633
+C: 2.10706
+Accumulation of information: 4.55586e+07
+Average amount of information per symbol: 2.0098
+Nº copies: 1904252
+Average length of copies: 10.4616
+Average Copy Model Accuracy: 0.214295
+Elapsed Time: 13
+12 1 0.1 0.5 4
+Number of symbols codified in copy: 20160111
+Number of symbols codified outside copy: 2508114
+Number of symbols codified inside  copy: 20160111
+G: 2.08854
+T: 1.94008
+A: 1.92939
+C: 2.08766
+Accumulation of information: 4.52268e+07
+Average amount of information per symbol: 1.99516
+Nº copies: 1468715
+Average length of copies: 13.7264
+Average Copy Model Accuracy: 0.265644
+Elapsed Time: 13
+12 1 0.1 0.5 8
+Number of symbols codified in copy: 20192674
+Number of symbols codified outside copy: 2475551
+Number of symbols codified inside  copy: 20192674
+G: 2.08161
+T: 1.93497
+A: 1.92549
+C: 2.08079
+Accumulation of information: 4.5105e+07
+Average amount of information per symbol: 1.98979
+Nº copies: 1414836
+Average length of copies: 14.2721
+Average Copy Model Accuracy: 0.267894
+Elapsed Time: 14
+12 1 0.1 0.7 1
+Number of symbols codified in copy: 18332377
+Number of symbols codified outside copy: 4335848
+Number of symbols codified inside  copy: 18332377
+G: 1.97221
+T: 1.87112
+A: 1.86595
+C: 1.98077
+Accumulation of information: 4.33837e+07
+Average amount of information per symbol: 1.91386
+Nº copies: 3799534
+Average length of copies: 4.8249
+Average Copy Model Accuracy: 0.295377
+Elapsed Time: 14
+12 1 0.1 0.7 4
+Number of symbols codified in copy: 18467084
+Number of symbols codified outside copy: 4201141
+Number of symbols codified inside  copy: 18467084
+G: 1.94966
+T: 1.8613
+A: 1.85587
+C: 1.9541
+Accumulation of information: 4.30735e+07
+Average amount of information per symbol: 1.90017
+Nº copies: 3323085
+Average length of copies: 5.55721
+Average Copy Model Accuracy: 0.375513
+Elapsed Time: 17
+12 1 0.1 0.7 8
+Number of symbols codified in copy: 18500278
+Number of symbols codified outside copy: 4167947
+Number of symbols codified inside  copy: 18500278
+G: 1.94005
+T: 1.84754
+A: 1.84116
+C: 1.94512
+Accumulation of information: 4.28028e+07
+Average amount of information per symbol: 1.88823
+Nº copies: 3221788
+Average length of copies: 5.74224
+Average Copy Model Accuracy: 0.379701
+Elapsed Time: 19
+12 1 0.1 0.8 1
+Number of symbols codified in copy: 17763619
+Number of symbols codified outside copy: 4904606
+Number of symbols codified inside  copy: 17763619
+G: 1.9144
+T: 1.85146
+A: 1.84385
+C: 1.92953
+Accumulation of information: 4.26506e+07
+Average amount of information per symbol: 1.88151
+Nº copies: 4500926
+Average length of copies: 3.94666
+Average Copy Model Accuracy: 0.308834
+Elapsed Time: 15
+12 1 0.1 0.8 4
+Number of symbols codified in copy: 17851920
+Number of symbols codified outside copy: 4816305
+Number of symbols codified inside  copy: 17851920
+G: 1.87812
+T: 1.83166
+A: 1.82467
+C: 1.88941
+Accumulation of information: 4.21008e+07
+Average amount of information per symbol: 1.85726
+Nº copies: 4002179
+Average length of copies: 4.46055
+Average Copy Model Accuracy: 0.39193
+Elapsed Time: 17
+12 1 0.1 0.8 8
+Number of symbols codified in copy: 17878962
+Number of symbols codified outside copy: 4789263
+Number of symbols codified inside  copy: 17878962
+G: 1.86499
+T: 1.81348
+A: 1.80652
+C: 1.87603
+Accumulation of information: 4.1739e+07
+Average amount of information per symbol: 1.8413
+Nº copies: 3895548
+Average length of copies: 4.58959
+Average Copy Model Accuracy: 0.397204
+Elapsed Time: 18
+12 1 0.01 0.5 1
+Number of symbols codified in copy: 19921506
+Number of symbols codified outside copy: 2746719
+Number of symbols codified inside  copy: 19921506
+G: 2.22129
+T: 2.0873
+A: 2.08157
+C: 2.226
+Accumulation of information: 4.84047e+07
+Average amount of information per symbol: 2.13536
+Nº copies: 1904252
+Average length of copies: 10.4616
+Average Copy Model Accuracy: 0.190958
+Elapsed Time: 13
+12 1 0.01 0.5 4
+Number of symbols codified in copy: 20160111
+Number of symbols codified outside copy: 2508114
+Number of symbols codified inside  copy: 20160111
+G: 2.20563
+T: 2.07536
+A: 2.06299
+C: 2.20829
+Accumulation of information: 4.80825e+07
+Average amount of information per symbol: 2.12114
+Nº copies: 1468715
+Average length of copies: 13.7264
+Average Copy Model Accuracy: 0.247439
+Elapsed Time: 14
+12 1 0.01 0.5 8
+Number of symbols codified in copy: 20192674
+Number of symbols codified outside copy: 2475551
+Number of symbols codified inside  copy: 20192674
+G: 2.19512
+T: 2.06581
+A: 2.05478
+C: 2.19805
+Accumulation of information: 4.78731e+07
+Average amount of information per symbol: 2.1119
+Nº copies: 1414836
+Average length of copies: 14.2721
+Average Copy Model Accuracy: 0.24989
+Elapsed Time: 14
+12 1 0.01 0.7 1
+Number of symbols codified in copy: 18332377
+Number of symbols codified outside copy: 4335848
+Number of symbols codified inside  copy: 18332377
+G: 2.21461
+T: 2.15291
+A: 2.14313
+C: 2.22898
+Accumulation of information: 4.91693e+07
+Average amount of information per symbol: 2.16908
+Nº copies: 3799534
+Average length of copies: 4.8249
+Average Copy Model Accuracy: 0.276268
+Elapsed Time: 14
+12 1 0.01 0.7 4
+Number of symbols codified in copy: 18467084
+Number of symbols codified outside copy: 4201141
+Number of symbols codified inside  copy: 18467084
+G: 2.22944
+T: 2.18209
+A: 2.17301
+C: 2.24159
+Accumulation of information: 4.97799e+07
+Average amount of information per symbol: 2.19602
+Nº copies: 3323085
+Average length of copies: 5.55721
+Average Copy Model Accuracy: 0.363127
+Elapsed Time: 16
+12 1 0.01 0.7 8
+Number of symbols codified in copy: 18500278
+Number of symbols codified outside copy: 4167947
+Number of symbols codified inside  copy: 18500278
+G: 2.21415
+T: 2.16005
+A: 2.1504
+C: 2.22721
+Accumulation of information: 4.93584e+07
+Average amount of information per symbol: 2.17743
+Nº copies: 3221788
+Average length of copies: 5.74224
+Average Copy Model Accuracy: 0.367606
+Elapsed Time: 18
+12 1 0.01 0.8 1
+Number of symbols codified in copy: 17763619
+Number of symbols codified outside copy: 4904606
+Number of symbols codified inside  copy: 17763619
+G: 2.21488
+T: 2.18914
+A: 2.17611
+C: 2.23972
+Accumulation of information: 4.964e+07
+Average amount of information per symbol: 2.18985
+Nº copies: 4500926
+Average length of copies: 3.94666
+Average Copy Model Accuracy: 0.290484
+Elapsed Time: 15
+12 1 0.01 0.8 4
+Number of symbols codified in copy: 17851920
+Number of symbols codified outside copy: 4816305
+Number of symbols codified inside  copy: 17851920
+G: 2.22588
+T: 2.22026
+A: 2.2092
+C: 2.24782
+Accumulation of information: 5.0278e+07
+Average amount of information per symbol: 2.21799
+Nº copies: 4002179
+Average length of copies: 4.46055
+Average Copy Model Accuracy: 0.380404
+Elapsed Time: 18
+12 1 0.01 0.8 8
+Number of symbols codified in copy: 17878962
+Number of symbols codified outside copy: 4789263
+Number of symbols codified inside  copy: 17878962
+G: 2.20661
+T: 2.19418
+A: 2.18329
+C: 2.22821
+Accumulation of information: 4.9768e+07
+Average amount of information per symbol: 2.1955
+Nº copies: 3895548
+Average length of copies: 4.58959
+Average Copy Model Accuracy: 0.386029
+Elapsed Time: 18
+14 0 1 0.5 1
+Number of symbols codified in copy: 14863903
+Number of symbols codified outside copy: 7804322
+Number of symbols codified inside  copy: 14863903
+G: 1.98255
+T: 1.8548
+A: 1.85432
+C: 1.97773
+Accumulation of information: 4.31367e+07
+Average amount of information per symbol: 1.90296
+Nº copies: 696786
+Average length of copies: 21.3321
+Average Copy Model Accuracy: 0.370397
+Elapsed Time: 13
+14 0 1 0.5 4
+Number of symbols codified in copy: 15153302
+Number of symbols codified outside copy: 7514923
+Number of symbols codified inside  copy: 15153302
+G: 1.97953
+T: 1.84829
+A: 1.84462
+C: 1.97448
+Accumulation of information: 4.30013e+07
+Average amount of information per symbol: 1.89699
+Nº copies: 617781
+Average length of copies: 24.5286
+Average Copy Model Accuracy: 0.373478
+Elapsed Time: 13
+14 0 1 0.5 8
+Number of symbols codified in copy: 15232668
+Number of symbols codified outside copy: 7435557
+Number of symbols codified inside  copy: 15232668
+G: 1.97796
+T: 1.84833
+A: 1.84254
+C: 1.9717
+Accumulation of information: 4.29688e+07
+Average amount of information per symbol: 1.89555
+Nº copies: 605059
+Average length of copies: 25.1755
+Average Copy Model Accuracy: 0.3735
+Elapsed Time: 14
+14 0 1 0.7 1
+Number of symbols codified in copy: 8272284
+Number of symbols codified outside copy: 14395941
+Number of symbols codified inside  copy: 8272284
+G: 1.78888
+T: 1.80197
+A: 1.79935
+C: 1.79329
+Accumulation of information: 4.06207e+07
+Average amount of information per symbol: 1.79197
+Nº copies: 8272284
+Average length of copies: 1
+Average Copy Model Accuracy: 0.576246
+Elapsed Time: 18
+14 0 1 0.7 4
+Number of symbols codified in copy: 8272284
+Number of symbols codified outside copy: 14395941
+Number of symbols codified inside  copy: 8272284
+G: 1.74613
+T: 1.75814
+A: 1.75866
+C: 1.74799
+Accumulation of information: 3.96926e+07
+Average amount of information per symbol: 1.75102
+Nº copies: 8272284
+Average length of copies: 1
+Average Copy Model Accuracy: 0.599843
+Elapsed Time: 23
+14 0 1 0.7 8
+Number of symbols codified in copy: 8272284
+Number of symbols codified outside copy: 14395941
+Number of symbols codified inside  copy: 8272284
+G: 1.74151
+T: 1.75516
+A: 1.75501
+C: 1.74218
+Accumulation of information: 3.9604e+07
+Average amount of information per symbol: 1.74711
+Nº copies: 8272284
+Average length of copies: 1
+Average Copy Model Accuracy: 0.602096
+Elapsed Time: 27
+14 0 1 0.8 1
+Number of symbols codified in copy: 8272284
+Number of symbols codified outside copy: 14395941
+Number of symbols codified inside  copy: 8272284
+G: 1.78888
+T: 1.80197
+A: 1.79935
+C: 1.79329
+Accumulation of information: 4.06207e+07
+Average amount of information per symbol: 1.79197
+Nº copies: 8272284
+Average length of copies: 1
+Average Copy Model Accuracy: 0.576246
+Elapsed Time: 18
+14 0 1 0.8 4
+Number of symbols codified in copy: 8272284
+Number of symbols codified outside copy: 14395941
+Number of symbols codified inside  copy: 8272284
+G: 1.74613
+T: 1.75814
+A: 1.75866
+C: 1.74799
+Accumulation of information: 3.96926e+07
+Average amount of information per symbol: 1.75102
+Nº copies: 8272284
+Average length of copies: 1
+Average Copy Model Accuracy: 0.599843
+Elapsed Time: 23
+14 0 1 0.8 8
+Number of symbols codified in copy: 8272284
+Number of symbols codified outside copy: 14395941
+Number of symbols codified inside  copy: 8272284
+G: 1.74151
+T: 1.75516
+A: 1.75501
+C: 1.74218
+Accumulation of information: 3.9604e+07
+Average amount of information per symbol: 1.74711
+Nº copies: 8272284
+Average length of copies: 1
+Average Copy Model Accuracy: 0.602096
+Elapsed Time: 27
+14 0 0.1 0.5 1
+Number of symbols codified in copy: 14863903
+Number of symbols codified outside copy: 7804322
+Number of symbols codified inside  copy: 14863903
+G: 2.01016
+T: 1.8772
+A: 1.87573
+C: 2.00587
+Accumulation of information: 4.36856e+07
+Average amount of information per symbol: 1.92718
+Nº copies: 696786
+Average length of copies: 21.3321
+Average Copy Model Accuracy: 0.19911
+Elapsed Time: 12
+14 0 0.1 0.5 4
+Number of symbols codified in copy: 15153302
+Number of symbols codified outside copy: 7514923
+Number of symbols codified inside  copy: 15153302
+G: 2.00593
+T: 1.86977
+A: 1.86528
+C: 2.00134
+Accumulation of information: 4.3528e+07
+Average amount of information per symbol: 1.92022
+Nº copies: 617781
+Average length of copies: 24.5286
+Average Copy Model Accuracy: 0.2087
+Elapsed Time: 13
+14 0 0.1 0.5 8
+Number of symbols codified in copy: 15232668
+Number of symbols codified outside copy: 7435557
+Number of symbols codified inside  copy: 15232668
+G: 2.0038
+T: 1.86938
+A: 1.86278
+C: 1.99803
+Accumulation of information: 4.34848e+07
+Average amount of information per symbol: 1.91831
+Nº copies: 605059
+Average length of copies: 25.1755
+Average Copy Model Accuracy: 0.208739
+Elapsed Time: 14
+14 0 0.1 0.7 1
+Number of symbols codified in copy: 11835069
+Number of symbols codified outside copy: 10833156
+Number of symbols codified inside  copy: 11835069
+G: 1.84359
+T: 1.74451
+A: 1.74444
+C: 1.8445
+Accumulation of information: 4.04448e+07
+Average amount of information per symbol: 1.7842
+Nº copies: 1212295
+Average length of copies: 9.76253
+Average Copy Model Accuracy: 0.275058
+Elapsed Time: 13
+14 0 0.1 0.7 4
+Number of symbols codified in copy: 12089336
+Number of symbols codified outside copy: 10578889
+Number of symbols codified inside  copy: 12089336
+G: 1.82906
+T: 1.72681
+A: 1.72681
+C: 1.82678
+Accumulation of information: 4.0063e+07
+Average amount of information per symbol: 1.76736
+Nº copies: 1069699
+Average length of copies: 11.3016
+Average Copy Model Accuracy: 0.292299
+Elapsed Time: 13
+14 0 0.1 0.7 8
+Number of symbols codified in copy: 12149858
+Number of symbols codified outside copy: 10518367
+Number of symbols codified inside  copy: 12149858
+G: 1.8259
+T: 1.7231
+A: 1.72191
+C: 1.82334
+Accumulation of information: 3.99745e+07
+Average amount of information per symbol: 1.76346
+Nº copies: 1049476
+Average length of copies: 11.5771
+Average Copy Model Accuracy: 0.291606
+Elapsed Time: 14
+14 0 0.1 0.8 1
+Number of symbols codified in copy: 10418689
+Number of symbols codified outside copy: 12249536
+Number of symbols codified inside  copy: 10418689
+G: 1.77799
+T: 1.70256
+A: 1.70014
+C: 1.78108
+Accumulation of information: 3.929e+07
+Average amount of information per symbol: 1.73326
+Nº copies: 1506562
+Average length of copies: 6.91554
+Average Copy Model Accuracy: 0.304258
+Elapsed Time: 13
+14 0 0.1 0.8 4
+Number of symbols codified in copy: 10615798
+Number of symbols codified outside copy: 12052427
+Number of symbols codified inside  copy: 10615798
+G: 1.75643
+T: 1.67681
+A: 1.67702
+C: 1.75528
+Accumulation of information: 3.87485e+07
+Average amount of information per symbol: 1.70937
+Nº copies: 1321621
+Average length of copies: 8.03241
+Average Copy Model Accuracy: 0.324197
+Elapsed Time: 13
+14 0 0.1 0.8 8
+Number of symbols codified in copy: 10671783
+Number of symbols codified outside copy: 11996442
+Number of symbols codified inside  copy: 10671783
+G: 1.75134
+T: 1.67083
+A: 1.67095
+C: 1.74984
+Accumulation of information: 3.86188e+07
+Average amount of information per symbol: 1.70365
+Nº copies: 1294561
+Average length of copies: 8.24355
+Average Copy Model Accuracy: 0.323367
+Elapsed Time: 14
+14 0 0.01 0.5 1
+Number of symbols codified in copy: 14863903
+Number of symbols codified outside copy: 7804322
+Number of symbols codified inside  copy: 14863903
+G: 2.04788
+T: 1.91047
+A: 1.90777
+C: 2.04395
+Accumulation of information: 4.4457e+07
+Average amount of information per symbol: 1.9612
+Nº copies: 696786
+Average length of copies: 21.3321
+Average Copy Model Accuracy: 0.150072
+Elapsed Time: 13
+14 0 0.01 0.5 4
+Number of symbols codified in copy: 15153302
+Number of symbols codified outside copy: 7514923
+Number of symbols codified inside  copy: 15153302
+G: 2.04182
+T: 1.90179
+A: 1.8962
+C: 2.0375
+Accumulation of information: 4.42677e+07
+Average amount of information per symbol: 1.95285
+Nº copies: 617781
+Average length of copies: 24.5286
+Average Copy Model Accuracy: 0.161676
+Elapsed Time: 13
+14 0 0.01 0.5 8
+Number of symbols codified in copy: 15232668
+Number of symbols codified outside copy: 7435557
+Number of symbols codified inside  copy: 15232668
+G: 2.03888
+T: 1.90075
+A: 1.89307
+C: 2.03345
+Accumulation of information: 4.42093e+07
+Average amount of information per symbol: 1.95028
+Nº copies: 605059
+Average length of copies: 25.1755
+Average Copy Model Accuracy: 0.161719
+Elapsed Time: 13
+14 0 0.01 0.7 1
+Number of symbols codified in copy: 11835069
+Number of symbols codified outside copy: 10833156
+Number of symbols codified inside  copy: 11835069
+G: 1.91638
+T: 1.80793
+A: 1.80527
+C: 1.91907
+Accumulation of information: 4.19011e+07
+Average amount of information per symbol: 1.84845
+Nº copies: 1212295
+Average length of copies: 9.76253
+Average Copy Model Accuracy: 0.230972
+Elapsed Time: 13
+14 0 0.01 0.7 4
+Number of symbols codified in copy: 12089336
+Number of symbols codified outside copy: 10578889
+Number of symbols codified inside  copy: 12089336
+G: 1.89855
+T: 1.78795
+A: 1.7858
+C: 1.89689
+Accumulation of information: 4.14606e+07
+Average amount of information per symbol: 1.82902
+Nº copies: 1069699
+Average length of copies: 11.3016
+Average Copy Model Accuracy: 0.250802
+Elapsed Time: 14
+14 0 0.01 0.7 8
+Number of symbols codified in copy: 12149858
+Number of symbols codified outside copy: 10518367
+Number of symbols codified inside  copy: 12149858
+G: 1.89369
+T: 1.78298
+A: 1.7798
+C: 1.89165
+Accumulation of information: 4.13412e+07
+Average amount of information per symbol: 1.82375
+Nº copies: 1049476
+Average length of copies: 11.5771
+Average Copy Model Accuracy: 0.250001
+Elapsed Time: 13
+14 0 0.01 0.8 1
+Number of symbols codified in copy: 10418689
+Number of symbols codified outside copy: 12249536
+Number of symbols codified inside  copy: 10418689
+G: 1.87462
+T: 1.78557
+A: 1.77945
+C: 1.88119
+Accumulation of information: 4.12114e+07
+Average amount of information per symbol: 1.81802
+Nº copies: 1506562
+Average length of copies: 6.91554
+Average Copy Model Accuracy: 0.262744
+Elapsed Time: 13
+14 0 0.01 0.8 4
+Number of symbols codified in copy: 10615798
+Number of symbols codified outside copy: 12052427
+Number of symbols codified inside  copy: 10615798
+G: 1.84843
+T: 1.75594
+A: 1.75355
+C: 1.84887
+Accumulation of information: 4.05789e+07
+Average amount of information per symbol: 1.79012
+Nº copies: 1321621
+Average length of copies: 8.03241
+Average Copy Model Accuracy: 0.285422
+Elapsed Time: 14
+14 0 0.01 0.8 8
+Number of symbols codified in copy: 10671783
+Number of symbols codified outside copy: 11996442
+Number of symbols codified inside  copy: 10671783
+G: 1.84112
+T: 1.74819
+A: 1.74589
+C: 1.84076
+Accumulation of information: 4.04055e+07
+Average amount of information per symbol: 1.78247
+Nº copies: 1294561
+Average length of copies: 8.24355
+Average Copy Model Accuracy: 0.284463
+Elapsed Time: 14
+14 1 1 0.5 1
+Number of symbols codified in copy: 15398793
+Number of symbols codified outside copy: 7269432
+Number of symbols codified inside  copy: 15398793
+G: 1.98294
+T: 1.85181
+A: 1.84999
+C: 1.97988
+Accumulation of information: 4.31147e+07
+Average amount of information per symbol: 1.90199
+Nº copies: 603708
+Average length of copies: 25.507
+Average Copy Model Accuracy: 0.348844
+Elapsed Time: 13
+14 1 1 0.5 4
+Number of symbols codified in copy: 15676867
+Number of symbols codified outside copy: 6991358
+Number of symbols codified inside  copy: 15676867
+G: 1.97831
+T: 1.84647
+A: 1.8416
+C: 1.97619
+Accumulation of information: 4.29838e+07
+Average amount of information per symbol: 1.89621
+Nº copies: 548115
+Average length of copies: 28.6014
+Average Copy Model Accuracy: 0.354479
+Elapsed Time: 13
+14 1 1 0.5 8
+Number of symbols codified in copy: 15760767
+Number of symbols codified outside copy: 6907458
+Number of symbols codified inside  copy: 15760767
+G: 1.97719
+T: 1.84514
+A: 1.84031
+C: 1.97275
+Accumulation of information: 4.2946e+07
+Average amount of information per symbol: 1.89455
+Nº copies: 535694
+Average length of copies: 29.4212
+Average Copy Model Accuracy: 0.354445
+Elapsed Time: 13
+14 1 1 0.7 1
+Number of symbols codified in copy: 12062837
+Number of symbols codified outside copy: 10605388
+Number of symbols codified inside  copy: 12062837
+G: 1.79577
+T: 1.70955
+A: 1.71122
+C: 1.79547
+Accumulation of information: 3.95563e+07
+Average amount of information per symbol: 1.74501
+Nº copies: 1162539
+Average length of copies: 10.3763
+Average Copy Model Accuracy: 0.42609
+Elapsed Time: 13
+14 1 1 0.7 4
+Number of symbols codified in copy: 12297107
+Number of symbols codified outside copy: 10371118
+Number of symbols codified inside  copy: 12297107
+G: 1.78227
+T: 1.69364
+A: 1.69438
+C: 1.78017
+Accumulation of information: 3.9202e+07
+Average amount of information per symbol: 1.72938
+Nº copies: 1051563
+Average length of copies: 11.6941
+Average Copy Model Accuracy: 0.436766
+Elapsed Time: 13
+14 1 1 0.7 8
+Number of symbols codified in copy: 12354589
+Number of symbols codified outside copy: 10313636
+Number of symbols codified inside  copy: 12354589
+G: 1.78001
+T: 1.6907
+A: 1.69028
+C: 1.77814
+Accumulation of information: 3.91343e+07
+Average amount of information per symbol: 1.72639
+Nº copies: 1031648
+Average length of copies: 11.9756
+Average Copy Model Accuracy: 0.436226
+Elapsed Time: 14
+14 1 1 0.8 1
+Number of symbols codified in copy: 9093837
+Number of symbols codified outside copy: 13574388
+Number of symbols codified inside  copy: 9093837
+G: 1.75183
+T: 1.78505
+A: 1.78066
+C: 1.75485
+Accumulation of information: 3.99501e+07
+Average amount of information per symbol: 1.76238
+Nº copies: 4546919
+Average length of copies: 2
+Average Copy Model Accuracy: 0.59621
+Elapsed Time: 15
+14 1 1 0.8 4
+Number of symbols codified in copy: 9093837
+Number of symbols codified outside copy: 13574388
+Number of symbols codified inside  copy: 9093837
+G: 1.70072
+T: 1.73996
+A: 1.73772
+C: 1.7015
+Accumulation of information: 3.88639e+07
+Average amount of information per symbol: 1.71446
+Nº copies: 4546919
+Average length of copies: 2
+Average Copy Model Accuracy: 0.627427
+Elapsed Time: 19
+14 1 1 0.8 8
+Number of symbols codified in copy: 9093837
+Number of symbols codified outside copy: 13574388
+Number of symbols codified inside  copy: 9093837
+G: 1.69348
+T: 1.73567
+A: 1.73329
+C: 1.69392
+Accumulation of information: 3.87348e+07
+Average amount of information per symbol: 1.70877
+Nº copies: 4546919
+Average length of copies: 2
+Average Copy Model Accuracy: 0.630609
+Elapsed Time: 22
+14 1 0.1 0.5 1
+Number of symbols codified in copy: 15398793
+Number of symbols codified outside copy: 7269432
+Number of symbols codified inside  copy: 15398793
+G: 2.00762
+T: 1.87926
+A: 1.87648
+C: 2.0057
+Accumulation of information: 4.37097e+07
+Average amount of information per symbol: 1.92824
+Nº copies: 603708
+Average length of copies: 25.507
+Average Copy Model Accuracy: 0.238203
+Elapsed Time: 12
+14 1 0.1 0.5 4
+Number of symbols codified in copy: 15676867
+Number of symbols codified outside copy: 6991358
+Number of symbols codified inside  copy: 15676867
+G: 2.00259
+T: 1.87327
+A: 1.86759
+C: 2.00163
+Accumulation of information: 4.35678e+07
+Average amount of information per symbol: 1.92198
+Nº copies: 548115
+Average length of copies: 28.6014
+Average Copy Model Accuracy: 0.249197
+Elapsed Time: 13
+14 1 0.1 0.5 8
+Number of symbols codified in copy: 15760767
+Number of symbols codified outside copy: 6907458
+Number of symbols codified inside  copy: 15760767
+G: 2.00084
+T: 1.87131
+A: 1.86574
+C: 1.9976
+Accumulation of information: 4.35165e+07
+Average amount of information per symbol: 1.91971
+Nº copies: 535694
+Average length of copies: 29.4212
+Average Copy Model Accuracy: 0.249134
+Elapsed Time: 13
+14 1 0.1 0.7 1
+Number of symbols codified in copy: 12295091
+Number of symbols codified outside copy: 10373134
+Number of symbols codified inside  copy: 12295091
+G: 1.84017
+T: 1.75474
+A: 1.75398
+C: 1.84307
+Accumulation of information: 4.05776e+07
+Average amount of information per symbol: 1.79007
+Nº copies: 1109654
+Average length of copies: 11.0801
+Average Copy Model Accuracy: 0.34175
+Elapsed Time: 13
+14 1 0.1 0.7 4
+Number of symbols codified in copy: 12542068
+Number of symbols codified outside copy: 10126157
+Number of symbols codified inside  copy: 12542068
+G: 1.82652
+T: 1.73751
+A: 1.73644
+C: 1.82562
+Accumulation of information: 4.02005e+07
+Average amount of information per symbol: 1.77343
+Nº copies: 1004952
+Average length of copies: 12.4803
+Average Copy Model Accuracy: 0.359338
+Elapsed Time: 14
+14 1 0.1 0.7 8
+Number of symbols codified in copy: 12600646
+Number of symbols codified outside copy: 10067579
+Number of symbols codified inside  copy: 12600646
+G: 1.82319
+T: 1.73326
+A: 1.73141
+C: 1.82216
+Accumulation of information: 4.01063e+07
+Average amount of information per symbol: 1.76927
+Nº copies: 986365
+Average length of copies: 12.7748
+Average Copy Model Accuracy: 0.358417
+Elapsed Time: 13
+14 1 0.1 0.8 1
+Number of symbols codified in copy: 10966565
+Number of symbols codified outside copy: 11701660
+Number of symbols codified inside  copy: 10966565
+G: 1.77571
+T: 1.71551
+A: 1.71263
+C: 1.78001
+Accumulation of information: 3.94706e+07
+Average amount of information per symbol: 1.74123
+Nº copies: 1376971
+Average length of copies: 7.96427
+Average Copy Model Accuracy: 0.372143
+Elapsed Time: 13
+14 1 0.1 0.8 4
+Number of symbols codified in copy: 11152594
+Number of symbols codified outside copy: 11515631
+Number of symbols codified inside  copy: 11152594
+G: 1.75363
+T: 1.68983
+A: 1.68938
+C: 1.75414
+Accumulation of information: 3.8921e+07
+Average amount of information per symbol: 1.71698
+Nº copies: 1241783
+Average length of copies: 8.98111
+Average Copy Model Accuracy: 0.39145
+Elapsed Time: 14
+14 1 0.1 0.8 8
+Number of symbols codified in copy: 11204863
+Number of symbols codified outside copy: 11463362
+Number of symbols codified inside  copy: 11204863
+G: 1.74859
+T: 1.68349
+A: 1.68281
+C: 1.74873
+Accumulation of information: 3.87854e+07
+Average amount of information per symbol: 1.711
+Nº copies: 1217729
+Average length of copies: 9.20144
+Average Copy Model Accuracy: 0.390261
+Elapsed Time: 14
+14 1 0.01 0.5 1
+Number of symbols codified in copy: 15398793
+Number of symbols codified outside copy: 7269432
+Number of symbols codified inside  copy: 15398793
+G: 2.04811
+T: 1.92701
+A: 1.92297
+C: 2.04777
+Accumulation of information: 4.47085e+07
+Average amount of information per symbol: 1.9723
+Nº copies: 603708
+Average length of copies: 25.507
+Average Copy Model Accuracy: 0.216973
+Elapsed Time: 13
+14 1 0.01 0.5 4
+Number of symbols codified in copy: 15676867
+Number of symbols codified outside copy: 6991358
+Number of symbols codified inside  copy: 15676867
+G: 2.04133
+T: 1.91906
+A: 1.91228
+C: 2.04184
+Accumulation of information: 4.45267e+07
+Average amount of information per symbol: 1.96428
+Nº copies: 548115
+Average length of copies: 28.6014
+Average Copy Model Accuracy: 0.229059
+Elapsed Time: 13
+14 1 0.01 0.5 8
+Number of symbols codified in copy: 15760767
+Number of symbols codified outside copy: 6907458
+Number of symbols codified inside  copy: 15760767
+G: 2.03857
+T: 1.91603
+A: 1.90946
+C: 2.0369
+Accumulation of information: 4.44533e+07
+Average amount of information per symbol: 1.96104
+Nº copies: 535694
+Average length of copies: 29.4212
+Average Copy Model Accuracy: 0.228989
+Elapsed Time: 13
+14 1 0.01 0.7 1
+Number of symbols codified in copy: 12295091
+Number of symbols codified outside copy: 10373134
+Number of symbols codified inside  copy: 12295091
+G: 1.92202
+T: 1.84736
+A: 1.84386
+C: 1.92936
+Accumulation of information: 4.2528e+07
+Average amount of information per symbol: 1.8761
+Nº copies: 1109654
+Average length of copies: 11.0801
+Average Copy Model Accuracy: 0.325812
+Elapsed Time: 13
+14 1 0.01 0.7 4
+Number of symbols codified in copy: 12542068
+Number of symbols codified outside copy: 10126157
+Number of symbols codified inside  copy: 12542068
+G: 1.90468
+T: 1.82665
+A: 1.82318
+C: 1.90661
+Accumulation of information: 4.2071e+07
+Average amount of information per symbol: 1.85595
+Nº copies: 1004952
+Average length of copies: 12.4803
+Average Copy Model Accuracy: 0.344796
+Elapsed Time: 13
+14 1 0.01 0.7 8
+Number of symbols codified in copy: 12600646
+Number of symbols codified outside copy: 10067579
+Number of symbols codified inside  copy: 12600646
+G: 1.89944
+T: 1.82054
+A: 1.81649
+C: 1.90109
+Accumulation of information: 4.19365e+07
+Average amount of information per symbol: 1.85001
+Nº copies: 986365
+Average length of copies: 12.7748
+Average Copy Model Accuracy: 0.343797
+Elapsed Time: 14
+14 1 0.01 0.8 1
+Number of symbols codified in copy: 10966565
+Number of symbols codified outside copy: 11701660
+Number of symbols codified inside  copy: 10966565
+G: 1.88426
+T: 1.8331
+A: 1.82678
+C: 1.89478
+Accumulation of information: 4.19899e+07
+Average amount of information per symbol: 1.85237
+Nº copies: 1376971
+Average length of copies: 7.96427
+Average Copy Model Accuracy: 0.357889
+Elapsed Time: 14
+14 1 0.01 0.8 4
+Number of symbols codified in copy: 11152594
+Number of symbols codified outside copy: 11515631
+Number of symbols codified inside  copy: 11152594
+G: 1.85644
+T: 1.80201
+A: 1.79904
+C: 1.86133
+Accumulation of information: 4.13188e+07
+Average amount of information per symbol: 1.82276
+Nº copies: 1241783
+Average length of copies: 8.98111
+Average Copy Model Accuracy: 0.378601
+Elapsed Time: 14
+14 1 0.01 0.8 8
+Number of symbols codified in copy: 11204863
+Number of symbols codified outside copy: 11463362
+Number of symbols codified inside  copy: 11204863
+G: 1.84884
+T: 1.79331
+A: 1.7902
+C: 1.85294
+Accumulation of information: 4.1128e+07
+Average amount of information per symbol: 1.81435
+Nº copies: 1217729
+Average length of copies: 9.20144
+Average Copy Model Accuracy: 0.377307
+Elapsed Time: 17
