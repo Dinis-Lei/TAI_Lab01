@@ -117,7 +117,7 @@ int main(int argc, char **argv)
         numTotalChar++;
 
         // Add the sequence to the appearance count
-        if (sequence.length() == k + 1)
+        if (sequence.length() == k)
         {
             dict[sequence]["total"]++;      //total count of the sequence appearences
             dict[sequence][string(1, c)]++;
@@ -150,10 +150,10 @@ int main(int argc, char **argv)
     string output;
     if (sample.empty())
     {
-        sample = sequence.substr(0, k);
+        sample = sequence.substr(0, k); //if no sample is provided, use the last k symbols of the sequence
     }
     else
-    {
+    {   
         for (const char &c : sample)
         {
             auto it = alphabet.find(c);
@@ -180,6 +180,7 @@ int main(int argc, char **argv)
     }
 
 
+    output+=sample;
     // Generate Output Sequence
     for (int i = 0; i < n; i++)
     {
@@ -217,6 +218,6 @@ int main(int argc, char **argv)
             }
         }
     }
-    cout << output << endl;
+    std::cout << output << endl;
     return 0;
 }

@@ -117,14 +117,14 @@ int main(int argc, char **argv)
     while (infile.get(c))
     {
         alphabet[c]++;
-        Index++;
 
-        if (sequence.length() == k + 1)
+        if (sequence.length() == k)
         {
             //append to the vector of the [sequence] the index of the next char
             dict[sequence].push_back(Index);
             sequence.erase(0, 1);
         }
+        Index++;
         sequence += c;
     }
 
@@ -161,10 +161,23 @@ int main(int argc, char **argv)
     std::vector<std::pair<char, float>> cum_prob;
     cum_prob.reserve(alphabet.size());
     float total_prob = 0.0f;
+    output+=sample;
     for (auto &[symbol, prob] : alphabet)
     {
         total_prob += prob;
         cum_prob.emplace_back(symbol, total_prob);
+    }
+
+
+    //opening the file again to reset the pointer
+    infile.close(); // Close file
+
+    infile.open(filename); // Open file
+
+
+    if (!infile.is_open()) {
+        std::cerr << "Failed to open file\n";
+        return 1;
     }
 
     for (int i = 0; i < n; i++)
@@ -186,19 +199,19 @@ int main(int argc, char **argv)
         else
         {
             // Use const reference to avoid copying
-            const auto &next_chars = dict.at(sample);
+            const auto &next_chars = dict[sample];
             
             //Calculates the probability of each symbol appearing after the sequence
             //Checks if the next char is in the map
             if (dictFinal.count(sample) == 0){
                 for (int i = 0; i < next_chars.size(); i++){
                     //convert seekg to string
-                    string nextChar = "";
-                    infile.seekg(next_chars[i]);
-                    infile.get(c);
-                    nextChar = c;
 
-                    dictFinal[sample][nextChar]++; // add 1 to the count of the next char
+                    char n;
+                    infile.seekg(next_chars[i]);
+                    infile.get(n);
+                    dictFinal[sample][string(1, n)]++;
+                    std::cout << n << std::endl;
                     dictFinal[sample]["total"]++;  // add 1 to the total count
 
                 }
@@ -209,6 +222,7 @@ int main(int argc, char **argv)
                     {
                         dictFinal[sample][nextChar] /= dictFinal[sample]["total"];
                     }
+                    std::cout << nextChar << " " << count << std::endl;
                 }
                 dictFinal[sample].erase("total");
             }
