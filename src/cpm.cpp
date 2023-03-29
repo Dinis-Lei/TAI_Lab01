@@ -80,6 +80,7 @@ float alpha = 1;                // Smoothing
 float threshold = 0.5;          // Cut off threshold
 bool save = false;              // Save the information gain in an file
 int n_anchors = -1;             // Set number of anchors, -1 means all anchors will be used
+bool ignore1 = false;
 
 
 double sum_acc = 0;             // Sum of accuracies of each chosen anchor of the copy model
@@ -87,6 +88,7 @@ int count_copies = 0;
 int sum_len_copies = 0;
 
 int not_copy = 0;
+int copies = 0;
 double accumulative_info = 0;
 
 int asize;
@@ -133,8 +135,7 @@ int main(int argc, char** argv) {
 
         if (testing_seq.length() > 0) {
             bool ignored_last = false;              // If current symbol should be ignored by the copy model and be encoded normally
-        
-        
+            //cout << testing_seq << endl;
             //update_anchors(symbol, offset, full_seq, ignored_last, anchors)
 
             if (update_anchors(symbol, offset, ignored_last, anchors)) {
@@ -197,13 +198,21 @@ int main(int argc, char** argv) {
     }
 
     if (testing_seq.length() > 0) {
-        select_best_anchor(anchors, symbol, false);
+        int active_count = 0;
+        for (Anchor& anchor: anchors) {
+            if (anchor.is_active && anchor.length > 0) {
+                active_count++;
+                break;
+            }
+        }
+        if (active_count > 0)
+            select_best_anchor(anchors, symbol, false);
     }
 
     cout << endl;
     cout << "Size of the file: " << fsize << endl;
-    cout << "Number of symbols codified in copy: " << fsize - not_copy << endl;
     cout << "Number of symbols codified outside copy: " << not_copy << endl;
+    cout << "Number of symbols codified inside  copy: " << copies << endl;
 
     double sum_info = 0;
     unordered_map<char, float>::iterator itr;
@@ -276,12 +285,10 @@ static bool update_anchors(char symbol, int offset, bool &ignored_last, vector<A
         if (!anchor.is_active) {
             continue;
         }
-
         active_count++;
         anchor.length++;
         char predicted_symb = full_seq[anchor.position + offset];                      // Next symbol in the anchor sequence
         double p_curr_symb;
-
         p_curr_symb = estimate_probability(anchor.hits, anchor.misses, alpha);  // Probability of the predicted symbol
 
         double info;
@@ -296,23 +303,31 @@ static bool update_anchors(char symbol, int offset, bool &ignored_last, vector<A
         }
 
         anchor.sum_info += info;
+        if (info < 0) {
+            cerr << "NEGATIVE INFO GAIN??" << endl;
+            cout << "!!!! INFO: " << info << " " << anchor.hits << " " << anchor.misses << endl;
+            exit(EXIT_FAILURE);
+        }
         anchor.sum_info_per_symbol[predicted_symb] += info;
         anchor.info_per_byte.emplace_back(info);
 
         if (anchor.length > min_size) {
             // Check if the anchor has a hit/miss ratio that passes the threshold
             double acc = estimate_probability(anchor.hits, anchor.misses, alpha);
+            // cout << acc << " " << threshold << endl;
             if (acc < threshold) {
                 anchor.is_active = false;
                 active_count--;
                 // Remove the last guess
-                anchor.misses--;
-                anchor.length--;
-                anchor.info_per_byte.pop_back();
-                double prob = (double)(1 - p_curr_symb)/ (double)(asize - 1);
-                anchor.sum_info_per_symbol[predicted_symb] += log2(prob);
-                anchor.sum_info += log2(prob);
-                ignored_last = true;
+                if (ignore1) {
+                    anchor.misses--;
+                    anchor.length--;
+                    anchor.info_per_byte.pop_back();
+                    anchor.sum_info_per_symbol[predicted_symb] -= info;
+                    anchor.sum_info -= info;
+                    ignored_last = true; 
+                }
+                
             }
         }
 
@@ -340,7 +355,14 @@ static void select_best_anchor(vector<Anchor> &anchors, char byte, bool ignored_
         int misses = anchor.misses;
         double ps = estimate_probability(hits, misses, alpha);
         // Select the sequence who encode the most and with better accuracy
-        if(anchor.length > max_len) {
+        if (anchor.length > max_len) {
+            max_acc = ps;
+            best_info = anchor.sum_info_per_symbol;
+            max_len = anchor.length;
+            best_accumulative_info = anchor.sum_info;
+            best_info_per_byte = anchor.info_per_byte;
+        }
+        else if (anchor.length == max_len && ps > max_acc) {
             max_acc = ps;
             best_info = anchor.sum_info_per_symbol;
             max_len = anchor.length;
@@ -351,16 +373,17 @@ static void select_best_anchor(vector<Anchor> &anchors, char byte, bool ignored_
 
     // Anchor encoded some bytes
     if (max_len > 0) {
-        //cout << "AAAAA" << endl;
         sum_acc += max_acc;
         sum_len_copies += max_len;
         count_copies++;
         accumulative_info += best_accumulative_info;
+        copies += max_len;
         for (const auto &it : best_info) {
             auto it2 = global_info.find(it.first);
             if (it2 != global_info.end()) {
                 it2->second += it.second;
-            } else {
+            } 
+            else {
                 global_info.emplace_hint(it2, it.first, it.second);
             }
         }
@@ -371,7 +394,7 @@ static void select_best_anchor(vector<Anchor> &anchors, char byte, bool ignored_
             info_per_byte.push_back(default_symb_size);
             global_info[byte] += default_symb_size;
             accumulative_info += default_symb_size;
-            not_copy++;         
+            not_copy++;        
         }
     }
     else {
@@ -386,9 +409,12 @@ static void select_best_anchor(vector<Anchor> &anchors, char byte, bool ignored_
 
 static void parse_command_line(int argc, char** argv) {
     int c;                          // Opt process
-    while ((c = getopt(argc, argv, "k:st:a:m:M:n:")) != -1) {
+    while ((c = getopt(argc, argv, "k:st:a:m:M:n:i")) != -1) {
         switch (c)
         {
+            case 'i':
+                ignore1 = true;
+                break;
             case 'n':
                 try {
                     n_anchors = stoi(optarg);
@@ -461,5 +487,6 @@ static void parse_command_line(int argc, char** argv) {
     cout << "Alpha = " << alpha << std::endl;
     cout << "Threshold = " << threshold << std::endl;
     cout << "Save = " << save << std::endl;
+    cout << "Ignore Last = " << ignore1 << std::endl;
     cout << "K = " << k << std::endl;
 }
