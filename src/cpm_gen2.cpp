@@ -157,7 +157,7 @@ int main(int argc, char **argv)
     std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
     output.reserve(n);
 
-    // Precompute cumulative probabilities
+    // Precompute cumulative probabilities for the alphabet
     std::vector<std::pair<char, float>> cum_prob;
     cum_prob.reserve(alphabet.size());
     float total_prob = 0.0f;
@@ -187,7 +187,8 @@ int main(int argc, char **argv)
         {
             // Use const reference to avoid copying
             const auto &next_chars = dict.at(sample);
-
+            
+            //Calculates the probability of each symbol appearing after the sequence
             //Checks if the next char is in the map
             if (dictFinal.count(sample) == 0){
                 for (int i = 0; i < next_chars.size(); i++){
