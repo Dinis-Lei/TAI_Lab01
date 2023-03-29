@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 
     unordered_map<char, float> alphabet;
 
-    unordered_map<string, unordered_map<string, int>> dictFinal; // sequence -> <symbol, probability>
+    unordered_map<string, unordered_map<string, float>> dictFinal; // sequence -> <symbol, probability>
 
 
 
@@ -180,6 +180,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
+
     for (int i = 0; i < n; i++)
     {
         float rand_val = std::uniform_real_distribution<float>(0.0f, 1.0f)(rng);
@@ -198,36 +199,30 @@ int main(int argc, char **argv)
         }
         else
         {
-            // Use const reference to avoid copying
             const auto &next_chars = dict[sample];
+            // Use const reference to avoid copying
             
             //Calculates the probability of each symbol appearing after the sequence
             //Checks if the next char is in the map
             if (dictFinal.count(sample) == 0){
-                for (int i = 0; i < next_chars.size(); i++){
+                for (int e = 0; e < next_chars.size(); e++){
                     //convert seekg to string
-
-                    char n;
-                    infile.seekg(next_chars[i]);
-                    infile.get(n);
-                    dictFinal[sample][string(1, n)]++;
-                    std::cout << n << std::endl;
+                    char nchar;
+                    infile.seekg(next_chars[e]);
+                    infile.get(nchar);
+                    dictFinal[sample][string(1, nchar)]++;
                     dictFinal[sample]["total"]++;  // add 1 to the total count
 
                 }
-                
                 for (auto &[nextChar, count] : dictFinal[sample])
                 {
                     if (nextChar != "total")
                     {
                         dictFinal[sample][nextChar] /= dictFinal[sample]["total"];
                     }
-                    std::cout << nextChar << " " << count << std::endl;
                 }
                 dictFinal[sample].erase("total");
             }
-
-            
 
             // Calculates the next character
             float total_prob = 0.0f;
